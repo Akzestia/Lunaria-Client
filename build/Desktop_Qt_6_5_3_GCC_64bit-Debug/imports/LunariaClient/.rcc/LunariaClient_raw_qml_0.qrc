@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/qt/qml/LunariaClient/">
+    <file alias="Constants.qml">/home/azure/LunariaClient/imports/LunariaClient/Constants.qml</file>
+    <file alias="DirectoryFontLoader.qml">/home/azure/LunariaClient/imports/LunariaClient/DirectoryFontLoader.qml</file>
+    <file alias="EventListModel.qml">/home/azure/LunariaClient/imports/LunariaClient/EventListModel.qml</file>
+    <file alias="EventListSimulator.qml">/home/azure/LunariaClient/imports/LunariaClient/EventListSimulator.qml</file>
+  </qresource>
+</RCC>
+

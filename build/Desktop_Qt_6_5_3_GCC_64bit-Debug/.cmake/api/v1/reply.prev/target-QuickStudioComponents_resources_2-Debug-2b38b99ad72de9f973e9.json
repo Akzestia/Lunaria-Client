@@ -1,0 +1,288 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/ds-build/src/imports/components/CMakeFiles/QuickStudioComponents_resources_2.dir/./QuickStudioComponents_resources_2_autogen/mocs_compilation.cpp.o"
+		},
+		{
+			"path" : "_deps/ds-build/src/imports/components/CMakeFiles/QuickStudioComponents_resources_2.dir/./.rcc/qrc_QuickStudioComponents_raw_qml_0.cpp.o"
+		}
+	],
+	"backtrace" : 6,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"__qt_propagate_generated_resource",
+			"_qt_internal_process_resource",
+			"qt6_add_resources",
+			"qt6_target_qml_sources",
+			"qt6_add_qml_module",
+			"set_property",
+			"_qt_internal_copy_dependency_properties",
+			"__qt_internal_propagate_object_library",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"/home/azure/Qt/6.5.3/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"/home/azure/Qt/6.5.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/components/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 610,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 2308,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 314,
+				"parent" : 3
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2055,
+				"parent" : 4
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1672,
+				"parent" : 5
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1701,
+				"parent" : 5
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 1617,
+				"parent" : 7
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 8
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 1673,
+				"parent" : 5
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 8
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 8
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG -g -fcolor-diagnostics"
+				},
+				{
+					"backtrace" : 9,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 10,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "QT_QML_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/QuickStudioComponents_resources_2_autogen/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/QuickStudioComponents_autogen/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/components"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml/6.5.3"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml/6.5.3/QtQml"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore/6.5.3"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore/6.5.3/QtCore"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/mkspecs/linux-g++"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "QuickStudioComponents_resources_2_autogen_timestamp_deps::@b8ea75ca72e9d0096cda"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "QuickStudioComponents_resources_2_autogen::@b8ea75ca72e9d0096cda"
+		}
+	],
+	"id" : "QuickStudioComponents_resources_2::@b8ea75ca72e9d0096cda",
+	"name" : "QuickStudioComponents_resources_2",
+	"paths" : 
+	{
+		"build" : "_deps/ds-build/src/imports/components",
+		"source" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/components"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				3,
+				4
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/QuickStudioComponents_resources_2_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/.rcc/qrc_QuickStudioComponents_raw_qml_0.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/QuickStudioComponents_resources_2_autogen/timestamp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/.rcc/qrc_QuickStudioComponents_raw_qml_0.cpp.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/components/QuickStudioComponents_resources_2_autogen/timestamp.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

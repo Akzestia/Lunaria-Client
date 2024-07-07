@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt-project.org/imports/QtQuick/Studio/EventSystem">/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/qml/QtQuick/Studio/EventSystem</file>
+
+  </qresource>
+</RCC>

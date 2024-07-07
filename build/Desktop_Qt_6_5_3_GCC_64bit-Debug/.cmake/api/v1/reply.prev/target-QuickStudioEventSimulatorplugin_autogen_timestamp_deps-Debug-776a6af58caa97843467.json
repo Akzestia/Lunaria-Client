@@ -1,0 +1,31 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/tools/eventsimulator/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "QuickStudioEventSimulatorplugin_autogen_timestamp_deps::@639cba86296065e16922",
+	"isGeneratorProvided" : true,
+	"name" : "QuickStudioEventSimulatorplugin_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "_deps/ds-build/src/imports/tools/eventsimulator",
+		"source" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/tools/eventsimulator"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

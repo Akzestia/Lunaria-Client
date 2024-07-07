@@ -1,0 +1,281 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/ds-build/src/imports/tools/eventsimulator/CMakeFiles/QuickStudioEventSimulator_resources_1.dir/./QuickStudioEventSimulator_resources_1_autogen/mocs_compilation.cpp.o"
+		},
+		{
+			"path" : "_deps/ds-build/src/imports/tools/eventsimulator/CMakeFiles/QuickStudioEventSimulator_resources_1.dir/./.rcc/qrc_qmake_QtQuick_Studio_EventSimulator.cpp.o"
+		}
+	],
+	"backtrace" : 5,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"__qt_propagate_generated_resource",
+			"_qt_internal_process_resource",
+			"qt6_add_resources",
+			"qt6_add_qml_module",
+			"set_property",
+			"_qt_internal_copy_dependency_properties",
+			"__qt_internal_propagate_object_library",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"/home/azure/Qt/6.5.3/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"/home/azure/Qt/6.5.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/tools/eventsimulator/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 561,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 314,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2055,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1672,
+				"parent" : 4
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 1701,
+				"parent" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 1617,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 7
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1673,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 2408,
+				"parent" : 7
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG -g -fcolor-diagnostics"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "QT_QML_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/QuickStudioEventSimulator_resources_1_autogen/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/QuickStudioEventSimulator_autogen/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/tools/eventsimulator"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml/6.5.3"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml/6.5.3/QtQml"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore/6.5.3"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore/6.5.3/QtCore"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtCore"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQml"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 11,
+					"isSystem" : true,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/include"
+				},
+				{
+					"backtrace" : 11,
+					"isSystem" : true,
+					"path" : "/home/azure/Qt/6.5.3/gcc_64/mkspecs/linux-g++"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "QuickStudioEventSimulator_resources_1_autogen_timestamp_deps::@639cba86296065e16922"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "QuickStudioEventSimulator_resources_1_autogen::@639cba86296065e16922"
+		}
+	],
+	"id" : "QuickStudioEventSimulator_resources_1::@639cba86296065e16922",
+	"name" : "QuickStudioEventSimulator_resources_1",
+	"paths" : 
+	{
+		"build" : "_deps/ds-build/src/imports/tools/eventsimulator",
+		"source" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/tools/eventsimulator"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				3,
+				4
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/QuickStudioEventSimulator_resources_1_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/.rcc/qrc_qmake_QtQuick_Studio_EventSimulator.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/QuickStudioEventSimulator_resources_1_autogen/timestamp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/.rcc/qrc_qmake_QtQuick_Studio_EventSimulator.cpp.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/tools/eventsimulator/QuickStudioEventSimulator_resources_1_autogen/timestamp.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

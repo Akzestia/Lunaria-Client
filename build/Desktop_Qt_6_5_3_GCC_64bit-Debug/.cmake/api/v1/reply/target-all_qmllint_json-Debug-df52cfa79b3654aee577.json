@@ -1,0 +1,279 @@
+{
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"_qt_internal_target_enable_qmllint",
+			"qt6_target_qml_sources",
+			"qt6_add_qml_module",
+			"add_dependencies",
+			"include"
+		],
+		"files" : 
+		[
+			"/home/azure/Qt/6.5.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/components/CMakeLists.txt",
+			"qmlmodules",
+			"CMakeLists.txt",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/logichelper/CMakeLists.txt",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/application/CMakeLists.txt",
+			"build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/utils/CMakeLists.txt",
+			"content/CMakeLists.txt",
+			"imports/LunariaClient/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 885,
+				"parent" : 3
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 41,
+				"parent" : 5
+			},
+			{
+				"file" : 2,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 4,
+				"parent" : 7
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 8
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 10
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 3
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 2,
+				"parent" : 13
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 14
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 15
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 16
+			},
+			{
+				"file" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 5,
+				"line" : 6,
+				"parent" : 18
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 19
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1843,
+				"parent" : 20
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 21
+			},
+			{
+				"file" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 6,
+				"line" : 6,
+				"parent" : 23
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 24
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 25
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 26
+			},
+			{
+				"file" : 7
+			},
+			{
+				"command" : 3,
+				"file" : 7,
+				"line" : 5,
+				"parent" : 28
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 29
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 30
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 31
+			},
+			{
+				"file" : 8
+			},
+			{
+				"command" : 3,
+				"file" : 8,
+				"line" : 10,
+				"parent" : 33
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 610,
+				"parent" : 34
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2090,
+				"parent" : 35
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 888,
+				"parent" : 36
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 11,
+			"id" : "LunariaClientApp_qmllint_json::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 12,
+			"id" : "QuickStudioComponents_qmllint_json::@b8ea75ca72e9d0096cda"
+		},
+		{
+			"backtrace" : 17,
+			"id" : "QuickStudioLogicHelper_qmllint_json::@a133c4daf6f4e56b78b8"
+		},
+		{
+			"backtrace" : 22,
+			"id" : "QuickStudioApplication_qmllint_json::@a324641c06033e250fc2"
+		},
+		{
+			"backtrace" : 27,
+			"id" : "QuickStudioUtils_qmllint_json::@4bd307a73a027a216fab"
+		},
+		{
+			"backtrace" : 32,
+			"id" : "content_qmllint_json::@73a38b9e525c9c2ae262"
+		},
+		{
+			"backtrace" : 37,
+			"id" : "LunariaClient_qmllint_json::@1ad70f2061b613769289"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QmlLinter"
+	},
+	"id" : "all_qmllint_json::@b8ea75ca72e9d0096cda",
+	"name" : "all_qmllint_json",
+	"paths" : 
+	{
+		"build" : "_deps/ds-build/src/imports/components",
+		"source" : "build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/components"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

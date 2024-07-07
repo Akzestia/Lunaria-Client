@@ -1,0 +1,31 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"imports/LunariaClient/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "LunariaClient_resources_1_autogen_timestamp_deps::@1ad70f2061b613769289",
+	"isGeneratorProvided" : true,
+	"name" : "LunariaClient_resources_1_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "imports/LunariaClient",
+		"source" : "imports/LunariaClient"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}
