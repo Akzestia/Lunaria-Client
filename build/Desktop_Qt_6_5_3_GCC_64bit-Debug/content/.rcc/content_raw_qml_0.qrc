@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/content/">
-    <file alias="App.qml">/home/azure/LunariaClient/content/App.qml</file>
-    <file alias="fonts/fonts.txt">/home/azure/LunariaClient/content/fonts/fonts.txt</file>
-    <file alias="../../Downloads/OFL.txt">/home/azure/LunariaClient/content/../../Downloads/OFL.txt</file>
-    <file alias="../../Downloads/NotoColorEmoji-Regular.ttf">/home/azure/LunariaClient/content/../../Downloads/NotoColorEmoji-Regular.ttf</file>
-  </qresource>
-</RCC>
-

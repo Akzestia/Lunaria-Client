@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/QtQuick/Studio/Utils">
-    <file alias="qmldir">/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/qml/QtQuick/Studio/Utils/qmldir</file>
-  </qresource>
-</RCC>
-

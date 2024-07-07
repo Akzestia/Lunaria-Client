@@ -1,4 +1,0 @@
-module Main
-typeinfo LunariaClientApp.qmltypes
-prefer :/qt/qml/Main/
-

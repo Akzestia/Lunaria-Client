@@ -1,1 +1,0 @@
---foreign-types=/home/azure/Qt/6.5.3/gcc_64/./metatypes/qt6qml_relwithdebinfo_metatypes.json,/home/azure/Qt/6.5.3/gcc_64/./metatypes/qt6core_relwithdebinfo_metatypes.json,/home/azure/Qt/6.5.3/gcc_64/./metatypes/qt6network_relwithdebinfo_metatypes.json

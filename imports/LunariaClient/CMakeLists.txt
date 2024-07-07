@@ -16,4 +16,5 @@ qt6_add_qml_module(LunariaClient
         DirectoryFontLoader.qml
         EventListModel.qml
         EventListSimulator.qml
+        RESOURCES LunariaResources.qrc
 )

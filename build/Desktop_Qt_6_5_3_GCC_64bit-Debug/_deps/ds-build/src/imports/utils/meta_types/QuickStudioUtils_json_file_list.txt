@@ -1,2 +1,0 @@
-/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/utils/QuickStudioUtils_autogen/include/../EWIEGA46WW/moc_quickstudiocsvtablemodel_p.cpp.json
-/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-build/src/imports/utils/QuickStudioUtils_autogen/include/../EWIEGA46WW/moc_quickstudiofilereader_p.cpp.json

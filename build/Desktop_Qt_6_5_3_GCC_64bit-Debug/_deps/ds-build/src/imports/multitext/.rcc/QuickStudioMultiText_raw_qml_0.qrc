@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/MultiText/">
-    <file alias="MultiTextElement.qml">/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/multitext/MultiTextElement.qml</file>
-    <file alias="MultiTextItem.qml">/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/multitext/MultiTextItem.qml</file>
-    <file alias="MultiTextException.qml">/home/azure/LunariaClient/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/_deps/ds-src/src/imports/multitext/MultiTextException.qml</file>
-  </qresource>
-</RCC>
-
