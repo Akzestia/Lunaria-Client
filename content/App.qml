@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 import QtQuick 6.2
 import QtQuick.Controls
+import QtQuick.Layouts
 import LunariaClient
 
 ApplicationWindow {
@@ -17,13 +18,27 @@ ApplicationWindow {
 
     title: "LunariaClient"
 
-    Text {
-        text: "Hello"
-        font.family: "NotoColorEmoji-Regular"
-    }
+    ColumnLayout {
+        height: parent.height
+        width: parent.width
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
 
-    Image {
-        source: "qrc:/images/xuxu.jpeg"
+        Text {
+            text: "Hello"
+            color: "white"
+            font.pixelSize: 26
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+        }
+
+        onWidthChanged: {
+            if (width > 400)
+                width = 400
+        }
+        onHeightChanged: {
+            if (height > 520)
+                height = 520
+        }
     }
 
     Component.onCompleted: {

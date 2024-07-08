@@ -19,4 +19,6 @@ qt6_add_qml_module(content
     RESOURCES
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf
+        RESOURCES ../../Downloads/Ubuntu/Ubuntu-Bold.ttf ../../Downloads/Ubuntu/Ubuntu-BoldItalic.ttf ../../Downloads/Ubuntu/Ubuntu-Italic.ttf ../../Downloads/Ubuntu/Ubuntu-Light.ttf ../../Downloads/Ubuntu/Ubuntu-LightItalic.ttf ../../Downloads/Ubuntu/Ubuntu-Medium.ttf ../../Downloads/Ubuntu/Ubuntu-MediumItalic.ttf ../../Downloads/Ubuntu/Ubuntu-Regular.ttf ../../Downloads/Ubuntu/UFL.txt
+        RESOURCES fonts/Ubuntu-Bold.ttf fonts/Ubuntu-BoldItalic.ttf fonts/Ubuntu-Italic.ttf fonts/Ubuntu-Light.ttf fonts/Ubuntu-LightItalic.ttf fonts/Ubuntu-Medium.ttf fonts/Ubuntu-MediumItalic.ttf fonts/Ubuntu-Regular.ttf fonts/UFL.txt
 )
