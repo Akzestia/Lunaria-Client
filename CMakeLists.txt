@@ -7,7 +7,7 @@ project(LunariaClientApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Protobuf)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -15,6 +15,10 @@ endif()
 
 qt_add_executable(LunariaClientApp
     src/main.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/client/clientRequestManager/RequestManager.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/invite_link.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/message.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/report.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/server.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_in.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_up.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/test.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/user.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
 )
 
 qt_add_resources(LunariaClientApp "configuration"
@@ -23,12 +27,58 @@ qt_add_resources(LunariaClientApp "configuration"
         qtquickcontrols2.conf
 )
 
+#include "absl/base/attributes.h"
+#include "absl/base/config.h"
+#include "absl/base/internal/errno_saver.h"
+#include "absl/base/log_severity.h"
+#include "absl/log/internal/nullguard.h"
+#include "absl/log/log_entry.h"
+#include "absl/log/log_sink.h"
+#include "absl/strings/has_absl_stringify.h"
+#include "absl/strings/string_view.h"
+#include "absl/time/time.h"
+
+
 target_link_libraries(LunariaClientApp PRIVATE
+    absl::base
+    absl::strings
+    absl::absl_log
+    absl::strings_internal
+    absl::synchronization
+    absl::memory
+    absl::time
+    absl::optional
+    absl::status
+    absl::flags
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
+    protobuf::libprotobuf
+    pqxx
 )
+
+# Conditionally link MsQuic library based on the platform and architecture
+if (WIN32)
+    if (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+        message(STATUS "Linking x64 MsQuic library for Windows")
+        target_link_libraries(LunariaClientApp PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Win_x64/bin/msquic.dll
+        )
+    elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM64")
+        message(STATUS "Linking ARM MsQuic library for Windows")
+        target_link_libraries(LunariaClientApp PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Win_arm64/bin/msquic.dll
+        )
+    else()
+        message(FATAL_ERROR "Unsupported Windows architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+    endif()
+elseif (UNIX AND NOT APPLE)
+    message(STATUS "Linking MsQuic library for Linux")
+    target_link_libraries(LunariaClientApp PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Linux_x64/bin/libmsquic.so
+    )
+endif()
 
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
 set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
