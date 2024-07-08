@@ -7,6 +7,8 @@ project(LunariaClientApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
+add_subdirectory(abseil-cpp)
+
 find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Protobuf)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
@@ -40,16 +42,6 @@ qt_add_resources(LunariaClientApp "configuration"
 
 
 target_link_libraries(LunariaClientApp PRIVATE
-    absl::base
-    absl::strings
-    absl::absl_log
-    absl::strings_internal
-    absl::synchronization
-    absl::memory
-    absl::time
-    absl::optional
-    absl::status
-    absl::flags
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
