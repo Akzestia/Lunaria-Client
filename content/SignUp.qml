@@ -1,22 +1,20 @@
-// Copyright (C) 2021 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 import QtQuick 6.2
 import QtQuick.Controls
 import QtQuick.Layouts
 import LunariaClient
 
 ApplicationWindow {
-    width: 400
-    height: 520
-    minimumWidth: 400
-    minimumHeight: 520
-    maximumHeight: 520
-    maximumWidth: 400
+    width: SignInUpWidth
+    height: SignInUpHeight
+    minimumWidth: SignInUpWidth
+    minimumHeight: SignInUpHeight
+    maximumHeight: SignInUpHeight
+    maximumWidth: SignInUpWidth
     visible: true
     color: "#00000000"
     flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint
 
-    title: "LunariaClient"
+    title: "Sign Up"
 
     ColumnLayout {
         height: parent.height
@@ -25,7 +23,7 @@ ApplicationWindow {
         anchors.horizontalCenter: parent.horizontalCenter
 
         Text {
-            text: "Hello"
+            text: "Sign Up"
             color: "white"
             font.pixelSize: 26
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop

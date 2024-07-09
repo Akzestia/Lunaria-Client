@@ -7,6 +7,9 @@ QtObject {
     readonly property int width: 1920
     readonly property int height: 1080
 
+    readonly property int signInUpWidth: 400
+    readonly property int signInUpHeight: 520
+
     property string relativeFontDirectory: "fonts"
 
     readonly property font font: Qt.font({

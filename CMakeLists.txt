@@ -29,18 +29,6 @@ qt_add_resources(LunariaClientApp "configuration"
         qtquickcontrols2.conf
 )
 
-#include "absl/base/attributes.h"
-#include "absl/base/config.h"
-#include "absl/base/internal/errno_saver.h"
-#include "absl/base/log_severity.h"
-#include "absl/log/internal/nullguard.h"
-#include "absl/log/log_entry.h"
-#include "absl/log/log_sink.h"
-#include "absl/strings/has_absl_stringify.h"
-#include "absl/strings/string_view.h"
-#include "absl/time/time.h"
-
-
 target_link_libraries(LunariaClientApp PRIVATE
     Qt6::Core
     Qt6::Gui
