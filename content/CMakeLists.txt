@@ -21,7 +21,6 @@ qt6_add_qml_module(content
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf
         RESOURCES fonts/Ubuntu-Bold.ttf fonts/Ubuntu-BoldItalic.ttf fonts/Ubuntu-Italic.ttf fonts/Ubuntu-Light.ttf fonts/Ubuntu-LightItalic.ttf fonts/Ubuntu-Medium.ttf fonts/Ubuntu-MediumItalic.ttf fonts/Ubuntu-Regular.ttf fonts/UFL.txt
-        SOURCES client/x.cpp
         RESOURCES NoBgNeko.gif
         SOURCES splashscreenmanager.h splashscreenmanager.cpp
         QML_FILES SignUp.qml
@@ -30,4 +29,7 @@ qt6_add_qml_module(content
         RESOURCES conf/conf.dispatch.lua
         SOURCES luaconfigmanager.h luaconfigmanager.cpp
         RESOURCES conf/conf2.lua
+        SOURCES client/QuicClientWrapper.cpp client/QuicClientWrapper.h
+        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
+        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
 )

@@ -4,29 +4,25 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
+#include <QStringLiteral>
 #include "./content/luaconfigmanager.h"
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
-
 int main(int argc, char *argv[])
 {
     set_qt_environment();
 
     QGuiApplication app(argc, argv);
 
-    QuicClient *client = new QuicClient("10.10.3.201",
-                                        6121,
-                                        "nexus",
-                                        "../Documents/GitHub/Linux-x64-HTTP3/certs/server.cert",
-                                        "../Documents/GitHub/Linux-x64-HTTP3/certs/server.key");
+    //QuicClientWrapper qClientWrapper;
 
     LuaConfigManager luaConfigManager;
 
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
+    //engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(

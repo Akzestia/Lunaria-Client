@@ -7,9 +7,17 @@ project(LunariaClientApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-add_subdirectory(abseil-cpp)
+set(PROTOBUF_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
+set(ABSL_PROPAGATE_CXX_STD ON)
+set(ABSL_LIB_DIR ${CMAKE_SOURCE_DIR}/absl-libs)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Protobuf)
+# Create symbolic link for libprotobuf.so if it doesn't exist
+execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROTOBUF_LIB_DIR}/libprotobuf.so ${PROTOBUF_LIB_DIR}/libprotobuf.so.27)
+execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so.2401.0.0)
+execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_log_internal_message.so ${ABSL_LIB_DIR}/libabsl_log_internal_message.so.2401.0.0)
+execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_cord.so ${ABSL_LIB_DIR}/libabsl_cord.so.2401.0.0)
+
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -20,7 +28,24 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/clientRequestManager/RequestManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/invite_link.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/message.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/report.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/server.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_in.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_up.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/test.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/user.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/invite_link.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/message.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/report.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/server.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_in.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_up.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/test.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/user.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
+    certs/server.cert
+    certs/server.key
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.h
+    absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
 )
 
 qt_add_resources(LunariaClientApp "configuration"
@@ -30,12 +55,18 @@ qt_add_resources(LunariaClientApp "configuration"
 )
 
 target_link_libraries(LunariaClientApp PRIVATE
+    ${PROTOBUF_LIB_DIR}/libprotobuf.so
+    ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so
+    ${ABSL_LIB_DIR}/libabsl_log_internal_message.so
+    ${ABSL_LIB_DIR}/libabsl_cord.so
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
-    protobuf::libprotobuf
     pqxx
+    crypto
+    stdc++
+    pthread
     lua
 )
 
@@ -87,3 +118,6 @@ install(TARGETS LunariaClientApp
 # make IDEs aware of the QML import path
 set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
     "Path to the custom QML components defined by the project")
+
+# Print the library search path for debugging
+message(STATUS "PROTOBUF library path: ${PROTOBUF_LIB_DIR}")
