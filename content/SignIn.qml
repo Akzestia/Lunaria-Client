@@ -4,12 +4,12 @@ import QtQuick.Layouts
 import LunariaClient
 
 ApplicationWindow {
-    width: SignInUpWidth
-    height: SignInUpHeight
-    minimumWidth: SignInUpWidth
-    minimumHeight: SignInUpHeight
-    maximumHeight: SignInUpHeight
-    maximumWidth: SignInUpWidth
+    width: Constants.signInUpWidth
+    height: Constants.signInUpHeight
+    minimumWidth: Constants.signInUpWidth
+    minimumHeight: Constants.signInUpHeight
+    maximumHeight: Constants.signInUpHeight
+    maximumWidth: Constants.signInUpWidth
     visible: true
     color: "#00000000"
     flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint

@@ -18,8 +18,8 @@ int main(int argc, char *argv[])
     QuicClient *client = new QuicClient("10.10.3.201",
                                         6121,
                                         "nexus",
-                                        "../certs/server.cert",
-                                        "../certs/server.key");
+                                        "../Documents/GitHub/Linux-x64-HTTP3/certs/server.cert",
+                                        "../Documents/GitHub/Linux-x64-HTTP3/certs/server.key");
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
