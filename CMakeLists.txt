@@ -36,6 +36,7 @@ target_link_libraries(LunariaClientApp PRIVATE
     Qt6::Quick
     protobuf::libprotobuf
     pqxx
+    lua
 )
 
 # Conditionally link MsQuic library based on the platform and architecture
