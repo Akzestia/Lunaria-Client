@@ -47,5 +47,6 @@ ApplicationWindow {
 
     Component.onCompleted: {
         console.log(Constants.width)
+        console.log(luaConfigManager.lang)
     }
 }

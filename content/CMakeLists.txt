@@ -29,4 +29,5 @@ qt6_add_qml_module(content
         RESOURCES conf/conf.lua
         RESOURCES conf/conf.dispatch.lua
         SOURCES luaconfigmanager.h luaconfigmanager.cpp
+        RESOURCES conf/conf2.lua
 )
