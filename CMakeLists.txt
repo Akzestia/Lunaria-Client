@@ -6,10 +6,12 @@ option(BUILD_QDS_COMPONENTS "Build design studio components" ON)
 project(LunariaClientApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(ABSL_PROPAGATE_CXX_STD ON)
 
 set(PROTOBUF_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
-set(ABSL_PROPAGATE_CXX_STD ON)
-set(ABSL_LIB_DIR ${CMAKE_SOURCE_DIR}/absl-libs)
+set(ABSL_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/absl-libs)
 
 # Create symbolic link for libprotobuf.so if it doesn't exist
 execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROTOBUF_LIB_DIR}/libprotobuf.so ${PROTOBUF_LIB_DIR}/libprotobuf.so.27)
@@ -45,6 +47,7 @@ qt_add_executable(LunariaClientApp
     certs/server.key
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.h
+    absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
     absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
 )
 
@@ -121,3 +124,4 @@ set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
 
 # Print the library search path for debugging
 message(STATUS "PROTOBUF library path: ${PROTOBUF_LIB_DIR}")
+message(STATUS "ABSL library path: ${ABSL_LIB_DIR}")
