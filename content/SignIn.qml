@@ -33,7 +33,7 @@ ApplicationWindow {
 
         Text {
             color: "white"
-            text: qsTr("Sign in こんにちは")
+            text: qsTr("Sign ^_^ :D in こんにちは")
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             font.pixelSize: 20
             Layout.topMargin: 50
@@ -112,6 +112,10 @@ ApplicationWindow {
                 hoverEnabled: true
                 id: login_btn_area
                 anchors.fill: parent
+
+                onClicked: {
+                    qClientWrapper.send()
+                }
             }
         }
 

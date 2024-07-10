@@ -9,20 +9,22 @@
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
+#include "content/client/QuicClientWrapper.h"
+
 int main(int argc, char *argv[])
 {
     set_qt_environment();
 
     QGuiApplication app(argc, argv);
 
-    //QuicClientWrapper qClientWrapper;
+    QuicClientWrapper qClientWrapper;
 
     LuaConfigManager luaConfigManager;
 
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
-    //engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
+    engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(
@@ -43,6 +45,12 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
+
+    QObject::connect(&app, &QGuiApplication::aboutToQuit, [&qClientWrapper]() {
+        // Add your cleanup code or function call here
+        qDebug() << "Application is about to quit. Performing cleanup.";
+        qClientWrapper.disconnect();
+    });
 
     return app.exec();
 }

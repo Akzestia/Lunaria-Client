@@ -6,8 +6,8 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     client = new QuicClient("10.10.3.201",
                             6121,
                             "nexus",
-                            "../../certs/server.cert",
-                            "../../certs/server.key");
+                            "/home/azure/LunariaClient/certs/server.cert",
+                            "/home/azure/LunariaClient/certs/server.key");
 }
 
 QuicClientWrapper::~QuicClientWrapper()
@@ -20,4 +20,26 @@ QuicClientWrapper::~QuicClientWrapper()
 void QuicClientWrapper::connect()
 {
     client->Connect();
+}
+
+void QuicClientWrapper::disconnect()
+{
+    client->Disconnect();
+}
+
+void QuicClientWrapper::send(){
+    User u;
+    u.set_user_name("Akzestia");
+
+    Wrapper w;
+    *w.mutable_user() = u;
+
+    absl::Cord output;
+
+    if(w.SerializePartialToCord(&output)){
+        client->send(output);
+        return;
+    }
+
+    printf("\nFailed to send");
 }
