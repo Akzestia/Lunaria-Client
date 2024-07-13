@@ -10,6 +10,7 @@
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 #include "content/client/QuicClientWrapper.h"
+#include "content/window-manager/window-manager.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,8 +24,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    WindowManager windowManager(&engine);
+
     engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
+    engine.rootContext()->setContextProperty("windowManager", &windowManager);
+
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(

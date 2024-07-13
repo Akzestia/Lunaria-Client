@@ -6,48 +6,16 @@ import QtQuick.Layouts
 import LunariaClient
 
 ApplicationWindow {
-    width: 400
-    height: 520
-    minimumWidth: 400
-    minimumHeight: 520
-    maximumHeight: 520
-    maximumWidth: 400
-    visible: true
-    color: "#00000000"
-    flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint
+    visibility: "FullScreen"
 
-    title: "LunariaClient"
 
-    ColumnLayout {
-        height: parent.height
-        width: parent.width
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        Text {
-            text: "Hello"
-            color: "white"
-            font.pixelSize: 26
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-        }
-
-        AnimatedImage {
-            Layout.preferredWidth: 200
-            Layout.preferredHeight: 200
-            source: "file:///home/azure/Downloads/1dTC.gif"
-        }
-
-        onWidthChanged: {
-            if (width > 400)
-                width = 400
-        }
-        onHeightChanged: {
-            if (height > 520)
-                height = 520
-        }
+    Image {
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        z: -1
+        source: "./assets/nightTab_backdrop.jpg"
+        fillMode: Image.PreserveAspectFit
     }
 
-    Component.onCompleted: {
-        console.log(Constants.width)
-    }
 }

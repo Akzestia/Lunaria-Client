@@ -46,6 +46,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
     certs/server.cert
     certs/server.key
+    /home/azure/LunariaClient/content/window-manager/window-manager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.h
     absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
