@@ -6,8 +6,9 @@ qt_add_library(content STATIC)
 
 qt_add_resources(content "images"
     PREFIX "/images"
-    FILES xuxu.jpeg
-    FILES NoBgNeko.gif
+    FILES assets/xuxu.jpeg
+    FILES assets/NoBgNeko.gif
+    FILES assets/nightTab_backdrop.jpg
 )
 
 qt6_add_qml_module(content
@@ -21,7 +22,6 @@ qt6_add_qml_module(content
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf
         RESOURCES fonts/Ubuntu-Bold.ttf fonts/Ubuntu-BoldItalic.ttf fonts/Ubuntu-Italic.ttf fonts/Ubuntu-Light.ttf fonts/Ubuntu-LightItalic.ttf fonts/Ubuntu-Medium.ttf fonts/Ubuntu-MediumItalic.ttf fonts/Ubuntu-Regular.ttf fonts/UFL.txt
-        RESOURCES NoBgNeko.gif
         SOURCES splashscreenmanager.h splashscreenmanager.cpp
         QML_FILES SignUp.qml
         QML_FILES SignIn.qml
@@ -32,4 +32,6 @@ qt6_add_qml_module(content
         SOURCES client/QuicClientWrapper.cpp client/QuicClientWrapper.h
         SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+        RESOURCES assets/xuxu.jpeg
+        RESOURCES assets/nightTab_backdrop.jpg
 )

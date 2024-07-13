@@ -28,6 +28,7 @@ endif()
 qt_add_executable(LunariaClientApp
     src/main.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/route-manager/RouteManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/clientRequestManager/RequestManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
