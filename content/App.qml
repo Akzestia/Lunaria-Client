@@ -7,7 +7,13 @@ import LunariaClient
 
 ApplicationWindow {
     visibility: "FullScreen"
+    z: 1
 
+    Rectangle{
+        anchors.fill: parent;
+        color: "#40000000"
+        z: 1
+    }
 
     Image {
         anchors.top: parent.top

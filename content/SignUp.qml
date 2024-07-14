@@ -1,7 +1,7 @@
+import LunariaClient
 import QtQuick 6.2
 import QtQuick.Controls
 import QtQuick.Layouts
-import LunariaClient
 
 ApplicationWindow {
     id: main_window
@@ -18,7 +18,6 @@ ApplicationWindow {
     flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint
     title: "Sign In"
     Component.onCompleted: {
-        qClientWrapper.connect();
         console.log(Constants.width);
         console.log(luaConfigManager.lang);
     }
@@ -29,33 +28,40 @@ ApplicationWindow {
         hoverEnabled: true
         anchors.fill: parent
         onEntered: {
-            if (user_name_email.focus && placeholder_gap_uname.opacity == 0)
+            if (user_name.focus && placeholder_gap_uname.opacity == 0)
                 placeholder_gap_uname.opacity = 1;
 
             if (password.focus && placeholder_gap_upassword.opacity == 0)
                 placeholder_gap_upassword.opacity = 1;
 
+            if (user_email.focus && placeholder_gap_uemail.opacity == 0)
+                placeholder_gap_uemail.opacity = 1;
+
         }
         onExited: {
-            if(user_name_email.text.length <= 0)
+            if (user_name.text.length <= 0)
                 placeholder_gap_uname.opacity = 0;
-            if(password.text.length <= 0)
-                placeholder_gap_upassword.opacity = 0;  
+
+            if (password.text.length <= 0)
+                placeholder_gap_upassword.opacity = 0;
+
+            if (user_email.text.length <= 0)
+                placeholder_gap_uemail.opacity = 0;
+
         }
     }
 
     ColumnLayout {
         width: parent.width
-        height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        z: 1
+        z: 2
         onWidthChanged: {
             if (width > 400)
                 width = 400;
 
         }
-        spacing: 5
+        spacing: 30
 
         Text {
             color: "white"
@@ -66,9 +72,8 @@ ApplicationWindow {
         }
 
         TextField {
-            id: user_name_email
+            id: user_name
 
-            passwordCharacter: "&"
             Layout.preferredWidth: parent.width * 0.8
             Layout.preferredHeight: 35
             placeholderText: qsTr("Username")
@@ -81,21 +86,20 @@ ApplicationWindow {
             Keys.onPressed: (event) => {
                 if (event.key == Qt.Key_Escape) {
                     console.log('Key Esc was pressed');
-                    user_name_email.focus = false;
+                    user_name.focus = false;
                     event.accepted = true;
                 }
             }
             onFocusChanged: {
-                if (user_name_email.focus && placeholder_gap_uname.opacity == 0)
+                if (user_name.focus && placeholder_gap_uname.opacity == 0)
                     placeholder_gap_uname.opacity = 1;
-                else if (user_name_email.text.length <= 0)
+                else if (user_name.text.length <= 0)
                     placeholder_gap_uname.opacity = 0;
-
             }
 
             background: Rectangle {
                 anchors.fill: parent
-                radius: 10
+                radius: 8
                 color: "#101012"
                 border.color: "white"
                 border.width: 1
@@ -106,6 +110,66 @@ ApplicationWindow {
                     border.width: parent.border.width
                     border.color: parent.color
                     width: 65
+                    height: 3
+                    color: parent.color
+                    visible: true
+                    opacity: 0
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: 14
+
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: 150
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        TextField {
+            id: user_email
+
+            Layout.preferredWidth: parent.width * 0.8
+            Layout.preferredHeight: 35
+            placeholderText: qsTr("Email")
+            placeholderTextColor: "white"
+            color: "white"
+            maximumLength: 50
+            leftPadding: 20
+            rightPadding: 20
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            Keys.onPressed: (event) => {
+                if (event.key == Qt.Key_Escape) {
+                    console.log('Key Esc was pressed');
+                    user_email.focus = false;
+                    event.accepted = true;
+                }
+            }
+            onFocusChanged: {
+                if (user_email.focus && placeholder_gap_uemail.opacity == 0)
+                    placeholder_gap_uemail.opacity = 1;
+                else if (user_email.text.length <= 0)
+                    placeholder_gap_uemail.opacity = 0;
+            }
+
+            background: Rectangle {
+                anchors.fill: parent
+                radius: 8
+                color: "#101012"
+                border.color: "white"
+                border.width: 1
+
+                Rectangle {
+                    id: placeholder_gap_uemail
+
+                    border.width: parent.border.width
+                    border.color: parent.color
+                    width: 40
                     height: 3
                     color: parent.color
                     visible: true
@@ -156,7 +220,7 @@ ApplicationWindow {
 
             background: Rectangle {
                 anchors.fill: parent
-                radius: 10
+                radius: 8
                 color: "#101012"
                 border.color: "white"
                 border.width: 1
@@ -183,28 +247,32 @@ ApplicationWindow {
                     }
 
                 }
+
             }
 
         }
 
         Rectangle {
-            id: login_btn
+            id: signup_btn
 
             Layout.preferredWidth: parent.width * 0.8
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.preferredHeight: 30
             Layout.bottomMargin: -20
-            radius: 10
-            color: login_btn_area.containsMouse ? "#1A5FAF" : "white"
+            radius: 8
+            border.width: 0
+            border.color: "white"
+            color: signup_btn_area.containsMouse ? "#00B2FF" : "#101012"
 
             Text {
                 text: "Sign up"
+                color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
 
             MouseArea {
-                id: login_btn_area
+                id: signup_btn_area
 
                 hoverEnabled: true
                 anchors.fill: parent
@@ -228,11 +296,11 @@ ApplicationWindow {
             text: "Already have an account? Sing in"
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             color: "white"
-            font.underline: t_signup_am.containsMouse
+            font.underline: t_signup_area.containsMouse
             Layout.bottomMargin: 50
 
             MouseArea {
-                id: t_signup_am
+                id: t_signup_area
 
                 hoverEnabled: true
                 anchors.fill: parent
@@ -245,19 +313,26 @@ ApplicationWindow {
 
     }
 
+    Rectangle {
+        anchors.fill: parent
+        color: "#40000000"
+        z: 1
+    }
+
     Image {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        z: -1
-        source: "./assets/nightTab_backdrop.jpg"
-        fillMode: Image.PreserveAspectFit
         // onStatusChanged: {
         //     if (status === Image.Ready) {
         //         var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
         //         backgroundImage.width = aspectRatio * parent.height;
         //     }
         // }
+
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        z: -1
+        source: "./assets/nightTab_backdrop.jpg"
+        fillMode: Image.PreserveAspectFit
     }
 
 }

@@ -18,7 +18,6 @@ ApplicationWindow {
     flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint
     title: "Sign In"
     Component.onCompleted: {
-        qClientWrapper.connect();
         console.log(Constants.width);
         console.log(luaConfigManager.lang);
     }
@@ -46,20 +45,19 @@ ApplicationWindow {
 
     ColumnLayout {
         width: parent.width
-        height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        z: 1
+        z: 2
         onWidthChanged: {
             if (width > 400)
                 width = 400;
 
         }
-        spacing: 5
+        spacing: 30
 
         Text {
             color: "white"
-            text: qsTr("Sign ^_^ :D in こんにちは")
+            text: qsTr("Sign In")
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             font.pixelSize: 20
             Layout.topMargin: 50
@@ -68,7 +66,6 @@ ApplicationWindow {
         TextField {
             id: user_name_email
 
-            passwordCharacter: "&"
             Layout.preferredWidth: parent.width * 0.8
             Layout.preferredHeight: 35
             placeholderText: qsTr("Username")
@@ -95,7 +92,7 @@ ApplicationWindow {
 
             background: Rectangle {
                 anchors.fill: parent
-                radius: 10
+                radius: 8
                 color: "#101012"
                 border.color: "white"
                 border.width: 1
@@ -156,7 +153,7 @@ ApplicationWindow {
 
             background: Rectangle {
                 anchors.fill: parent
-                radius: 10
+                radius: 8
                 color: "#101012"
                 border.color: "white"
                 border.width: 1
@@ -188,23 +185,24 @@ ApplicationWindow {
         }
 
         Rectangle {
-            id: login_btn
+            id: signin_btn
 
             Layout.preferredWidth: parent.width * 0.8
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             Layout.preferredHeight: 30
             Layout.bottomMargin: -20
-            radius: 10
-            color: login_btn_area.containsMouse ? "#1A5FAF" : "white"
+            radius: 8
+            color: signin_btn_area.containsMouse ? "#00B2FF" : "#101012"
 
             Text {
                 text: "Sign in"
+                color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
 
             MouseArea {
-                id: login_btn_area
+                id: signin_btn_area
 
                 hoverEnabled: true
                 anchors.fill: parent
@@ -228,22 +226,31 @@ ApplicationWindow {
             text: "Don't have an account? Sing up"
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             color: "white"
-            font.underline: t_signup_am.containsMouse
+            font.underline: t_signin_area.containsMouse
             Layout.bottomMargin: 50
 
             MouseArea {
-                id: t_signup_am
+                id: t_signin_area
 
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    windowManager.startLoginProcess();
+                    windowManager.startSignUpProcess();
                 }
             }
 
         }
 
     }
+
+
+    Rectangle {
+        anchors.fill: parent;
+        color: "#40000000"
+        z: 1
+    }
+
+
 
     Image {
         anchors.top: parent.top
