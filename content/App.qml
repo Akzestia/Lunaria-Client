@@ -30,7 +30,7 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 65
-            color: "#80141416"
+            color: "#141416"
             z: 2
 
             ListView {
@@ -143,7 +143,7 @@ ApplicationWindow {
                                 color: "#ffffff"
                                 font.pixelSize: 12
                             }
-                            
+
                         }
                     }
                 }
@@ -159,7 +159,7 @@ ApplicationWindow {
             anchors.left: sideBar.right
             anchors.right: parent.right
             color: "#00000000"
-            z: 1
+            z: 2
 
             Loader {
                 id: contentLoader
@@ -176,20 +176,28 @@ ApplicationWindow {
         z: 1
     }
 
+
     Image {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
         z: -1
+        anchors.fill: parent
         source: "./assets/nightTab_backdrop.jpg"
-        fillMode: Image.PreserveAspectFit
-        onStatusChanged: {
-            if (status === Image.Ready)
-            {
-                var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
-                backgroundImage.width = aspectRatio * parent.height;
-            }
-        }
+        fillMode: Image.PreserveAspectCrop 
     }
+    // Image {
+    //     id: backgroundImage
+    //     anchors.top: parent.top
+    //     anchors.bottom: parent.bottom
+    //     anchors.left: parent.left
+    //     z: -1
+      
+    //     fillMode: Image.PreserveAspectFit
+    //     onStatusChanged: {
+    //         if (status === Image.Ready)
+    //         {
+    //             var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
+    //             backgroundImage.width = aspectRatio * parent.height;
+    //         }
+    //     }
+    // }
 
 }

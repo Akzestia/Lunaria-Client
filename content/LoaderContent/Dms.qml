@@ -1,25 +1,65 @@
 import LunariaClient
-import QtQuick 6.2
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Rectangle {
-    id: contentWrapper
 
-    Layout.fillWidth: true
-    implicitHeight: grid.implicitHeight
-    implicitWidth: grid.implicitWidth
+Item {
+    z: 2
+    id: dms
 
-    color: "transparent"
+    Rectangle {
+        id: contentWrapper
+        Layout.fillWidth: true
+        implicitHeight: grid.implicitHeight
+        implicitWidth: grid.implicitWidth
 
-    GridLayout {
-        anchors.fill: parent
-        id: grid
+        color: "black"
 
-        Rectangle {
-            width: 10
-            height: 10
-            color: "white"
+        GridLayout {
+            anchors.fill: parent
+            id: grid
+            columns: 3
+            ColumnLayout {
+                a
+                id: contactsColumn
+                Rectangle {
+                    width: 10
+                    height: 10
+                    color: "white"
+                }
+            }
+            ColumnLayout {
+                id: chatColumn
+                Rectangle {
+                    width: 10
+                    height: 10
+                    color: "white"
+                }
+            }
+            ColumnLayout {
+                id: receiverColumn
+                Rectangle {
+                    width: 10
+                    height: 10
+                    color: "white"
+                }
+            }
+        }
+    }
+
+    Flickable {
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        contentWidth: width
+        contentHeight: gl.implicitHeight
+        clip: true
+        boundsBehavior: Flickable.StopAtBounds
+        LayoutItemProxy {
+            id: gl
+            width: parent.width
+            height: implicitHeight
+            target: contentWrapper
         }
     }
 }
