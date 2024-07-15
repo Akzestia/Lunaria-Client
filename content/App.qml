@@ -22,6 +22,7 @@ ApplicationWindow {
     }
 
     RowLayout {
+        z: 2
         anchors.fill: parent
 
         Rectangle {
