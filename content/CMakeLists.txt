@@ -19,6 +19,9 @@ qt6_add_qml_module(content
         App.qml
         SignIn.qml
         SignUp.qml
+        LoaderContent/Dms.qml
+        LoaderContent/Server.qml
+        LoaderContent/Settings.qml
 
     RESOURCES
         fonts/fonts.txt
