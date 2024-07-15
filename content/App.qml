@@ -6,21 +6,19 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 ApplicationWindow {
-
     id: main_window
+
     width: Screen.width
     height: Screen.height
-
     maximumHeight: Screen.height
     maximumWidth: Screen.width
     minimumWidth: 720
     minimumHeight: 410
     visibility: "FullScreen"
     z: 1
-
     Component.onCompleted: {
-        console.log("width: ", width)
-        console.log("height: ", height)
+        console.log("width: ", width);
+        console.log("height: ", height);
     }
 
     Rectangle {
@@ -31,6 +29,107 @@ ApplicationWindow {
         width: 65
         color: "#80141416"
         z: 2
+
+        ListView {
+            id: serverList
+
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            width: 65
+            spacing: 10
+            interactive: false
+
+            model: ListModel {
+                ListElement {
+                    name: "Server 1"
+                }
+
+                ListElement {
+                    name: "Server 2"
+                }
+
+                ListElement {
+                    name: "Server 3"
+                }
+
+            }
+
+            delegate: Loader {
+                width: serverList.width
+                height: 50
+                sourceComponent: {
+                    switch (index) {
+                        case 0:
+                        return dmsButton;
+                        case serverList.model.count - 1:
+                        return addServerBtn;
+                        default:
+                        return serverDelegate;
+                    }
+                }
+
+                Component {
+                    id: dmsButton
+
+                    Rectangle {
+                        width: 65
+                        height: 50
+                        color: "#80141416"
+                        border.color: "#00000000"
+                        border.width: 0
+                        radius: 0
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "DMS"
+                            color: "#ffffff"
+                            font.pixelSize: 12
+                        }
+                    }
+                }
+
+                Component {
+                    id: serverDelegate
+
+                    Rectangle {
+                        width: 65
+                        height: 50
+                        color: "#80141416"
+                        border.color: "#00000000"
+                        border.width: 0
+                        radius: 0
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: model.name
+                            color: "#ffffff"
+                            font.pixelSize: 12
+                        }
+                    }
+                }
+ 
+                Component {
+                    id: addServerBtn
+
+                    Rectangle {
+                        width: 65
+                        height: 50
+                        color: "#80141416"
+                        border.color: "#00000000"
+                        border.width: 0
+                        radius: 0
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "+"
+                            color: "#ffffff"
+                            font.pixelSize: 12
+                        }
+                    }
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -39,7 +138,7 @@ ApplicationWindow {
         z: 1
     }
 
-     Image {
+    Image {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left
@@ -47,7 +146,8 @@ ApplicationWindow {
         source: "./assets/nightTab_backdrop.jpg"
         fillMode: Image.PreserveAspectFit
         onStatusChanged: {
-            if (status === Image.Ready) {
+            if (status === Image.Ready)
+            {
                 var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
                 backgroundImage.width = aspectRatio * parent.height;
             }
