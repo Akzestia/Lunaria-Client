@@ -32,6 +32,7 @@ qt6_add_qml_module(content
         SOURCES client/QuicClientWrapper.cpp client/QuicClientWrapper.h
         SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
         RESOURCES assets/xuxu.jpeg
         RESOURCES assets/nightTab_backdrop.jpg
 )

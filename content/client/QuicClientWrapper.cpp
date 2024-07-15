@@ -3,7 +3,7 @@
 QuicClientWrapper::QuicClientWrapper(QObject *parent)
     : QObject(parent)
 {
-    client = new QuicClient("194.99.20.106",
+    client = new QuicClient("10.10.3.201",
                             6121,
                             "nexus",
                             "/home/azure/LunariaClient/certs/server.cert",

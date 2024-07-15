@@ -9,6 +9,15 @@ ApplicationWindow {
     visibility: "FullScreen"
     z: 1
 
+    Rectangle {
+        id: sideBar
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: 100
+        color: "#000000"
+        z: 1
+    }
+
     Rectangle{
         anchors.fill: parent;
         color: "#40000000"

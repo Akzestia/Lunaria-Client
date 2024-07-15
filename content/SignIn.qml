@@ -207,7 +207,7 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    qClientWrapper.send();
+                    windowManager.startLoginProcess();
                 }
             }
 
