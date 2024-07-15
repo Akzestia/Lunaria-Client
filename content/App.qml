@@ -30,7 +30,7 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: 65
-            color: "#141416"
+            color: "#80141416"
             z: 2
 
             ListView {
@@ -151,21 +151,30 @@ ApplicationWindow {
         }
 
 
-        Rectangle {
-            id: contentArea
+        Loader {
+            id: contentLoader
 
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.left: sideBar.right
-            anchors.right: parent.right
-            color: "#00000000"
-            z: 2
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: sideBar.right
+                right: parent.right
+            }
+            source: "./LoaderContent/Dms.qml"
+        }
 
-            Loader {
-                id: contentLoader
-
-                anchors.fill: parent
-                source: "./LoaderContent/Dms.qml"
+        Flickable {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            contentWidth: width
+            contentHeight: gl.implicitHeight
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
+            LayoutItemProxy {
+                id: gl
+                width: parent.width
+                height: implicitHeight
+                target: contentWrapper
             }
         }
     }
@@ -181,7 +190,7 @@ ApplicationWindow {
         z: -1
         anchors.fill: parent
         source: "./assets/nightTab_backdrop.jpg"
-        fillMode: Image.PreserveAspectCrop 
+        fillMode: Image.PreserveAspectCrop
     }
     // Image {
     //     id: backgroundImage
@@ -189,7 +198,7 @@ ApplicationWindow {
     //     anchors.bottom: parent.bottom
     //     anchors.left: parent.left
     //     z: -1
-      
+
     //     fillMode: Image.PreserveAspectFit
     //     onStatusChanged: {
     //         if (status === Image.Ready)

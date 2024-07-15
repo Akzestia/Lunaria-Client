@@ -3,14 +3,16 @@ import QtQuick 6.2
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Rectangle {
+Item {
+    z: 2
+    id: server
+
+    Rectangle {
     id: contentWrapper
 
     Layout.fillWidth: true
     implicitHeight: grid.implicitHeight
     implicitWidth: grid.implicitWidth
-
-    color: "lime"
 
     GridLayout {
         anchors.fill: parent
@@ -22,4 +24,5 @@ Rectangle {
             color: "white"
         }
     }
+}
 }
