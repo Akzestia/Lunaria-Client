@@ -164,20 +164,20 @@ ApplicationWindow {
             source: "./LoaderContent/Dms.qml"
         }
 
-        Flickable {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            contentWidth: width
-            contentHeight: gl.implicitHeight
-            clip: true
-            boundsBehavior: Flickable.StopAtBounds
-            LayoutItemProxy {
-                id: gl
-                width: parent.width
-                height: implicitHeight
-                target: contentWrapper
-            }
-        }
+        // Flickable {
+        //     Layout.fillHeight: true
+        //     Layout.fillWidth: true
+        //     contentWidth: width
+        //     contentHeight: gl.implicitHeight
+        //     clip: true
+        //     boundsBehavior: Flickable.StopAtBounds
+        //     LayoutItemProxy {
+        //         id: gl
+        //         width: parent.width
+        //         height: implicitHeight
+        //         target: contentWrapper
+        //     }
+        // }
     }
 
     Rectangle {

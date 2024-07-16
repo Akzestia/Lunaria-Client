@@ -47,7 +47,8 @@ Rectangle {
         }
 
         onClicked: {
-            if (controllPannel.Layout.topMargin === 20)
+            console.log("clicked");
+            if (controllPannel.Layout.topMargin > 0)
                 controllPannel.Layout.topMargin = -(controllPannel.implicitHeight + 20);
             else
                 controllPannel.Layout.topMargin = 20;
