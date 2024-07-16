@@ -1,5 +1,5 @@
 import LunariaClient
-import QtQuick 6.2
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 

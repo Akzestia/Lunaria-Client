@@ -1,5 +1,5 @@
 import LunariaClient
-import QtQuick 6.2
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
@@ -25,7 +25,7 @@ Rectangle {
             radius: 10
             implicitWidth: parent.width
             implicitHeight: 60
-            Layout.topMargin: 4
+            Layout.topMargin: 48
             Layout.alignment: Qt.AlignTop | Qt.AlignCenter
         }
     }
