@@ -68,7 +68,7 @@ Rectangle {
             Layout.row: 0
             Layout.column: 0
             Layout.columnSpan: 3
-            color: "white"
+            color: "#141416"
             radius: 10
             
             Layout.fillWidth: true
@@ -100,7 +100,7 @@ Rectangle {
 
         radius: 10
 
-        color: "red"
+        color: "#95141416"
         implicitWidth: 200
 
         Layout.fillHeight: true
@@ -118,7 +118,7 @@ Rectangle {
 
         radius: 10
 
-        color: "blue"
+        color: "#90141416"
 
         Layout.fillHeight: true
         Layout.fillWidth: true
@@ -135,7 +135,7 @@ Rectangle {
 
         radius: 10
 
-        color: "aqua"
+        color: "#95141416"
         implicitWidth: 200
 
         Layout.fillHeight: true

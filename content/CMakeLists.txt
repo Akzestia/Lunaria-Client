@@ -9,6 +9,8 @@ qt_add_resources(content "images"
     FILES assets/xuxu.jpeg
     FILES assets/NoBgNeko.gif
     FILES assets/nightTab_backdrop.jpg
+    FILES assets/end_4_thumbnail.webp
+    FILES assets/end_4_thumbnail.png
 )
 
 qt6_add_qml_module(content
@@ -38,4 +40,6 @@ qt6_add_qml_module(content
         SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
         RESOURCES assets/xuxu.jpeg
         RESOURCES assets/nightTab_backdrop.jpg
+        RESOURCES assets/end_4_thumbnail.webp
+        RESOURCES assets/end_4_thumbnail.png
 )
