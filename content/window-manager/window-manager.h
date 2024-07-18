@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QTimer>
+#include <QString>
 
 class WindowManager : public QObject
 {

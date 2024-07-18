@@ -277,7 +277,7 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    qClientWrapper.send();
+                    qClientWrapper.authenticate(user_name.text, user_email.text, password.text);
                 }
             }
 
@@ -308,9 +308,7 @@ ApplicationWindow {
                     windowManager.startSignInProcess();
                 }
             }
-
         }
-
     }
 
     Rectangle {

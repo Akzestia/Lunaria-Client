@@ -29,8 +29,6 @@ qt_add_executable(LunariaClientApp
     src/main.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/route-manager/RouteManager.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/client/clientRequestManager/RequestManager.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc
@@ -44,12 +42,10 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/user.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.cc
     certs/server.cert
     certs/server.key
     /home/azure/LunariaClient/content/window-manager/window-manager.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.h
-    absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
     absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
 )
 
