@@ -28,6 +28,11 @@ endif()
 qt_add_executable(LunariaClientApp
     src/main.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/server/QuicServer.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ConnectionManager/ConnectionManager.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
+    ../Documents/GitHub/Linux-x64-HTTP3/tokio-cpp/ThreadPool.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/route-manager/RouteManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc
@@ -43,6 +48,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
     certs/server.cert
     certs/server.key
     /home/azure/LunariaClient/content/window-manager/window-manager.cpp
