@@ -32,6 +32,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/server/QuicServer.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ConnectionManager/ConnectionManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/AuthManager/AuthManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/tokio-cpp/ThreadPool.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/route-manager/RouteManager.cpp

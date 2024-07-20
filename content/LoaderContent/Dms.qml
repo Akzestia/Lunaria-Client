@@ -100,7 +100,7 @@ Rectangle {
 
         radius: 10
 
-        color: "#95141416"
+        color: "#E0141416"
         implicitWidth: 200
 
         Layout.fillHeight: true
@@ -118,7 +118,7 @@ Rectangle {
 
         radius: 10
 
-        color: "#90141416"
+        color: "#E0141416"
 
         Layout.fillHeight: true
         Layout.fillWidth: true
@@ -135,7 +135,7 @@ Rectangle {
 
         radius: 10
 
-        color: "#95141416"
+        color: "#E0141416"
         implicitWidth: 200
 
         Layout.fillHeight: true
