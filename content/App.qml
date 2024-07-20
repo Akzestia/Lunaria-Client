@@ -4,6 +4,7 @@ import LunariaClient
 import QtQuick 6.2
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtMultimedia
 
 ApplicationWindow {
     id: main_window
@@ -194,6 +195,15 @@ ApplicationWindow {
         source: "./assets/nightTab_backdrop.jpg"
         fillMode: Image.PreserveAspectCrop
     }
+
+    // Video {
+    //     z: -1
+    //     id: loadingAnimation
+    //     source: "./assets/mitsuha.mp4"
+    //     anchors.fill: parent
+    //     visible: true
+    // }
+
     // Image {
     //     id: backgroundImage
     //     anchors.top: parent.top
