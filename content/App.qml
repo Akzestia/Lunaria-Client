@@ -32,19 +32,21 @@ ApplicationWindow {
 
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+
+
             width: 65
             color: "#80141416"
             z: 2
 
             ListView {
                 id: serverList
-
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                anchors.left: parent.left
-                width: 65
+                anchors.fill: parent
+                anchors.leftMargin: 12.5
+                anchors.topMargin: 10
+                width: 10
                 spacing: 10
                 interactive: false
+
 
                 model: ListModel {
                     ListElement {
@@ -62,8 +64,8 @@ ApplicationWindow {
                 }
 
                 delegate: Loader {
-                    width: serverList.width
-                    height: 50
+                    width: 40
+                    height: 40
                     sourceComponent: {
                         switch (index) {
                             case 0:
@@ -77,21 +79,14 @@ ApplicationWindow {
 
                     Component {
                         id: dmsButton
-
                         Rectangle {
-                            width: 65
+                            anchors.fill: parent
                             height: 50
-                            color: "#80141416"
+                            color: "white"
                             border.color: "#00000000"
                             border.width: 0
-                            radius: 0
+                            radius: 10
 
-                            Text {
-                                anchors.centerIn: parent
-                                text: "DMS"
-                                color: "#ffffff"
-                                font.pixelSize: 12
-                            }
 
                             MouseArea {
                                 anchors.fill: parent
@@ -100,25 +95,17 @@ ApplicationWindow {
                                 }
                             }
                         }
+
                     }
+
 
                     Component {
                         id: serverDelegate
-
                         Rectangle {
-                            width: 65
+                            width: 50
                             height: 50
-                            color: "#80141416"
-                            border.color: "#00000000"
-                            border.width: 0
-                            radius: 0
-
-                            Text {
-                                anchors.centerIn: parent
-                                text: model.name
-                                color: "#ffffff"
-                                font.pixelSize: 12
-                            }
+                            color: "lime"
+                            radius: 10
 
                             MouseArea {
                                 anchors.fill: parent
@@ -129,16 +116,16 @@ ApplicationWindow {
                         }
                     }
 
+
                     Component {
                         id: addServerBtn
-
                         Rectangle {
-                            width: 65
+                            width: 50
                             height: 50
-                            color: "#80141416"
+                            color: "white"
                             border.color: "#00000000"
                             border.width: 0
-                            radius: 0
+                            radius: 10
 
                             Text {
                                 anchors.centerIn: parent
