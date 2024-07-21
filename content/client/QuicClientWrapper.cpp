@@ -41,14 +41,7 @@ void QuicClientWrapper::send(){
     *w.mutable_auth()->mutable_sign_up() = su;
     w.set_route(0x01);
 
-    absl::Cord output;
-
-    if(w.SerializePartialToCord(&output)){
-        client->send(output);
-        return;
-    }
-
-    printf("\nFailed to send");
+    client->send(w);
 }
 
 bool QuicClientWrapper::authenticate (QString user_name, QString user_email, QString password){
