@@ -90,6 +90,17 @@ ApplicationWindow {
                     event.accepted = true;
                 }
             }
+            onTextChanged: {
+                if (user_name.validator) {
+                    if (user_name.validator.regularExpression.test(user_name.text)) {
+                        user_name_bg.border.color = "aqua";
+                        validation_message_uname.visible = false;
+                    } else {
+                        user_name_bg.border.color = "red";
+                        validation_message_uname.visible = true;
+                    }
+                }
+            }
             onFocusChanged: {
                 if (user_name.focus && placeholder_gap_uname.opacity == 0)
                     placeholder_gap_uname.opacity = 1;
@@ -97,7 +108,25 @@ ApplicationWindow {
                     placeholder_gap_uname.opacity = 0;
             }
 
+            Text {
+                id: validation_message_uname
+
+                text: qsTr("Username must be at least 3 characters long and contain only letters and numbers.")
+                color: "red"
+                visible: false
+                font.pixelSize: 10
+                anchors.top: user_name.bottom
+                anchors.horizontalCenter: user_name.horizontalCenter
+                anchors.topMargin: 5
+            }
+
+            validator: RegularExpressionValidator {
+                regularExpression: /^[a-zA-Z0-9]{3,20}$/
+            }
+
             background: Rectangle {
+                id: user_name_bg
+
                 anchors.fill: parent
                 radius: 8
                 color: "#101012"
@@ -157,7 +186,37 @@ ApplicationWindow {
                     placeholder_gap_uemail.opacity = 0;
             }
 
+            Text {
+                id: validation_message_uemail
+
+                text: qsTr("Please enter a valid email adress.")
+                color: "red"
+                visible: false
+                font.pixelSize: 10
+                anchors.top: user_email.bottom
+                anchors.horizontalCenter: user_email.horizontalCenter
+                anchors.topMargin: 5
+            }
+
+            validator: RegularExpressionValidator {
+                regularExpression: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            }
+
+            onTextChanged: {
+                if (user_email.validator) {
+                    if (user_email.validator.regularExpression.test(user_email.text)) {
+                        user_email_bg.border.color = "aqua";
+                        validation_message_uemail.visible = false;
+                    } else {
+                        user_email_bg.border.color = "red";
+                        validation_message_uemail.visible = true;
+                    }
+                }
+            }
+
             background: Rectangle {
+                id: user_email_bg
+
                 anchors.fill: parent
                 radius: 8
                 color: "#101012"
@@ -308,7 +367,9 @@ ApplicationWindow {
                     windowManager.startSignInProcess();
                 }
             }
+
         }
+
     }
 
     Rectangle {
