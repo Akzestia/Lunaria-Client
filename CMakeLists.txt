@@ -107,6 +107,17 @@ set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
     FORCE
 )
 
+
+set(SOURCE_CONFIG ${CMAKE_SOURCE_DIR}/content/config)
+set(DESTINATION_CONFIG ${CMAKE_BINARY_DIR}/config)
+
+add_custom_command(
+    TARGET LunariaClientApp POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SOURCE_CONFIG} ${DESTINATION_CONFIG}
+    COMMENT "Copying config folder to ${DESTINATION_INI}"
+)
+
+
 if (BUILD_QDS_COMPONENTS)
     include(${CMAKE_CURRENT_SOURCE_DIR}/qmlcomponents)
 endif()
