@@ -6,6 +6,8 @@ import QtQuick.Layouts
 ApplicationWindow {
     id: main_window
 
+    property real scaleFactor: Screen.pixelDensity / 96.0
+
     width: Constants.signInUpWidth
     height: Constants.signInUpHeight
     minimumWidth: Constants.signInUpWidth

@@ -4,7 +4,10 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 ApplicationWindow {
+    
     id: main_window
+
+    property real scaleFactor: Screen.pixelDensity / 96
 
     width: Constants.signInUpWidth
     height: Constants.signInUpHeight
@@ -36,10 +39,12 @@ ApplicationWindow {
 
         }
         onExited: {
-            if(user_name_email.text.length <= 0)
+            if (user_name_email.text.length <= 0)
                 placeholder_gap_uname.opacity = 0;
-            if(password.text.length <= 0)
-                placeholder_gap_upassword.opacity = 0;  
+
+            if (password.text.length <= 0)
+                placeholder_gap_upassword.opacity = 0;
+
         }
     }
 
@@ -87,7 +92,6 @@ ApplicationWindow {
                     placeholder_gap_uname.opacity = 1;
                 else if (user_name_email.text.length <= 0)
                     placeholder_gap_uname.opacity = 0;
-
             }
 
             background: Rectangle {
@@ -180,6 +184,7 @@ ApplicationWindow {
                     }
 
                 }
+
             }
 
         }
@@ -243,15 +248,11 @@ ApplicationWindow {
 
     }
 
-
     Rectangle {
-        anchors.fill: parent;
+        anchors.fill: parent
         color: "#40000000"
         z: 1
     }
-
-
-
 
     Image {
         z: -1
@@ -259,21 +260,5 @@ ApplicationWindow {
         source: "./assets/nightTab_backdrop.jpg"
         fillMode: Image.PreserveAspectCrop
     }
-
-
-    // Image {
-    //     anchors.top: parent.top
-    //     anchors.bottom: parent.bottom
-    //     anchors.left: parent.left
-    //     z: -1
-    //     source: "./assets/nightTab_backdrop.jpg"
-    //     fillMode: Image.PreserveAspectFit
-    //     // onStatusChanged: {
-    //     //     if (status === Image.Ready) {
-    //     //         var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
-    //     //         backgroundImage.width = aspectRatio * parent.height;
-    //     //     }
-    //     // }
-    // }
 
 }
