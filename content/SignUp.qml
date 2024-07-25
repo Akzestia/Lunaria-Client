@@ -185,6 +185,17 @@ ApplicationWindow {
                 else if (user_email.text.length <= 0)
                     placeholder_gap_uemail.opacity = 0;
             }
+            onTextChanged: {
+                if (user_email.validator) {
+                    if (user_email.validator.regularExpression.test(user_email.text)) {
+                        user_email_bg.border.color = "aqua";
+                        validation_message_uemail.visible = false;
+                    } else {
+                        user_email_bg.border.color = "red";
+                        validation_message_uemail.visible = true;
+                    }
+                }
+            }
 
             Text {
                 id: validation_message_uemail
@@ -200,18 +211,6 @@ ApplicationWindow {
 
             validator: RegularExpressionValidator {
                 regularExpression: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-            }
-
-            onTextChanged: {
-                if (user_email.validator) {
-                    if (user_email.validator.regularExpression.test(user_email.text)) {
-                        user_email_bg.border.color = "aqua";
-                        validation_message_uemail.visible = false;
-                    } else {
-                        user_email_bg.border.color = "red";
-                        validation_message_uemail.visible = true;
-                    }
-                }
             }
 
             background: Rectangle {
@@ -379,19 +378,10 @@ ApplicationWindow {
     }
 
     Image {
-        // onStatusChanged: {
-        //     if (status === Image.Ready) {
-        //         var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
-        //         backgroundImage.width = aspectRatio * parent.height;
-        //     }
-        // }
-
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
         z: -1
+        anchors.fill: parent
         source: "./assets/nightTab_backdrop.jpg"
-        fillMode: Image.PreserveAspectFit
+        fillMode: Image.PreserveAspectCrop
     }
 
 }

@@ -252,19 +252,28 @@ ApplicationWindow {
 
 
 
+
     Image {
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
         z: -1
+        anchors.fill: parent
         source: "./assets/nightTab_backdrop.jpg"
-        fillMode: Image.PreserveAspectFit
-        // onStatusChanged: {
-        //     if (status === Image.Ready) {
-        //         var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
-        //         backgroundImage.width = aspectRatio * parent.height;
-        //     }
-        // }
+        fillMode: Image.PreserveAspectCrop
     }
+
+
+    // Image {
+    //     anchors.top: parent.top
+    //     anchors.bottom: parent.bottom
+    //     anchors.left: parent.left
+    //     z: -1
+    //     source: "./assets/nightTab_backdrop.jpg"
+    //     fillMode: Image.PreserveAspectFit
+    //     // onStatusChanged: {
+    //     //     if (status === Image.Ready) {
+    //     //         var aspectRatio = backgroundImage.sourceSize.width / backgroundImage.sourceSize.height;
+    //     //         backgroundImage.width = aspectRatio * parent.height;
+    //     //     }
+    //     // }
+    // }
 
 }
