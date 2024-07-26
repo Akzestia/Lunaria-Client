@@ -14,20 +14,14 @@ public:
     explicit LuaConfigManager(QObject *parent = nullptr);
     ~LuaConfigManager();
 
-    
-
 private:
 
 private slots:
-    void fileChanged(const QString &path);
 
 signals:
-    void configurationChanged();
 
 private:
-    void loadLuaConfig();
-    QVariantMap luaTableToVariantMap(lua_State *L, int index);
-    void updateProperty(const QString &propertyName, const QVariant &value);
+
 };
 
 #endif // LUACONFIGMANAGER_H
