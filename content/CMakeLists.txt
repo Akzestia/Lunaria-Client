@@ -44,3 +44,6 @@ qt6_add_qml_module(content
         RESOURCES assets/end_4_thumbnail.png
         RESOURCES assets/NoBgNeko.gif
 )
+
+
+add_subdirectory(Components)
