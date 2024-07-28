@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import xComponents
+import QtGraphicalEffects
 
 Rectangle {
     id: contentWrapper
@@ -12,10 +13,13 @@ Rectangle {
     implicitWidth: grid.implicitWidth
     color: "transparent"
     onWidthChanged: {
-        if (width < 800)
-            userInfo.implicitWidth = 0;
-        else
-            userInfo.implicitWidth = 200;
+        if (width < 1200) {
+            userInfo.opacity = 0;
+            userInfo.Layout.topMargin = 80;
+        } else {
+            userInfo.opacity = 1;
+            userInfo.Layout.topMargin = 20;
+        }
     }
 
     ToggleControlPanel {
@@ -31,19 +35,24 @@ Rectangle {
 
         ControlPanel {
             id: controlPanel
+            RoundedImage {
+                id: profileImage
+                source: "qrc:/images/assets/nightTab_backdrop.jpg"
+            }
         }
 
         ContactList {
             id: contactList
         }
-        
+
         ChatArea {
             id: chatArea
         }
 
         UserInfo {
             id: userInfo
-        }        
+        }
+
     }
 
 }
