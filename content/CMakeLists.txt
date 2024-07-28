@@ -28,21 +28,22 @@ qt6_add_qml_module(content
     RESOURCES
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf
-        RESOURCES fonts/Ubuntu-Bold.ttf fonts/Ubuntu-BoldItalic.ttf fonts/Ubuntu-Italic.ttf fonts/Ubuntu-Light.ttf fonts/Ubuntu-LightItalic.ttf fonts/Ubuntu-Medium.ttf fonts/Ubuntu-MediumItalic.ttf fonts/Ubuntu-Regular.ttf fonts/UFL.txt
-        SOURCES splashscreenmanager.h splashscreenmanager.cpp
-        RESOURCES conf/conf.lua
-        RESOURCES conf/conf.dispatch.lua
-        SOURCES luaconfigmanager.h luaconfigmanager.cpp
-        RESOURCES conf/conf2.lua
-        SOURCES client/QuicClientWrapper.cpp client/QuicClientWrapper.h
-        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
-        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
-        SOURCES ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
-        RESOURCES assets/xuxu.jpeg
-        RESOURCES assets/nightTab_backdrop.jpg
-        RESOURCES assets/end_4_thumbnail.webp
-        RESOURCES assets/end_4_thumbnail.png
-        RESOURCES assets/NoBgNeko.gif
+        fonts/Ubuntu-Bold.ttf fonts/Ubuntu-BoldItalic.ttf fonts/Ubuntu-Italic.ttf fonts/Ubuntu-Light.ttf fonts/Ubuntu-LightItalic.ttf fonts/Ubuntu-Medium.ttf fonts/Ubuntu-MediumItalic.ttf fonts/Ubuntu-Regular.ttf fonts/UFL.txt
+        conf/conf.lua
+        conf/conf.dispatch.lua
+        conf/conf2.lua
+        assets/xuxu.jpeg
+        assets/nightTab_backdrop.jpg
+        assets/end_4_thumbnail.webp
+        assets/end_4_thumbnail.png
+        assets/NoBgNeko.gif
+    SOURCES
+        splashscreenmanager.h splashscreenmanager.cpp
+        luaconfigmanager.h luaconfigmanager.cpp
+        client/QuicClientWrapper.cpp client/QuicClientWrapper.h
+        ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
+        ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+        ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
 )
 
 
