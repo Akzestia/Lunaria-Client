@@ -11,7 +11,7 @@ Rectangle {
     Layout.leftMargin: 25
     radius: 10
     color: "#E0141416"
-    implicitWidth: 200
+    implicitWidth: 320
     Layout.fillHeight: true
     Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 }

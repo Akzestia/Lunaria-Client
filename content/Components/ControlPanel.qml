@@ -10,7 +10,7 @@ Rectangle {
     color: "#141416"
     radius: 10
     Layout.fillWidth: true
-    implicitHeight: 60
+    implicitHeight: 90
     Layout.topMargin: 20
     Layout.leftMargin: 25
     Layout.rightMargin: 25
