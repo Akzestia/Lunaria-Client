@@ -28,6 +28,19 @@ ApplicationWindow {
         id: sideBar
     }
 
+    Loader {
+        id: contentLoader
+
+        source: "../content/LoaderContent/Dms.qml"
+
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            left: sideBar.right
+            right: parent.right
+        }
+    }
+
     Rectangle {
         anchors.fill: parent
         color: "#00000000"

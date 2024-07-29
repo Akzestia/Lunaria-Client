@@ -2,43 +2,46 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-RowLayout {
-    // Flickable {
-    //     Layout.fillHeight: true
-    //     Layout.fillWidth: true
-    //     contentWidth: width
-    //     contentHeight: gl.implicitHeight
-    //     clip: true
-    //     boundsBehavior: Flickable.StopAtBounds
-    //     LayoutItemProxy {
-    //         id: gl
-    //         width: parent.width
-    //         height: implicitHeight
-    //         target: contentWrapper
-    //     }
-    // }
+Rectangle {
+    id: sideBar
 
+    anchors {
+        top: parent.top
+        bottom: parent.bottom
+    }
+    width: 85
+    color: "#80141416"
     z: 2
-    anchors.fill: parent
 
-    Rectangle {
-        id: sideBar
+    ColumnLayout {
+        anchors.fill: parent
 
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: 85
-        color: "#80141416"
-        z: 2
+        Rectangle {
+            id: dmsButton
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.preferredWidth: 80
+            Layout.preferredHeight: 80
+            radius: 10
+            color: "white"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("DMS clicked");
+                    contentLoader.source = "../content/LoaderContent/Dms.qml";
+                }
+            }
+        }
 
         ListView {
             id: serverList
-
-            anchors.fill: parent
-            anchors.leftMargin: 12.5
-            anchors.topMargin: 10
-            width: 10
+            anchors.top: dmsButton.bottom
+            anchors.bottom: addServerButton.top
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: 80
+            anchors.topMargin: 30
             spacing: 10
-            interactive: false
+            interactive: true
 
             model: ListModel {
                 ListElement {
@@ -55,102 +58,36 @@ RowLayout {
 
             }
 
-            delegate: Loader {
-                width: 40
-                height: 40
-                sourceComponent: {
-                    switch (index) {
-                    case 0:
-                        return dmsButton;
-                    case serverList.model.count - 1:
-                        return addServerBtn;
-                    default:
-                        return serverDelegate;
+            delegate: Rectangle {
+                width: 80
+                height: 80
+                color: "lime"
+                radius: 10
+
+                MouseArea {
+                    hoverEnabled: true
+                    anchors.centerIn: parent
+                    onClicked: {
+                        cosnole.log("Server clicked");
+                        contentLoader.source = "../content/LoaderContent/Server.qml";
                     }
-                }
-
-                Component {
-                    id: dmsButton
-
-                    Rectangle {
-                        anchors.fill: parent
-                        height: 50
-                        color: "white"
-                        border.color: "#00000000"
-                        border.width: 0
-                        radius: 10
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                contentLoader.source = "../content/LoaderContent/Dms.qml";
-                            }
-                        }
-
+                    onHoveredChanged: {
+                        parent.color = hovered ? "red" : "lime";
                     }
-
-                }
-
-                Component {
-                    id: serverDelegate
-
-                    Rectangle {
-                        width: 50
-                        height: 50
-                        color: "lime"
-                        radius: 10
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                contentLoader.source = "../content/LoaderContent/Server.qml";
-                            }
-                        }
-
-                    }
-
-                }
-
-                Component {
-                    id: addServerBtn
-
-                    Rectangle {
-                        width: 50
-                        height: 50
-                        color: "white"
-                        border.color: "#00000000"
-                        border.width: 0
-                        radius: 10
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "+"
-                            color: "#ffffff"
-                            font.pixelSize: 12
-                        }
-
-                    }
-
                 }
 
             }
 
         }
 
-    }
-
-    Loader {
-        id: contentLoader
-
-        source: "../content/LoaderContent/Dms.qml"
-
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: sideBar.right
-            right: parent.right
+        Rectangle {
+            id: addServerButton
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+            Layout.preferredWidth: 80
+            Layout.preferredHeight: 80
+            radius: 10
+            color: "white"
         }
 
     }
-
 }

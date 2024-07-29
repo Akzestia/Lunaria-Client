@@ -46,7 +46,6 @@ Rectangle {
 
             Text {
                 id: username
-                id: username
                 color: "#E0FFFFFF"
                 font.pixelSize: 20
                 text: "Akzestia"
