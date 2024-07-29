@@ -21,17 +21,20 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QuicClientWrapper qClientWrapper;
-    qClientWrapper.connect();
+    // qClientWrapper.connect();
 
     LuaConfigManager luaConfigManager;
 
     QQmlApplicationEngine engine;
 
     WindowManager windowManager(&engine);
-    
+
     TranslationManager translationManager(&engine);
     translationManager.changeLanguage("ja");
 
+    QString basePath = QCoreApplication::applicationDirPath() + "/";
+
+    engine.rootContext()->setContextProperty("basePath", basePath);
     engine.rootContext()->setContextProperty("translationManager", &translationManager);
     engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
@@ -61,7 +64,7 @@ int main(int argc, char *argv[])
     QObject::connect(&app, &QGuiApplication::aboutToQuit, [&qClientWrapper]() {
         // Add your cleanup code or function call here
         qDebug() << "Application is about to quit. Performing cleanup.";
-        qClientWrapper.disconnect();
+        // qClientWrapper.disconnect();
     });
 
     return app.exec();

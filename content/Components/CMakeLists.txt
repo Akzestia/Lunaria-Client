@@ -15,6 +15,8 @@ qt6_add_qml_module(xComponents
         UserInfo.qml
         ToggleControlPanel.qml
         RoundedImage.qml
+        OnlineIndicator.qml
+        SideBar.qml
     RESOURCES
         # Shaders/roundImage.qsb
 )

@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
-    Layout.row: 0
     Layout.column: 0
     Layout.columnSpan: 3
     color: "#141416"
@@ -21,36 +20,43 @@ Rectangle {
 
     RowLayout {
         anchors.fill: parent
-        spacing: 0
+        spacing: 20
 
         Rectangle {
-	    id: profileImage
-	    width: 60
+            id: profileImage
+            width: 60
             height: 60
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            Layout.leftMargin: 25
+            Layout.leftMargin: 30
             color: "transparent"
+            RoundedImage {
+                OnlineIndicator {
 
-            RoundedImage {}
+                }
+            }
         }
 
-        Text {
-            id: username
+        Rectangle {
+            width: username.width
+            height: username.height
+            color: "transparent"
             anchors.left: profileImage.right
-            Layout.alignment: Qt.AlignVCenter
-            Layout.leftMargin: 100
-            color: "#E0FFFFFF"
-            font.pixelSize: 20
-            text: "Username"
-        }
+            anchors.leftMargin: 20
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
 
+            Text {
+                id: username
+                id: username
+                color: "#E0FFFFFF"
+                font.pixelSize: 20
+                text: "Akzestia"
+            }
+        }
     }
 
     Behavior on Layout.topMargin {
         NumberAnimation {
             duration: 200
         }
-
     }
-
 }
