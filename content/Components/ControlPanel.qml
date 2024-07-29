@@ -21,18 +21,27 @@ Rectangle {
 
     RowLayout {
         anchors.fill: parent
+        spacing: 0
 
         Rectangle {
-            width: 60
+	    id: profileImage
+	    width: 60
             height: 60
-            Layout.alignment: Qt.AlignVCenter
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             Layout.leftMargin: 25
             color: "transparent"
 
-            RoundedImage {
-                id: profileImage
-            }
+            RoundedImage {}
+        }
 
+        Text {
+            id: username
+            anchors.left: profileImage.right
+            Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: 100
+            color: "#E0FFFFFF"
+            font.pixelSize: 20
+            text: "Username"
         }
 
     }
