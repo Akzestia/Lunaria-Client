@@ -19,7 +19,7 @@ ApplicationWindow {
     visibility: "Windowed"
     color: "#00000000"
     flags: Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint
-    title: "Sign In"
+    title: qsTr("Sign In")
     Component.onCompleted: {
         console.log(Constants.width);
         console.log(luaConfigManager.lang);
