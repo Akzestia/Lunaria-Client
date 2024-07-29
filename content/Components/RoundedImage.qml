@@ -1,38 +1,42 @@
-import QtQuick 2.6
-import QtGraphicalEffects 1.0
+import QtQuick
+import QtQuick.Effects
 
-Rectangle {
-    property alias source: _image.source
+Item {
+    width: parent.width
+    height: parent.height
 
-    radius: 5
-    color: "transparent"
     Image {
-        id: _image
-        smooth: true
-        visible: false
+        id: sourceItem
+
+        source: "qrc:/images/assets/nightTab_backdrop.jpg"
         anchors.fill: parent
-        source: img_src
-        sourceSize: Qt.size(parent.size, parent.size)
-        antialiasing: true
-//        fillMode: Image.Stretch //默认
-        fillMode: Image.PreserveAspectCrop
-//        fillMode: Image.PreserveAspectFit
-    }
-    Rectangle {
-        id: _mask
-        color: "black"
-        anchors.fill: parent
-        radius: parent.radius
+        width: parant.width
+        height: parent.height
         visible: false
-        antialiasing: true
-        smooth: true
     }
-    OpacityMask {
-        id: mask_image
-        anchors.fill: _image
-        source: _image
-        maskSource: _mask
-        visible: true
-        antialiasing: true
+
+    MultiEffect {
+        source: sourceItem
+        anchors.fill: sourceItem
+        maskEnabled: true
+        maskSource: mask
     }
+
+    Item {
+        id: mask
+
+        width: sourceItem.width
+        height: sourceItem.height
+        layer.enabled: true
+        visible: false
+
+        Rectangle {
+            width: sourceItem.width
+            height: sourceItem.height
+            radius: width / 2
+            color: "black"
+        }
+
+    }
+
 }

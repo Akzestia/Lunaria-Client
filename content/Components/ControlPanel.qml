@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
-
     Layout.row: 0
     Layout.column: 0
     Layout.columnSpan: 3
@@ -18,6 +17,24 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
+    }
+
+    RowLayout {
+        anchors.fill: parent
+
+        Rectangle {
+            width: 60
+            height: 60
+            Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: 25
+            color: "transparent"
+
+            RoundedImage {
+                id: profileImage
+            }
+
+        }
+
     }
 
     Behavior on Layout.topMargin {

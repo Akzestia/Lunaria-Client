@@ -3,7 +3,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import xComponents
-import QtGraphicalEffects
 
 Rectangle {
     id: contentWrapper
@@ -35,10 +34,6 @@ Rectangle {
 
         ControlPanel {
             id: controlPanel
-            RoundedImage {
-                id: profileImage
-                source: "qrc:/images/assets/nightTab_backdrop.jpg"
-            }
         }
 
         ContactList {
