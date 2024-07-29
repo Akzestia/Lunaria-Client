@@ -5,12 +5,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QStringLiteral>
+#include <QTranslator>
 #include "./content/luaconfigmanager.h"
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
 #include "content/client/QuicClientWrapper.h"
 #include "content/window-manager/window-manager.h"
+#include "content/TranslationManager.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +28,11 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     WindowManager windowManager(&engine);
+    
+    TranslationManager translationManager(&engine);
+    translationManager.changeLanguage("ja");
 
+    engine.rootContext()->setContextProperty("translationManager", &translationManager);
     engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
     engine.rootContext()->setContextProperty("windowManager", &windowManager);
