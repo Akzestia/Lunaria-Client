@@ -10,8 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(ABSL_PROPAGATE_CXX_STD ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-set(PROTOBUF_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
-set(ABSL_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/absl-libs)
+include(${CMAKE_CURRENT_SOURCE_DIR}/FindDependencies.cmake)
 
 # Create symbolic link for libprotobuf.so if it doesn't exist
 execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROTOBUF_LIB_DIR}/libprotobuf.so ${PROTOBUF_LIB_DIR}/libprotobuf.so.27)
@@ -19,7 +18,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libab
 execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_log_internal_message.so ${ABSL_LIB_DIR}/libabsl_log_internal_message.so.2401.0.0)
 execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_cord.so ${ABSL_LIB_DIR}/libabsl_cord.so.2401.0.0)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.7 REQUIRED COMPONENTS Core Gui Qml Quick)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -56,26 +55,18 @@ qt_add_executable(LunariaClientApp
     absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
 )
 
+link_common_libraries(LunariaClientApp)
+
 qt_add_resources(LunariaClientApp "configuration"
     PREFIX "/"
     FILES
         qtquickcontrols2.conf
 )
 
-target_link_libraries(LunariaClientApp PRIVATE
-    ${PROTOBUF_LIB_DIR}/libprotobuf.so
-    ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so
-    ${ABSL_LIB_DIR}/libabsl_log_internal_message.so
-    ${ABSL_LIB_DIR}/libabsl_cord.so
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
-    pqxx
-    crypto
-    stdc++
-    pthread
-    lua
+qt_add_resources(LunariaClientApp "translations"
+    PREFIX "/translations"
+    FILES
+        translations/translations.qrc 
 )
 
 # Conditionally link MsQuic library based on the platform and architecture
