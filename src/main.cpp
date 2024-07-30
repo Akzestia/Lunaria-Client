@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QuicClientWrapper qClientWrapper;
-    // qClientWrapper.connect();
+    qClientWrapper.connect();
 
     LuaConfigManager luaConfigManager;
 

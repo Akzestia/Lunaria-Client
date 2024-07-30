@@ -6,6 +6,7 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     const char* serverIp = std::getenv("LUNARIA_SERVER_IP") ? std::getenv("LUNARIA_SERVER_IP") : "localhost";
     client = new QuicClient(serverIp,
                             6121,
+                            4,
                             "nexus",
                             "/home/azure/LunariaClient/certs/server.cert",
                             "/home/azure/LunariaClient/certs/server.key");

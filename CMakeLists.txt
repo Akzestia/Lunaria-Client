@@ -27,13 +27,10 @@ endif()
 qt_add_executable(LunariaClientApp
     src/main.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/server/QuicServer.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ConnectionManager/ConnectionManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/AuthManager/AuthManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/tokio-cpp/ThreadPool.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/db/DbManager.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/route-manager/RouteManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc
@@ -48,7 +45,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.cc
-    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/PeerHandler/PeerHandler.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/client/clientPeerHandler/ClientPeerHandler.cpp
     certs/server.cert
     certs/server.key
     /home/azure/LunariaClient/content/window-manager/window-manager.cpp
@@ -66,7 +63,7 @@ qt_add_resources(LunariaClientApp "configuration"
 qt_add_resources(LunariaClientApp "translations"
     PREFIX "/translations"
     FILES
-        translations/translations.qrc 
+        translations/translations.qrc
 )
 
 # Conditionally link MsQuic library based on the platform and architecture

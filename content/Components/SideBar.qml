@@ -110,6 +110,7 @@ Rectangle {
 
                     ListElement {
                         name: "Server 6"
+                        imageSource: "../content/assets/xuxu.jpeg"
                     }
 
                     ListElement {
@@ -129,8 +130,13 @@ Rectangle {
                         anchors.centerIn: parent
                         width: 65
                         height: 65
-                        color: serverCarousel.currentIndex == index ? "lime" : "red"
-                        radius: 10
+                        color: "#34343B"
+                        radius: 15
+
+                        RoundedImage {
+                            source: imageSource ? imageSource : "../content/assets/DmsIcon.svg"
+                            radiusX: radius
+                        }
 
                         MouseArea {
                             anchors.fill: parent
@@ -141,9 +147,9 @@ Rectangle {
                                 contentLoader.source = "../content/LoaderContent/Server.qml";
                             }
                             onHoveredChanged: {
+
                             }
                         }
-
                     }
 
                     MultiEffect {
