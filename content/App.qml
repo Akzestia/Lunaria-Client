@@ -14,8 +14,8 @@ ApplicationWindow {
     height: Screen.height
     maximumHeight: Screen.height
     maximumWidth: Screen.width
-    minimumWidth: 720
-    minimumHeight: 410
+    minimumWidth: 1053
+    minimumHeight: 600
     visibility: "FullScreen"
     z: 1
     Component.onCompleted: {

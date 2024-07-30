@@ -12,6 +12,7 @@ qt_add_resources(content "images"
     FILES assets/end_4_thumbnail.webp
     FILES assets/end_4_thumbnail.png
     FILES assets/NoBgNeko.gif
+    FILES assets/DmsIcon.svg
 )
 
 link_common_libraries(content)
@@ -39,6 +40,7 @@ qt6_add_qml_module(content
         assets/end_4_thumbnail.webp
         assets/end_4_thumbnail.png
         assets/NoBgNeko.gif
+        assets/DmsIcon.svg
     SOURCES
         TranslationManager.h TranslationManager.cpp
         splashscreenmanager.h splashscreenmanager.cpp
