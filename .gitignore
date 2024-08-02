@@ -6,5 +6,6 @@ build/Desktop_Qt_6_5_3_GCC_64bit-Debug/
 --disable-gpu
 --ozone-platform-hint=wayland
 .clang-format
+.clangd
 
 *.qm
