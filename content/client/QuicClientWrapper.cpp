@@ -4,7 +4,7 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     : QObject(parent)
 {
     const char* serverIp = std::getenv("LUNARIA_SERVER_IP") ? std::getenv("LUNARIA_SERVER_IP") : "localhost";
-    client = new QuicClient(serverIp,
+    m_client = std::make_unique<QuicClient>(serverIp,
                             6121,
                             4,
                             "nexus",
@@ -14,19 +14,17 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
 
 QuicClientWrapper::~QuicClientWrapper()
 {
-    if (client) {
-        delete client;
-    }
+
 }
 
 void QuicClientWrapper::connect()
 {
-    client->Connect();
+    m_client->Connect();
 }
 
 void QuicClientWrapper::disconnect()
 {
-    client->Disconnect();
+    m_client->Disconnect();
 }
 
 void QuicClientWrapper::send(){
@@ -42,10 +40,10 @@ void QuicClientWrapper::send(){
     *w.mutable_auth()->mutable_sign_up() = su;
     w.set_route(0x01);
 
-    client->send(w);
+    m_client->send(w);
 }
 
-bool QuicClientWrapper::authenticate (QString user_name, QString user_email, QString password){
+bool QuicClientWrapper::authenticateSignUp (const QString& user_name, const QString& user_email, const QString& password){
 
     Sign_up su;
     su.set_user_email(user_email.toStdString());
@@ -55,10 +53,10 @@ bool QuicClientWrapper::authenticate (QString user_name, QString user_email, QSt
     Auth a;
     *a.mutable_sign_up() = su;
 
-    if(client->SignUp(a).is_successful){
+    if(m_client->SignUp(a).is_successful){
 
         qDebug() << "Sign up successful";
-        qDebug() << "User auth token: " << client->SignUp(a).response;
+        // qDebug() << "User auth token: " << m_client->SignUp(a).response;
 
         return true;
     }
@@ -68,8 +66,7 @@ bool QuicClientWrapper::authenticate (QString user_name, QString user_email, QSt
 }
 
 
-bool QuicClientWrapper::authenticate (QString user_name, QString password){
-
+bool QuicClientWrapper::authenticateSignIn (const QString& user_name, const QString& password){
     Sign_in si;
     si.set_user_name(user_name.toStdString());
     si.set_user_password(password.toStdString());
@@ -77,11 +74,13 @@ bool QuicClientWrapper::authenticate (QString user_name, QString password){
     Auth a;
     *a.mutable_sign_in() = si;
 
-    if(client->SignUp(a).is_successful){
+    qDebug() << "Signing in with user name: " << user_name;
+    qDebug() << "Signing in with password: " << password;
+
+    if(m_client->SignIn(a) == Lxcode::OK()){
 
         qDebug() << "Sign in successful";
-        qDebug() << "User auth token: " << client->SignUp(a).response;
-
+        //Somehow lock the user until response from server is received
         return true;
     }
 
