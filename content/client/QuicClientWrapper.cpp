@@ -1,4 +1,5 @@
 #include "QuicClientWrapper.h"
+#include "qdatetime.h"
 
 QuicClientWrapper::QuicClientWrapper(QObject *parent)
     : QObject(parent)

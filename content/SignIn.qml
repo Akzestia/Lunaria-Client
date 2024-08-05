@@ -4,7 +4,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 ApplicationWindow {
-    
     id: main_window
 
     property real scaleFactor: Screen.pixelDensity / 96
@@ -212,7 +211,12 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    windowManager.startLoginProcess();
+
+                    if(qClientWrapper.authenticateSignIn(user_name_email.text, password.text))
+                        windowManager.startLoginProcess();
+                    else
+                        console.log("Failed to authenticate");
+
                 }
             }
 
@@ -257,7 +261,7 @@ ApplicationWindow {
     Image {
         z: -1
         anchors.fill: parent
-        source: "./assets/nightTab_backdrop.jpg"
+        source: "./assets/Kisara.png"//nightTab_backdrop.jpg
         fillMode: Image.PreserveAspectCrop
     }
 

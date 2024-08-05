@@ -6,13 +6,13 @@
 #include <QQmlContext>
 #include <QStringLiteral>
 #include <QTranslator>
-#include "./content/luaconfigmanager.h"
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
-#include "content/client/QuicClientWrapper.h"
-#include "content/window-manager/window-manager.h"
-#include "content/TranslationManager.h"
+#include "../content/luaconfigmanager.h"
+#include "../content/client/QuicClientWrapper.h"
+#include "../content/window-manager/window-manager.h"
+#include "../content/TranslationManager.h"
 
 int main(int argc, char *argv[])
 {

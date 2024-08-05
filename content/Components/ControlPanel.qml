@@ -48,7 +48,7 @@ Rectangle {
                 id: username
                 color: "#E0FFFFFF"
                 font.pixelSize: 20
-                text: "Akzestia"
+                text: "アクゼスティア"
             }
         }
     }

@@ -27,6 +27,7 @@ endif()
 qt_add_executable(LunariaClientApp
     src/main.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/error-manager/ErrorManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ConnectionManager/ConnectionManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/AuthManager/AuthManager.cpp
@@ -60,12 +61,7 @@ qt_add_resources(LunariaClientApp "configuration"
         qtquickcontrols2.conf
 )
 
-qt_add_resources(LunariaClientApp "translations"
-    PREFIX "/translations"
-    FILES
-        translations/translations.qrc
-)
-
+add_subdirectory(translations)
 # Conditionally link MsQuic library based on the platform and architecture
 if (WIN32)
     if (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")

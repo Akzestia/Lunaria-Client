@@ -50,7 +50,7 @@ ApplicationWindow {
     Image {
         z: -1
         anchors.fill: parent
-        source: "./assets/nightTab_backdrop.jpg"
+        source: "./assets/Kisara.png"//nightTab_backdrop.jpg
         fillMode: Image.PreserveAspectCrop
     }
 

@@ -337,7 +337,7 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    qClientWrapper.authenticate(user_name.text, user_email.text, password.text);
+                    qClientWrapper.authenticateSignUp(user_name.text, user_email.text, password.text);
                 }
             }
 
