@@ -1,5 +1,5 @@
 #include "QuicClientWrapper.h"
-#include "qdatetime.h"
+#include "qthread.h"
 
 QuicClientWrapper::QuicClientWrapper(QObject *parent)
     : QObject(parent)
@@ -15,7 +15,8 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
 
 QuicClientWrapper::~QuicClientWrapper()
 {
-
+    workerThread.quit();
+    workerThread.wait();
 }
 
 void QuicClientWrapper::connect()
@@ -44,7 +45,7 @@ void QuicClientWrapper::send(){
     m_client->send(w);
 }
 
-bool QuicClientWrapper::authenticateSignUp (const QString& user_name, const QString& user_email, const QString& password){
+void QuicClientWrapper::authenticateSignUp (const QString& user_name, const QString& user_email, const QString& password){
 
     Sign_up su;
     su.set_user_email(user_email.toStdString());
@@ -54,20 +55,22 @@ bool QuicClientWrapper::authenticateSignUp (const QString& user_name, const QStr
     Auth a;
     *a.mutable_sign_up() = su;
 
+
     if(m_client->SignUp(a).is_successful){
 
         qDebug() << "Sign up successful";
         // qDebug() << "User auth token: " << m_client->SignUp(a).response;
 
-        return true;
+        // return true;
     }
 
     printf("\nFailed to sign up");
-    return false;
+    // return false;
 }
 
 
-bool QuicClientWrapper::authenticateSignIn (const QString& user_name, const QString& password){
+void QuicClientWrapper::authenticateSignIn (const QString& user_name, const QString& password){
+
     Sign_in si;
     si.set_user_name(user_name.toStdString());
     si.set_user_password(password.toStdString());
@@ -82,9 +85,9 @@ bool QuicClientWrapper::authenticateSignIn (const QString& user_name, const QStr
 
         qDebug() << "Sign in successful";
         //Somehow lock the user until response from server is received
-        return true;
+        //return true;
     }
 
     printf("\nFailed to sign in");
-    return false;
+    //return false;
 }
