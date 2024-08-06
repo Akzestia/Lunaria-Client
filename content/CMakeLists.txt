@@ -14,6 +14,7 @@ qt_add_resources(content "images"
     FILES assets/NoBgNeko.gif
     FILES assets/DmsIcon.svg
     FILES assets/Kisara.png
+    FILES assets/EngageKiss_1.png
 )
 
 link_common_libraries(content)
@@ -36,18 +37,19 @@ qt6_add_qml_module(content
         conf/conf.lua
         conf/conf.dispatch.lua
         conf/conf2.lua
-        assets/xuxu.jpeg
-        assets/nightTab_backdrop.jpg
-        assets/end_4_thumbnail.webp
-        assets/end_4_thumbnail.png
-        assets/NoBgNeko.gif
-        assets/DmsIcon.svg
-        assets/Kisara.png
+        # assets/xuxu.jpeg
+        # assets/nightTab_backdrop.jpg
+        # assets/end_4_thumbnail.webp
+        # assets/end_4_thumbnail.png
+        # assets/NoBgNeko.gif
+        # assets/DmsIcon.svg
+        # assets/Kisara.png
     SOURCES
         TranslationManager.h TranslationManager.cpp
         splashscreenmanager.h splashscreenmanager.cpp
         luaconfigmanager.h luaconfigmanager.cpp
         client/QuicClientWrapper.cpp client/QuicClientWrapper.h
+        client/QuicWorker.cpp client/QuicWorker.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
         ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
