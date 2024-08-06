@@ -1,5 +1,10 @@
 #include "QuicClientWrapper.h"
+#include "qdebug.h"
+#include "qobject.h"
 #include "qthread.h"
+#include "QuicWorker.h"
+#include <memory>
+#include <QDebug>
 
 QuicClientWrapper::QuicClientWrapper(QObject *parent)
     : QObject(parent)
@@ -11,6 +16,20 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
                             "nexus",
                             "/home/azure/LunariaClient/certs/server.cert",
                             "/home/azure/LunariaClient/certs/server.key");
+
+    m_worker = std::make_unique<QuicWorker>(m_client->getRef());
+    m_worker->moveToThread(&workerThread);
+
+    QObject::connect(&workerThread, &QThread::finished, m_worker.get(), &QObject::deleteLater);
+    QObject::connect(this, &QuicClientWrapper::authenticateSignIn, m_worker.get(), &QuicWorker::authenticateSignIn);
+    QObject::connect(this, &QuicClientWrapper::authenticateSignUp, m_worker.get(), &QuicWorker::authenticateSignUp);
+    QObject::connect(m_worker.get(), &QuicWorker::authenticationStarted, this, &QuicClientWrapper::authenticationStarted);
+    QObject::connect(m_worker.get(), &QuicWorker::authenticationFinished, this, &QuicClientWrapper::authenticationFinished);
+    QObject::connect(m_worker.get(), &QuicWorker::authenticationSucceeded, this, &QuicClientWrapper::authenticationSucceeded);
+    QObject::connect(m_worker.get(), &QuicWorker::authenticationFailed, this, &QuicClientWrapper::authenticationFailed);
+
+    workerThread.start();
+    qDebug() << "QuicClientWrapper created";
 }
 
 QuicClientWrapper::~QuicClientWrapper()
@@ -45,49 +64,24 @@ void QuicClientWrapper::send(){
     m_client->send(w);
 }
 
-void QuicClientWrapper::authenticateSignUp (const QString& user_name, const QString& user_email, const QString& password){
-
-    Sign_up su;
-    su.set_user_email(user_email.toStdString());
-    su.set_user_name(user_name.toStdString());
-    su.set_user_password(password.toStdString());
-
-    Auth a;
-    *a.mutable_sign_up() = su;
-
-
-    if(m_client->SignUp(a).is_successful){
-
-        qDebug() << "Sign up successful";
-        // qDebug() << "User auth token: " << m_client->SignUp(a).response;
-
-        // return true;
-    }
-
-    printf("\nFailed to sign up");
-    // return false;
+void QuicClientWrapper::signIn(const QString &user_name, const QString &password){
+    qDebug() << "Sign in";
+    emit authenticateSignIn(user_name, password);
 }
 
+void QuicClientWrapper::signUp(const QString &user_name, const QString &user_email, const QString &password){
+    emit authenticateSignUp(user_name, user_email, password);
+}
 
-void QuicClientWrapper::authenticateSignIn (const QString& user_name, const QString& password){
+void QuicClientWrapper::authenticationSucceeded(const AuthResponse& response){
+    qDebug() << "Authentication succeeded";
 
-    Sign_in si;
-    si.set_user_name(user_name.toStdString());
-    si.set_user_password(password.toStdString());
+    // qDebug() << "User name: " << response.user().user_name().c_str();
 
-    Auth a;
-    *a.mutable_sign_in() = si;
+    emit authenticatedSuccess();
+}
 
-    qDebug() << "Signing in with user name: " << user_name;
-    qDebug() << "Signing in with password: " << password;
-
-    if(m_client->SignIn(a) == Lxcode::OK()){
-
-        qDebug() << "Sign in successful";
-        //Somehow lock the user until response from server is received
-        //return true;
-    }
-
-    printf("\nFailed to sign in");
-    //return false;
+void QuicClientWrapper::authenticationFailed(){
+    qDebug() << "Authentication failed";
+    emit authenticatedFailed();
 }
