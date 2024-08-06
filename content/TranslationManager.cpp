@@ -7,7 +7,7 @@ TranslationManager::TranslationManager(QQmlEngine *engine, QObject *parent)
 
 void TranslationManager::changeLanguage(const QString &languageCode)
 {
-    if (m_translator.load(":/translations/translations_ja.qm")) {
+    if (m_translator.load(":/translations/translations_" + languageCode + ".qm")) {
         qApp->installTranslator(&m_translator);
         m_engine->retranslate();
     } else {
