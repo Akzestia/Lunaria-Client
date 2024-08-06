@@ -1,7 +1,8 @@
 import LunariaClient
-import QtQuick 6.2
+import QtQuick 6.7
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQml
 
 ApplicationWindow {
     id: main_window
@@ -211,12 +212,7 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-
-                    if(qClientWrapper.authenticateSignIn(user_name_email.text, password.text))
-                        windowManager.startLoginProcess();
-                    else
-                        console.log("Failed to authenticate");
-
+                    qClientWrapper.signIn(user_name_email.text, password.text);
                 }
             }
 
@@ -261,8 +257,19 @@ ApplicationWindow {
     Image {
         z: -1
         anchors.fill: parent
-        source: "./assets/Kisara.png"//nightTab_backdrop.jpg
+        source: "qrc:/images/assets/Kisara.png"//nightTab_backdrop.jpg
         fillMode: Image.PreserveAspectCrop
     }
 
+    Connections {
+        target: qClientWrapper
+
+        onAuthenticatedSuccess: {
+            console.log("Authenticated");
+            windowManager.startLoginProcess();
+        }
+        onAuthenticatedFailed:{
+            console.log("Authenticated failed");
+        }
+    }
 }
