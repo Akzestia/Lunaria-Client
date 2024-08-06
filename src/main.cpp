@@ -1,21 +1,22 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
+#include "../content/TranslationManager.h"
+#include "../content/client/QuicClientWrapper.h"
+#include "../content/luaconfigmanager.h"
+#include "../content/window-manager/window-manager.h"
+#include "app_environment.h"
+#include "import_qml_components_plugins.h"
+#include "import_qml_plugins.h"
+#include <QDir>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QStringLiteral>
 #include <QTranslator>
-#include "app_environment.h"
-#include "import_qml_components_plugins.h"
-#include "import_qml_plugins.h"
-#include "../content/luaconfigmanager.h"
-#include "../content/client/QuicClientWrapper.h"
-#include "../content/window-manager/window-manager.h"
-#include "../content/TranslationManager.h"
+#include <QtDebug>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     set_qt_environment();
 
     QGuiApplication app(argc, argv);
@@ -32,20 +33,16 @@ int main(int argc, char *argv[])
     TranslationManager translationManager(&engine);
     translationManager.changeLanguage("ja");
 
-    QString basePath = QCoreApplication::applicationDirPath() + "/";
-
-    engine.rootContext()->setContextProperty("basePath", basePath);
-    engine.rootContext()->setContextProperty("translationManager", &translationManager);
-    engine.rootContext()->setContextProperty("luaConfigManager", &luaConfigManager);
+    engine.rootContext()->setContextProperty("translationManager",
+                                             &translationManager);
+    engine.rootContext()->setContextProperty("luaConfigManager",
+                                             &luaConfigManager);
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
     engine.rootContext()->setContextProperty("windowManager", &windowManager);
 
-
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreated,
-        &app,
+        &engine, &QQmlApplicationEngine::objectCreated, &app,
         [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1);
