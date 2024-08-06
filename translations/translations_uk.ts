@@ -4,6 +4,7 @@
 <context>
     <name>SignIn</name>
     <message>
+        <location filename="../content/SignIn.qml" line="22"/>
         <location filename="../content/SignIn.qml" line="65"/>
         <source>Sign In</source>
         <translation type="unfinished"></translation>
@@ -23,10 +24,6 @@
     <name>SignUp</name>
     <message>
         <location filename="../content/SignUp.qml" line="21"/>
-        <source>Sign In</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../content/SignUp.qml" line="70"/>
         <source>Sign Up</source>
         <translation type="unfinished"></translation>
