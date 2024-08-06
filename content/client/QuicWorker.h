@@ -1,16 +1,27 @@
+#ifndef QUICWORKER_H
+#define QUICWORKER_H
+#include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
+#include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.h"
 #include <QDebug>
 #include <QObject>
-#include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.h"
 
 class QuicWorker : public QObject {
     Q_OBJECT
 
+  private:
+    QuicClient& m_client;
   public:
-    explicit QuicWorker(QObject *parent = nullptr);
+    QuicWorker(QuicClient& client);
     ~QuicWorker();
   public slots:
-    void doSignInRequest(const QString& user_name, const QString& password);
-
+    void authenticateSignIn(const QString &user_name, const QString &password);
+    void authenticateSignUp(const QString &user_name, const QString &user_email, const QString &password);
   signals:
-    void signinReady(const AuthResponse& response);
+    void authenticationStarted();
+    void authenticationFinished();
+
+    void authenticationFailed();
+    void authenticationSucceeded(const AuthResponse &response);
 };
+
+#endif // QUICWORKER_H
