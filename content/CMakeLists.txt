@@ -15,6 +15,13 @@ qt_add_resources(content "images"
     FILES assets/EngageKiss_1.png
 )
 
+qt_add_resources(content "LoaderContent"
+    PREFIX "/"
+    FILES LoaderContent/Dms.qml
+    FILES LoaderContent/Server.qml
+    FILES LoaderContent/Settings.qml
+)
+
 link_common_libraries(content)
 
 qt6_add_qml_module(content
@@ -25,9 +32,6 @@ qt6_add_qml_module(content
         App.qml
         SignIn.qml
         SignUp.qml
-        LoaderContent/Dms.qml
-        LoaderContent/Server.qml
-        LoaderContent/Settings.qml
     RESOURCES
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf

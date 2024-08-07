@@ -31,7 +31,7 @@ ApplicationWindow {
     Loader {
         id: contentLoader
 
-        source: "../content/LoaderContent/Dms.qml"
+        source: "qrc:/LoaderContent/Dms.qml"
 
         anchors {
             top: parent.top

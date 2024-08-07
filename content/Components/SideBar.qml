@@ -55,7 +55,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     console.log("DMS clicked");
-                    contentLoader.source = "../content/LoaderContent/Dms.qml";
+                    contentLoader.source = "qrc:/LoaderContent/Dms.qml";
                 }
             }
 
@@ -144,7 +144,7 @@ Rectangle {
                             onClicked: {
                                 serverCarousel.currentIndex = index;
                                 console.log("Server clicked:", name);
-                                contentLoader.source = "../content/LoaderContent/Server.qml";
+                                contentLoader.source = "qrc:/LoaderContent/Server.qml";
                             }
                             onHoveredChanged: {
 
