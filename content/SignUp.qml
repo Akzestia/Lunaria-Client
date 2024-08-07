@@ -337,7 +337,7 @@ ApplicationWindow {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    qClientWrapper.authenticateSignUp(user_name.text, user_email.text, password.text);
+                    qClientWrapper.signUp(user_name.text, user_email.text, password.text);
                 }
             }
 
@@ -384,6 +384,18 @@ ApplicationWindow {
         anchors.fill: parent
         source: "qrc:/images/assets/EngageKiss_1.png"
         fillMode: Image.PreserveAspectCrop
+    }
+
+    Connections {
+        target: qClientWrapper
+
+        onAuthenticatedSuccess: {
+            console.log("Authenticated");
+            windowManager.startLoginProcess();
+        }
+        onAuthenticatedFailed:{
+            console.log("Authenticated failed");
+        }
     }
 
 }
