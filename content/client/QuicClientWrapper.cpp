@@ -70,6 +70,7 @@ void QuicClientWrapper::signIn(const QString &user_name, const QString &password
 }
 
 void QuicClientWrapper::signUp(const QString &user_name, const QString &user_email, const QString &password){
+    qDebug() << "Sign up";
     emit authenticateSignUp(user_name, user_email, password);
 }
 
