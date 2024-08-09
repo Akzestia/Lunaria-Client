@@ -1,5 +1,6 @@
 #include "QuicClientWrapper.h"
 #include "qdebug.h"
+#include "qglobal.h"
 #include "qobject.h"
 #include "qthread.h"
 #include "QuicWorker.h"
@@ -77,7 +78,9 @@ void QuicClientWrapper::signUp(const QString &user_name, const QString &user_ema
 void QuicClientWrapper::authenticationSucceeded(const AuthResponse& response){
     qDebug() << "Authentication succeeded";
 
-    // qDebug() << "User name: " << response.user().user_name().c_str();
+    qDebug() << "User name: " << response.user().user_name().c_str();
+    qDebug() << "User email: " << response.user().user_email().c_str();
+    qDebug() << "User avatar: " << (response.user().user_avatar().length()) << "\n";
 
     emit authenticatedSuccess();
 }

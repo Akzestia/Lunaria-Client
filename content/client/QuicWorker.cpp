@@ -24,10 +24,11 @@ void QuicWorker::authenticateSignIn(const QString &user_name,
 
     if (code == Lxcode::OK()) {
         qDebug() << "Sign in successful";
+        qDebug() << code.response.c_str();
         emit authenticationFinished();
-        std::unique_ptr<AuthResponse> ar = std::make_unique<AuthResponse>();
-        ar->set_allocated_user(std::get<User *>(code.payload));
-        emit authenticationSucceeded(*ar);
+        AuthResponse ar;
+        ar = *std::get<AuthResponse *>(code.payload);
+        emit authenticationSucceeded(ar);
         return;
     }
 
@@ -59,9 +60,9 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
     if (code == Lxcode::OK()) {
         qDebug() << "Sign up successful";
         emit authenticationFinished();
-        std::unique_ptr<AuthResponse> ar = std::make_unique<AuthResponse>();
-        ar->set_allocated_user(std::get<User *>(code.payload));
-        emit authenticationSucceeded(*ar);
+        AuthResponse ar;
+        ar = *std::get<AuthResponse *>(code.payload);
+        emit authenticationSucceeded(ar);
         return;
     }
 
