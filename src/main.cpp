@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
 #include "../content/TranslationManager.h"
+#include "../content/UserStateManager/UserStateManager.h"
 #include "../content/client/QuicClientWrapper.h"
 #include "../content/luaconfigmanager.h"
 #include "../content/window-manager/window-manager.h"
@@ -33,6 +34,10 @@ int main(int argc, char *argv[]) {
     TranslationManager translationManager(&engine);
     translationManager.changeLanguage("ja");
 
+    UserStateManager userStateManager(&engine);
+
+    engine.rootContext()->setContextProperty("userStateManager",
+                                             &userStateManager);
     engine.rootContext()->setContextProperty("translationManager",
                                              &translationManager);
     engine.rootContext()->setContextProperty("luaConfigManager",
