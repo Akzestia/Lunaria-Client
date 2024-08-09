@@ -1,5 +1,5 @@
 # Find Qt6 and its components
-find_package(Qt6 6.7 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.7 REQUIRED COMPONENTS Core Gui Qml Quick Widgets)
 
 # Find other necessary packages (like Protobuf, Abseil, etc.)
 find_library(PROTOBUF_LIB NAMES protobuf PATHS ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
@@ -14,6 +14,7 @@ function(link_common_libraries target)
         Qt6::Gui
         Qt6::Qml
         Qt6::Quick
+        Qt6::Widgets
         ${PROTOBUF_LIB}
         ${ABSL_LOG_INTERNAL_CHECK_OP_LIB}
         ${ABSL_LOG_INTERNAL_MESSAGE_LIB}
