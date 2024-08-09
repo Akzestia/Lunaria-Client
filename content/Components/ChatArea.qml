@@ -16,6 +16,9 @@ Rectangle {
     Layout.fillWidth: true
     Layout.alignment: Qt.AlignTop
 
+    bottomLeftRadius: 0
+    bottomRightRadius: 0
+
     ColumnLayout {
         id: chatLayout
         anchors.fill: parent

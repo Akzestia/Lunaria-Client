@@ -14,4 +14,7 @@ Rectangle {
     implicitWidth: 320
     Layout.fillHeight: true
     Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+
+    bottomLeftRadius: 0
+    bottomRightRadius: 0
 }

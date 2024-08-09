@@ -8,6 +8,8 @@ Rectangle {
     Layout.topMargin: 20
     Layout.rightMargin: 25
     radius: 10
+    bottomLeftRadius: 0
+    bottomRightRadius: 0
     color: "#E0141416"
     Layout.preferredWidth: opacity === 0 ? 0 : 400
     Layout.fillHeight: true
