@@ -45,6 +45,7 @@ qt6_add_qml_module(content
         luaconfigmanager.h luaconfigmanager.cpp
         client/QuicClientWrapper.cpp client/QuicClientWrapper.h
         client/QuicWorker.cpp client/QuicWorker.h
+        UserStateManager/UserStateManager.cpp UserStateManager/UserStateManager.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
         ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
