@@ -9,6 +9,7 @@ Item {
     width: parent.width
     height: parent.height
 
+    z: 9
     Component.onCompleted: {
         console.log("sourceItem.width: " + sourceItem.width)
         console.log("radius: " + radius)

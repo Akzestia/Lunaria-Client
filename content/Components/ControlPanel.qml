@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 
 Rectangle {
     Layout.column: 0
@@ -14,6 +15,8 @@ Rectangle {
     Layout.rightMargin: 25
     Layout.alignment: Qt.AlignTop | Qt.AlignCenter
 
+    property bool isHoveringOnline: false
+
     MouseArea {
         anchors.fill: parent
     }
@@ -24,16 +27,42 @@ Rectangle {
 
         Rectangle {
             id: profileImage
+
             width: 60
             height: 60
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             Layout.leftMargin: 30
             color: "transparent"
-            RoundedImage {
-                OnlineIndicator {
 
+            RoundedImage {
+                id: user_profile_avatar
+                OnlineIndicator {
+                    id: online_indicator
                 }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if(!online_indicator.online_contains_mouse){
+                            console.log("Clicked on profile image");
+                            fileDiolog.open()
+                        }
+                    }
+                }
+
+                FileDialog {
+                    id: fileDiolog
+                    currentFolder: "/"
+                    nameFilters: ["Images (*.png *.jpg *.jpeg)"]
+
+                    onAccepted: {
+                        console.log("Accepted")
+                        userStateManager.selectAvatar(fileDiolog.selectedFile);
+                    }
+                }
+
             }
+
         }
 
         Rectangle {
@@ -46,10 +75,21 @@ Rectangle {
 
             Text {
                 id: username
+
                 color: "#E0FFFFFF"
                 font.pixelSize: 20
                 text: "アクゼスティア"
             }
+
+        }
+
+    }
+
+    Connections {
+        target: userStateManager
+
+        onAvatarChanged: {
+            user_profile_avatar.source = userStateManager.avatar
         }
     }
 
@@ -57,5 +97,7 @@ Rectangle {
         NumberAnimation {
             duration: 200
         }
+
     }
+
 }

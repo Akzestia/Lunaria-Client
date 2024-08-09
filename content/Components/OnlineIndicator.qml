@@ -12,8 +12,17 @@ Rectangle {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
 
+    z: 10
+
+    property alias online_contains_mouse: online_hover.containsMouse
+
     MouseArea {
+        id: online_hover
+
+        hoverEnabled: true
+
         anchors.fill: parent
+
         onClicked: {
             console.log("Clicked")
             console.log(onlineIndicator.color)
