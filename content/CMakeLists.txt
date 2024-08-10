@@ -13,6 +13,7 @@ qt_add_resources(content "images"
     FILES assets/DmsIcon.svg
     FILES assets/Kisara.png
     FILES assets/EngageKiss_1.png
+    FILES assets/plus.svg
 )
 
 qt_add_resources(content "LoaderContent"
