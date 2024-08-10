@@ -325,7 +325,7 @@ ApplicationWindow {
             color: signup_btn_area.containsMouse ? "#00B2FF" : "#101012"
 
             Text {
-                text: "Sign up"
+                text: qsTr("Sign up")
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -353,7 +353,7 @@ ApplicationWindow {
         Text {
             id: t_signup
 
-            text: "Already have an account? Sing in"
+            text: qsTr("Already have an account? Sing in")
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             color: "white"
             font.underline: t_signup_area.containsMouse
