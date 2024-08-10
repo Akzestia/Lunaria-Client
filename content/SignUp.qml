@@ -24,6 +24,14 @@ ApplicationWindow {
         console.log(luaConfigManager.lang);
     }
 
+    Shortcut {
+        sequence: "Return"
+        onActivated: {
+            console.log('Open');
+            qClientWrapper.signUp(user_name.text, user_email.text, password.text);
+        }
+    }
+
     MouseArea {
         id: main_window_m
 

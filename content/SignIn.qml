@@ -1,8 +1,8 @@
 import LunariaClient
+import QtQml
 import QtQuick 6.7
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQml
 
 ApplicationWindow {
     id: main_window
@@ -25,8 +25,16 @@ ApplicationWindow {
         console.log(luaConfigManager.lang);
     }
 
+    Shortcut {
+        sequence: "Return"
+        onActivated: {
+            console.log('Open');
+            qClientWrapper.signIn(user_name_email.text, password.text);
+        }
+    }
+
     MouseArea {
-        id: main_window_m
+        id: main_window_mS
 
         hoverEnabled: true
         anchors.fill: parent
@@ -257,19 +265,19 @@ ApplicationWindow {
     Image {
         z: -1
         anchors.fill: parent
-        source: "qrc:/images/assets/Kisara.png"//nightTab_backdrop.jpg
+        source: "qrc:/images/assets/Kisara.png" //nightTab_backdrop.jpg
         fillMode: Image.PreserveAspectCrop
     }
 
     Connections {
         target: qClientWrapper
-
         onAuthenticatedSuccess: {
             console.log("Authenticated");
             windowManager.startLoginProcess();
         }
-        onAuthenticatedFailed:{
+        onAuthenticatedFailed: {
             console.log("Authenticated failed");
         }
     }
+
 }
