@@ -17,19 +17,8 @@ qt6_add_qml_module(xComponents
         RoundedImage.qml
         OnlineIndicator.qml
         SideBar.qml
+        GlobalProperties.qml
+        Popups/AddDm.qml
     RESOURCES
         # Shaders/roundImage.qsb
 )
-
-# add_custom_command(
-#     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Shaders/roundImage.qsb
-#     COMMAND qsb ${CMAKE_CURRENT_SOURCE_DIR}/Shaders/roundImage.frag -o ${CMAKE_CURRENT_SOURCE_DIR}/Shaders/roundImage.qsb
-#     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Shaders/roundImage.frag
-#     COMMENT "Compiling roundImage.frag to roundImage.qsb"
-# )
-
-# add_custom_target(compile_shaders ALL
-#     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Shaders/roundImage.qsb
-# )
-
-# add_dependencies(xComponents compile_shaders)
