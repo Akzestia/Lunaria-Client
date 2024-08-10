@@ -34,6 +34,8 @@ int main(int argc, char *argv[]) {
     TranslationManager translationManager(&engine);
     translationManager.changeLanguage("ja");
 
+    qmlRegisterSingletonType(QUrl("qrc:/qt/qml/xComponents/GlobalProperties.qml"), "LunariaGlobalProperties", 1, 0, "GlobalProperties");
+
     UserStateManager userStateManager(&engine);
 
     engine.rootContext()->setContextProperty("userStateManager",
