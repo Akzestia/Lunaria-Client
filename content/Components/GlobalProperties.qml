@@ -12,6 +12,6 @@ QtObject {
         return Math.min(widthRatio, heightRatio);
     }
     property bool addDmVisible: false
-    property real addDmOpacity: 0
-    property int addDmVerticalOffset: -100
+    property real addDmOpacity: addDmVisible ? 1 : 0
+    property int addDmVerticalOffset: addDmVisible ? -100 : -85
 }

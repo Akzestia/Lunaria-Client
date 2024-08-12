@@ -48,7 +48,7 @@ Rectangle {
 
             Image {
                 anchors.centerIn: parent
-                source: "../content/assets/DmsIcon.svg"
+                source: "qrc:/images/assets/DmsIcon.svg"
             }
 
             MouseArea {
@@ -208,7 +208,34 @@ Rectangle {
             Layout.preferredHeight: 60
             Layout.bottomMargin: 15
             radius: 10
-            color: "white"
+            color: "#34343B"
+
+            Image {
+                anchors.centerIn: parent
+                source: "qrc:/images/assets/plus.svg"
+            }
+
+
+            Behavior on radius {
+                NumberAnimation {
+                    duration: 135
+                }
+            }
+
+            MouseArea {
+                id: addServerButton_hover
+                anchors.fill: parent
+
+                hoverEnabled: true
+
+                onEntered: {
+                    addServerButton.radius = addServerButton.width * .5;
+                }
+
+                onExited: {
+                    addServerButton.radius = 10;
+                }
+            }
         }
 
     }
