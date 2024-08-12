@@ -66,9 +66,8 @@ int main(int argc, char *argv[]) {
     }
 
     QObject::connect(&app, &QGuiApplication::aboutToQuit, [&qClientWrapper]() {
-        // Add your cleanup code or function call here
         qDebug() << "Application is about to quit. Performing cleanup.";
-        // qClientWrapper.disconnect();
+        qClientWrapper.disconnect();
     });
 
     return app.exec();
