@@ -19,7 +19,6 @@ function(link_common_libraries target)
         ${ABSL_LOG_INTERNAL_CHECK_OP_LIB}
         ${ABSL_LOG_INTERNAL_MESSAGE_LIB}
         ${ABSL_CORD_LIB}
-        pqxx
         crypto
         stdc++
         pthread
