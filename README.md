@@ -1,5 +1,7 @@
 # Lunaria-Client
 
+[English](README.md) | [日本語](README_ja.md) | [Українська](README_ua.md)
+
 This is the desktop client for the Lunaria chat application. Please note that this project is still under active development and is not yet configured for building from source.
 
 ## Status
