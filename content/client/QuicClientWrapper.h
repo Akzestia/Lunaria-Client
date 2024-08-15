@@ -25,6 +25,7 @@ class QuicClientWrapper : public QObject {
     Q_INVOKABLE void signUp(const QString &user_name, const QString &user_email,
                             const QString &password);
     Q_INVOKABLE void signIn(const QString &user_name, const QString &password);
+    Q_INVOKABLE void addDm(const QString &user_name);
 
     bool isAuthenticated() const { return m_isAuthenticated; }
     bool isAuthenticating() const { return m_isAuthenticating; }
@@ -35,6 +36,7 @@ class QuicClientWrapper : public QObject {
     void authenticateSignUp(const QString &user_name, const QString &user_email,
                             const QString &password);
     void authenticateSignIn(const QString &user_name, const QString &password);
+    void addDmSignal(const QString &user_name);
     void authenticationStarted();
     void authenticationFinished();
     void authenticatedSuccess();

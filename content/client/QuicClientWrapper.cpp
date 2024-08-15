@@ -24,6 +24,8 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     QObject::connect(&workerThread, &QThread::finished, m_worker.get(), &QObject::deleteLater);
     QObject::connect(this, &QuicClientWrapper::authenticateSignIn, m_worker.get(), &QuicWorker::authenticateSignIn);
     QObject::connect(this, &QuicClientWrapper::authenticateSignUp, m_worker.get(), &QuicWorker::authenticateSignUp);
+    QObject::connect(this, &QuicClientWrapper::addDm, m_worker.get(), &QuicWorker::addDm);
+
     QObject::connect(m_worker.get(), &QuicWorker::authenticationStarted, this, &QuicClientWrapper::authenticationStarted);
     QObject::connect(m_worker.get(), &QuicWorker::authenticationFinished, this, &QuicClientWrapper::authenticationFinished);
     QObject::connect(m_worker.get(), &QuicWorker::authenticationSucceeded, this, &QuicClientWrapper::authenticationSucceeded);
@@ -88,4 +90,9 @@ void QuicClientWrapper::authenticationSucceeded(const AuthResponse& response){
 void QuicClientWrapper::authenticationFailed(){
     qDebug() << "Authentication failed";
     emit authenticatedFailed();
+}
+
+
+void QuicClientWrapper::addDm(const QString &user_name){
+    emit addDmSignal(user_name);
 }

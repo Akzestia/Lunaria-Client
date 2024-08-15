@@ -16,6 +16,7 @@ class QuicWorker : public QObject {
   public slots:
     void authenticateSignIn(const QString &user_name, const QString &password);
     void authenticateSignUp(const QString &user_name, const QString &user_email, const QString &password);
+    void addDm(const QString &user_name);
   signals:
     void authenticationStarted();
     void authenticationFinished();

@@ -8,10 +8,10 @@ Rectangle {
     z: 100
     anchors.verticalCenterOffset: GlobalProperties.addDmVerticalOffset
     width: 400
-    height: 200
+    height: 150
     radius: 10
     opacity: GlobalProperties.addDmOpacity
-    color: "magenta"
+    color: "#141416"
 
     Behavior on opacity {
         NumberAnimation {
@@ -32,7 +32,9 @@ Rectangle {
         Text {
             text: "Add DM"
             font.pixelSize: 20
-            color: "white"
+            Layout.alignment: Qt.AlignLeft
+            Layout.leftMargin: 20
+            color: "aqua"
             horizontalAlignment: Text.AlignHCenter
         }
 

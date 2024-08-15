@@ -70,3 +70,12 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
     emit authenticationFinished();
     emit authenticationFailed();
 }
+
+
+void QuicWorker::addDm(const QString &user_name){
+    // Contact* c = new Contact();
+    // *c->mutable_a_user_id_string() = "zulu";
+    // *c->mutable_b_user_id_string() = user_name.toStdString();
+
+    // Lxcode code =
+}
