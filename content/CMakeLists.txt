@@ -54,3 +54,4 @@ qt6_add_qml_module(content
 
 
 add_subdirectory(Components)
+add_subdirectory(conf)
