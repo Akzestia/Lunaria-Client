@@ -12,7 +12,7 @@ Rectangle {
     opacity: 0
     width: 200
     height: 15
-    color: "lime"
+    color: "#141416"
 
     MouseArea {
         anchors.fill: parent
