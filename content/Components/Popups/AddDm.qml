@@ -25,6 +25,13 @@ Rectangle {
         }
     }
 
+    Shortcut {
+        sequence: "Return"
+        onActivated: {
+            console.log('Add Dm')
+        }
+    }
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 10
