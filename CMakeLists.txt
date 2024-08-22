@@ -12,13 +12,9 @@ set(ABSL_PROPAGATE_CXX_STD ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 include(${CMAKE_CURRENT_SOURCE_DIR}/FindDependencies.cmake)
 
-# Create symbolic link for libprotobuf.so if it doesn't exist
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROTOBUF_LIB_DIR}/libprotobuf.so ${PROTOBUF_LIB_DIR}/libprotobuf.so.27)
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so ${ABSL_LIB_DIR}/libabsl_log_internal_check_op.so.2401.0.0)
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_log_internal_message.so ${ABSL_LIB_DIR}/libabsl_log_internal_message.so.2401.0.0)
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ABSL_LIB_DIR}/libabsl_cord.so ${ABSL_LIB_DIR}/libabsl_cord.so.2401.0.0)
-
 find_package(Qt6 6.7 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Protobuf REQUIRED)
+find_package(absl REQUIRED)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -50,7 +46,6 @@ qt_add_executable(LunariaClientApp
     certs/server.cert
     certs/server.key
     /home/azure/LunariaClient/content/window-manager/window-manager.cpp
-    absl-libs/libabsl_cord.so absl-libs/libabsl_cord.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_check_op.so absl-libs/libabsl_log_internal_message.so absl-libs/libabsl_log_internal_message.so
 )
 
 link_common_libraries(LunariaClientApp)
@@ -68,11 +63,19 @@ if (WIN32)
         message(STATUS "Linking x64 MsQuic library for Windows")
         target_link_libraries(LunariaClientApp PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Win_x64/bin/msquic.dll
+            protobuf::libprotobuf
+            absl::log_internal_check_op
+            absl::log_internal_message
+            absl::cord
         )
     elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM64")
         message(STATUS "Linking ARM MsQuic library for Windows")
         target_link_libraries(LunariaClientApp PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Win_arm64/bin/msquic.dll
+            protobuf::libprotobuf
+            absl::log_internal_check_op
+            absl::log_internal_message
+            absl::cord
         )
     else()
         message(FATAL_ERROR "Unsupported Windows architecture: ${CMAKE_SYSTEM_PROCESSOR}")
@@ -81,6 +84,10 @@ elseif (UNIX AND NOT APPLE)
     message(STATUS "Linking MsQuic library for Linux")
     target_link_libraries(LunariaClientApp PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/MsQuic/Linux_x64/bin/libmsquic.so
+        protobuf::libprotobuf
+        absl::log_internal_check_op
+        absl::log_internal_message
+        absl::cord
     )
 endif()
 
