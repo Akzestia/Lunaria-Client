@@ -72,7 +72,7 @@ ApplicationWindow {
     Image {
         z: -1
         anchors.fill: parent
-        source: "qrc:/images/assets/EngageKiss_1.png" //nightTab_backdrop.jpg | EngageKiss_1.png | Kisara.png
+        source: "qrc:/images/assets/Bochi.png" //nightTab_backdrop.jpg | EngageKiss_1.png | Kisara.png
         fillMode: Image.PreserveAspectCrop
     }
 
