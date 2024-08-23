@@ -3,6 +3,7 @@
 
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
 #include "QuicWorker.h"
+#include "qcoreapplication.h"
 #include "qobjectdefs.h"
 #include <QDebug>
 #include <QObject>
@@ -36,13 +37,16 @@ class QuicClientWrapper : public QObject {
     void authenticateSignUp(const QString &user_name, const QString &user_email,
                             const QString &password);
     void authenticateSignIn(const QString &user_name, const QString &password);
-    void addDmSignal(const QString &user_name);
+    void addDmSignal(const QString &user_name, const QString &m_user_name);
     void authenticationStarted();
     void authenticationFinished();
     void authenticatedSuccess();
     void authenticatedFailed();
 
   private:
+    std::string m_user_name;
+    std::string m_user_email;
+
     std::unique_ptr<QuicClient> m_client;
     std::unique_ptr<QuicWorker> m_worker;
     bool m_isAuthenticated;
