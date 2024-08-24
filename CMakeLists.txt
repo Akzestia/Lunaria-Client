@@ -42,6 +42,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_response.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/client/clientPeerHandler/ClientPeerHandler.cpp
     certs/server.cert
     certs/server.key
