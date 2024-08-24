@@ -1,5 +1,6 @@
 #include "QuicWorker.h"
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.h"
+#include "qglobal.h"
 #include <cstdio>
 
 QuicWorker::~QuicWorker() {}
@@ -72,10 +73,21 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
 }
 
 
-void QuicWorker::addDm(const QString &user_name){
-    // Contact* c = new Contact();
-    // *c->mutable_a_user_id_string() = "zulu";
-    // *c->mutable_b_user_id_string() = user_name.toStdString();
+void QuicWorker::addDm(const QString &user_name, const QString &m_user_name){
 
+    qDebug() << "X user: " << user_name << "\nX email: " << m_user_name;
+    Contact c;
+    *c.mutable_a_user_name() = user_name.toStdString();
+    *c.mutable_b_user_name() = m_user_name.toStdString();
+
+
+    Lxcode code = m_client.AddContact(c);
+
+    if(code == Lxcode::OK()){
+        qDebug() << "Contact Added successfully";
+        return;
+    }
+
+    qDebug() << "Failed to add contact";
     // Lxcode code =
 }
