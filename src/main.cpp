@@ -31,7 +31,8 @@ int main(int argc, char *argv[]) {
     WindowManager windowManager(&engine);
 
     TranslationManager translationManager(&engine);
-    translationManager.changeLanguage("ja");
+    const char* lang = getenv("LUNARIA_CLIENT_LANGUAGE") ? getenv("LUNARIA_CLIENT_LANGUAGE") : "en";
+    translationManager.changeLanguage(lang);
 
     qmlRegisterSingletonType(QUrl("qrc:/qt/qml/xComponents/GlobalProperties.qml"), "LunariaGlobalProperties", 1, 0, "GlobalProperties");
 
