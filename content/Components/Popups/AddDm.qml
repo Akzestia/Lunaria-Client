@@ -29,6 +29,7 @@ Rectangle {
         sequence: "Return"
         onActivated: {
             console.log('Add Dm')
+            qClientWrapper.addDm(addDmTextField.text);
         }
     }
 
