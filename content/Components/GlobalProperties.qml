@@ -15,5 +15,9 @@ QtObject {
     property real addDmOpacity: addDmVisible ? 1 : 0
     property int addDmVerticalOffset: addDmVisible ? -100 : -85
 
+    property bool addServerVisible: false
+    property real addServerOpacity: addServerVisible ? 1 : 0
+    property int addServerVerticalOffset: addServerVisible ? -100 : -85
+
     property string activeFocusElementId: ""
 }
