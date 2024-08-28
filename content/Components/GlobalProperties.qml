@@ -19,5 +19,9 @@ QtObject {
     property real addServerOpacity: addServerVisible ? 1 : 0
     property int addServerVerticalOffset: addServerVisible ? -100 : -85
 
+    property real leftSectionOpacity: 1;
+    property real centerSectionOpacity: 1;
+    property real rightSectionOpacity: 1;
+
     property string activeFocusElementId: ""
 }
