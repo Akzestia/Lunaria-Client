@@ -4,10 +4,12 @@ import QtQuick.Effects
 Item {
 
     property alias source: sourceItem.source
-    property real radiusX: parent.width / 2
 
-    width: parent.width
-    height: parent.height
+    property real parentWidth: undefined
+    property real radiusX: parentWidth / 2
+
+    width: parentWidth
+    height: parentWidth
 
     z: 9
     Component.onCompleted: {
