@@ -31,6 +31,9 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     QObject::connect(m_worker.get(), &QuicWorker::authenticationSucceeded, this, &QuicClientWrapper::authenticationSucceeded);
     QObject::connect(m_worker.get(), &QuicWorker::authenticationFailed, this, &QuicClientWrapper::authenticationFailed);
 
+    QObject::connect(this, &QuicClientWrapper::fetchContactsSignal, m_worker.get(), &QuicWorker::fetchContacts);
+    QObject
+
     workerThread.start();
     qDebug() << "QuicClientWrapper created";
 }
@@ -80,12 +83,15 @@ void QuicClientWrapper::signUp(const QString &user_name, const QString &user_ema
 void QuicClientWrapper::authenticationSucceeded(const AuthResponse& response){
     qDebug() << "Authentication succeeded";
 
+    qDebug() << "User id: " << response.user().user_id().c_str();
     qDebug() << "User name: " << response.user().user_name().c_str();
     qDebug() << "User email: " << response.user().user_email().c_str();
     qDebug() << "User avatar: " << (response.user().user_avatar().length()) << "\n";
 
     m_user_email = response.user().user_email();
     m_user_name = response.user().user_name();
+    m_user_id = response.user().user_id();
+    m_user_avatar = response.user().user_avatar();
 
     emit authenticatedSuccess();
 }
@@ -107,3 +113,22 @@ void QuicClientWrapper::addDm(const QString &user_name){
 // std::string QuicClientWrapper::user_name(){
 //     return m_user_name;
 // }
+QString QuicClientWrapper::user_name() const {
+    return QString::fromStdString(m_user_name);
+}
+
+QString QuicClientWrapper::user_email() const {
+    return QString::fromStdString(m_user_email);
+}
+
+QString QuicClientWrapper::user_id() const {
+    return QString::fromStdString(m_user_id);
+}
+
+QString QuicClientWrapper::user_avatar() const {
+    return QByteArray::fromStdString(m_user_avatar);
+}
+
+void QuicClientWrapper::fetchContacts() {
+    emit fetchContactsSignal();
+}
