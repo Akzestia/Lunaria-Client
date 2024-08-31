@@ -36,6 +36,8 @@ Rectangle {
 
             RoundedImage {
                 id: user_profile_avatar
+
+                parentWidth: profileImage.width
                 OnlineIndicator {
                     id: online_indicator
                 }
@@ -78,7 +80,8 @@ Rectangle {
 
                 color: "#E0FFFFFF"
                 font.pixelSize: 20
-                text: "アクゼスティア"
+                text: qClientWrapper.user_name
+                //アクゼスティア
             }
 
         }
