@@ -15,18 +15,34 @@
 class QuicClientWrapper : public QObject {
     Q_OBJECT
     QThread workerThread;
-
+    Q_PROPERTY(QString user_name READ user_name CONSTANT)
+    Q_PROPERTY(QString user_email READ user_email CONSTANT)
+    Q_PROPERTY(QString user_id READ user_id CONSTANT)
+    Q_PROPERTY(QString user_avatar READ user_avatar CONSTANT)
   public:
     explicit QuicClientWrapper(QObject *parent = nullptr);
     ~QuicClientWrapper();
 
+    QString user_name() const;
+    QString user_email() const;
+    QString user_id() const;
+    QString user_avatar() const;
+
     Q_INVOKABLE void connect();
     Q_INVOKABLE void send();
     Q_INVOKABLE void disconnect();
+
+
     Q_INVOKABLE void signUp(const QString &user_name, const QString &user_email,
                             const QString &password);
     Q_INVOKABLE void signIn(const QString &user_name, const QString &password);
     Q_INVOKABLE void addDm(const QString &user_name);
+
+    Q_INVOKABLE void fetchContacts();
+    Q_INVOKABLE void fetchServers();
+    Q_INVOKABLE void fetchChannels(const QString &server_id);
+    Q_INVOKABLE void fetchChannelMessages(const QString &channel_id);
+    Q_INVOKABLE void fetchDmMessages(const QString &user_name);
 
     bool isAuthenticated() const { return m_isAuthenticated; }
     bool isAuthenticating() const { return m_isAuthenticating; }
@@ -43,9 +59,19 @@ class QuicClientWrapper : public QObject {
     void authenticatedSuccess();
     void authenticatedFailed();
 
+    void connected();
+    void disconnected();
+
+    void messageReceived();
+    void messageSent();
+
+    void fetchContactsSignal();
+
   private:
     std::string m_user_name;
     std::string m_user_email;
+    std::string m_user_id;
+    std::string m_user_avatar;
 
     std::unique_ptr<QuicClient> m_client;
     std::unique_ptr<QuicWorker> m_worker;
