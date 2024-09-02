@@ -1,6 +1,7 @@
 #include "QuicClientWrapper.h"
 #include "qdebug.h"
 #include "qglobal.h"
+#include "qhashfunctions.h"
 #include "qobject.h"
 #include "qthread.h"
 #include "QuicWorker.h"
@@ -21,6 +22,7 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     m_worker = std::make_unique<QuicWorker>(m_client->getRef());
     m_worker->moveToThread(&workerThread);
 
+    //executing heavy compute tasks in worker tthread
     QObject::connect(&workerThread, &QThread::finished, m_worker.get(), &QObject::deleteLater);
     QObject::connect(this, &QuicClientWrapper::authenticateSignIn, m_worker.get(), &QuicWorker::authenticateSignIn);
     QObject::connect(this, &QuicClientWrapper::authenticateSignUp, m_worker.get(), &QuicWorker::authenticateSignUp);
@@ -32,7 +34,7 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
     QObject::connect(m_worker.get(), &QuicWorker::authenticationFailed, this, &QuicClientWrapper::authenticationFailed);
 
     QObject::connect(this, &QuicClientWrapper::fetchContactsSignal, m_worker.get(), &QuicWorker::fetchContacts);
-    QObject
+    QObject::connect(this, &QuicClientWrapper::fetchDmMessagesSignal, m_worker.get(), &QuicWorker::fetchDmMessages);
 
     workerThread.start();
     qDebug() << "QuicClientWrapper created";
@@ -106,13 +108,6 @@ void QuicClientWrapper::addDm(const QString &user_name){
     emit addDmSignal(user_name, QString::fromStdString(m_user_name));
 }
 
-// std::string QuicClientWrapper::user_email(){
-//     return m_user_name;
-// }
-
-// std::string QuicClientWrapper::user_name(){
-//     return m_user_name;
-// }
 QString QuicClientWrapper::user_name() const {
     return QString::fromStdString(m_user_name);
 }
@@ -130,5 +125,9 @@ QString QuicClientWrapper::user_avatar() const {
 }
 
 void QuicClientWrapper::fetchContacts() {
-    emit fetchContactsSignal();
+    emit fetchContactsSignal(user_id());
+}
+
+void QuicClientWrapper::fetchDmMessages(const QString &user_name){
+    emit fetchDmMessagesSignal(user_id(), user_name);
 }
