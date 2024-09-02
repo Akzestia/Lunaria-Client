@@ -1,6 +1,7 @@
 #include "QuicWorker.h"
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.h"
 #include "qglobal.h"
+#include "qhashfunctions.h"
 #include <cstdio>
 
 QuicWorker::~QuicWorker() {}
@@ -90,4 +91,13 @@ void QuicWorker::addDm(const QString &user_name, const QString &m_user_name){
 
     qDebug() << "Failed to add contact";
     // Lxcode code =
+}
+
+
+void QuicWorker::fetchContacts(const QString &user_id){
+
+}
+
+void QuicWorker::fetchDmMessages(const QString &id, const QString &user_name){
+
 }
