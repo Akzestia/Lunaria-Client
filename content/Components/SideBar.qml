@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
+import LunariaGlobalProperties 1.0
 
 Rectangle {
     id: sideBar
 
     width: 85
-    color: "#FF141416"
+    color: GlobalProperties.sideBarColor
     z: 2
 
     anchors {
@@ -44,7 +45,7 @@ Rectangle {
             Layout.preferredHeight: 60
             Layout.topMargin: 15
             radius: 10
-            color: "#5A94D6"
+            color: GlobalProperties.activeContentFieldColor
 
             Image {
                 anchors.centerIn: parent
@@ -207,7 +208,7 @@ Rectangle {
             Layout.preferredWidth: 60
             Layout.preferredHeight: 60
             Layout.bottomMargin: 15
-            radius: 10
+            radius: addServerButton.width * .5
             color: "#34343B"
 
             Image {
@@ -218,7 +219,7 @@ Rectangle {
 
             Behavior on radius {
                 NumberAnimation {
-                    duration: 135
+                    duration: 115
                 }
             }
 
@@ -229,11 +230,11 @@ Rectangle {
                 hoverEnabled: true
 
                 onEntered: {
-                    addServerButton.radius = addServerButton.width * .5;
+                    addServerButton.radius = 10;
                 }
 
                 onExited: {
-                    addServerButton.radius = 10;
+                    addServerButton.radius = addServerButton.width * .5;
                 }
             }
         }
