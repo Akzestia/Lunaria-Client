@@ -4,6 +4,7 @@
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
 #include "QuicWorker.h"
 #include "qcoreapplication.h"
+#include "qhashfunctions.h"
 #include "qobjectdefs.h"
 #include <QDebug>
 #include <QObject>
@@ -39,9 +40,9 @@ class QuicClientWrapper : public QObject {
     Q_INVOKABLE void addDm(const QString &user_name);
 
     Q_INVOKABLE void fetchContacts();
-    Q_INVOKABLE void fetchServers();
-    Q_INVOKABLE void fetchChannels(const QString &server_id);
-    Q_INVOKABLE void fetchChannelMessages(const QString &channel_id);
+    // Q_INVOKABLE void fetchServers();
+    // Q_INVOKABLE void fetchChannels(const QString &server_id);
+    // Q_INVOKABLE void fetchChannelMessages(const QString &channel_id);
     Q_INVOKABLE void fetchDmMessages(const QString &user_name);
 
     bool isAuthenticated() const { return m_isAuthenticated; }
@@ -65,7 +66,8 @@ class QuicClientWrapper : public QObject {
     void messageReceived();
     void messageSent();
 
-    void fetchContactsSignal();
+    void fetchContactsSignal(const QString &);
+    void fetchDmMessagesSignal(const QString &, const QString &);
 
   private:
     std::string m_user_name;
