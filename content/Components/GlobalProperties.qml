@@ -19,9 +19,12 @@ QtObject {
     property real addServerOpacity: addServerVisible ? 1 : 0
     property int addServerVerticalOffset: addServerVisible ? -100 : -85
 
-    property real leftSectionOpacity: 1;
-    property real centerSectionOpacity: 1;
-    property real rightSectionOpacity: 1;
+    //0-1, 0 - full transparent, 1 - not transparent
+    property real leftSectionOpacity: 1.0;
+    property real centerSectionOpacity: 1.0;
+    property real rightSectionOpacity: 1.0;
 
-    property string activeFocusElementId: ""
+    property string activeContentFieldColor: "#5A94D6";
+    property string sideBarColor: "#FF141416";
+    property string mainTextColor: "white";
 }
