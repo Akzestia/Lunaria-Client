@@ -18,6 +18,7 @@ class QuicWorker : public QObject {
     void authenticateSignUp(const QString &user_name, const QString &user_email, const QString &password);
     void addDm(const QString &user_name, const QString &m_user_name);
     void fetchContacts(const QString &user_id);
+    void fetchDmMessages(const QString &user_id, const QString &user_name);
   signals:
     void authenticationStarted();
     void authenticationFinished();
