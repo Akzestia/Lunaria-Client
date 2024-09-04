@@ -28,21 +28,20 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/AuthManager/AuthManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/tokio-cpp/ThreadPool.cpp
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/contact.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/encrypt_key.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/invite_link.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/message.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/report.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/server.pb.cc
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_in.pb.cc
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/sign_up.pb.cc
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/test.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/user.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/vpn_graph.pb.cc
-    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/wrapper.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_response.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_request.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_body.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/error.pb.cc
+    ../Documents/GitHub/Linux-x64-HTTP3/proto/build/fetch_response.pb.cc
     ../Documents/GitHub/Linux-x64-HTTP3/client/clientPeerHandler/ClientPeerHandler.cpp
     certs/server.cert
     certs/server.key
