@@ -1,5 +1,6 @@
 #include "QuicWorker.h"
-#include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/auth.pb.h"
+#include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_body.pb.h"
+#include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_request.pb.h"
 #include "qglobal.h"
 #include "qhashfunctions.h"
 #include <cstdio>
@@ -13,16 +14,13 @@ void QuicWorker::authenticateSignIn(const QString &user_name,
 
     emit authenticationStarted();
 
-    Sign_in si;
+    SignInRequest si;
     si.set_user_name(user_name.toStdString());
     si.set_user_password(password.toStdString());
 
-    Auth a;
-    *a.mutable_sign_in() = si;
-
     qDebug() << "Signing in with user name: " << user_name;
 
-    Lxcode code = m_client.SignIn(a);
+    Lxcode code = m_client.SignIn(si);
 
     if (code == Lxcode::OK()) {
         qDebug() << "Sign in successful";
@@ -47,17 +45,14 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
     emit authenticationStarted();
 
 
-    Sign_up su;
+    SignUpRequest su;
     su.set_user_name(user_name.toStdString());
     su.set_user_email(user_email.toStdString());
     su.set_user_password(password.toStdString());
 
     qDebug() << "Signing up with user name: " << user_name;
 
-    Auth a;
-    *a.mutable_sign_up() = su;
-
-    Lxcode code = m_client.SignUp(a);
+    Lxcode code = m_client.SignUp(su);
 
     if (code == Lxcode::OK()) {
         qDebug() << "Sign up successful";
@@ -95,7 +90,20 @@ void QuicWorker::addDm(const QString &user_name, const QString &m_user_name){
 
 
 void QuicWorker::fetchContacts(const QString &user_id){
+    Request rpc_request;
+    Body rpc_body;
+    FetchContacts f_contacts;
 
+    *f_contacts.mutable_user_id() = user_id.toStdString();
+    *rpc_body.mutable_f_contacts() = f_contacts;
+    *rpc_request.mutable_body() = rpc_body;
+
+    Lxcode code = m_client.getContacts(rpc_request);
+
+    if(code == Lxcode::OK()){
+        qDebug() << "Fetched successfully";
+        return;
+    }
 }
 
 void QuicWorker::fetchDmMessages(const QString &id, const QString &user_name){
