@@ -56,21 +56,21 @@ void QuicClientWrapper::disconnect()
     m_client->Disconnect();
 }
 
-void QuicClientWrapper::send(){
-    User u;
-    u.set_user_name("Akzestia");
-    u.set_user_email("akzestia@gmail.com");
+// void QuicClientWrapper::send(){
+//     User u;
+//     u.set_user_name("Akzestia");
+//     u.set_user_email("akzestia@gmail.com");
 
-    Sign_up su;
-    su.set_user_email(u.user_email());
-    su.set_user_name(u.user_name());
+//     Sign_up su;
+//     su.set_user_email(u.user_email());
+//     su.set_user_name(u.user_name());
 
-    Wrapper w;
-    *w.mutable_auth()->mutable_sign_up() = su;
-    w.set_route(0x01);
+//     Wrapper w;
+//     *w.mutable_auth()->mutable_sign_up() = su;
+//     w.set_route(0x01);
 
-    m_client->send(w);
-}
+//     m_client->send(w);
+// }
 
 void QuicClientWrapper::signIn(const QString &user_name, const QString &password){
     qDebug() << "Sign in";

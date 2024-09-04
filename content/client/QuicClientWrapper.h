@@ -30,7 +30,7 @@ class QuicClientWrapper : public QObject {
     QString user_avatar() const;
 
     Q_INVOKABLE void connect();
-    Q_INVOKABLE void send();
+    // Q_INVOKABLE void send();
     Q_INVOKABLE void disconnect();
 
 
