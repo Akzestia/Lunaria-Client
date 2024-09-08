@@ -1,6 +1,6 @@
 ### Building client
 ## Todo
-
+> Note: client is still under development, so it's not yet possible to build it from source code
 ```sh
 mkdir build
 cd build
