@@ -3,9 +3,9 @@
 > Note: client is still under development, so it's not yet possible to build it from source code
 
 ### Clone the repository
-```git
-git clone https://github.com/Akzestia/Lunaria.git
-cd Lunaria
+```sh
+git clone https://github.com/Akzestia/Lunaria-Client.git
+cd Lunaria-Client
 ```
 ### Create build directory
 ```sh
