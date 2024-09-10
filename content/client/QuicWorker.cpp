@@ -4,6 +4,7 @@
 #include "qglobal.h"
 #include "qhashfunctions.h"
 #include <cstdio>
+#include <memory>
 
 QuicWorker::~QuicWorker() {}
 
@@ -20,14 +21,15 @@ void QuicWorker::authenticateSignIn(const QString &user_name,
 
     qDebug() << "Signing in with user name: " << user_name;
 
-    Lxcode code = m_client.SignIn(si);
+    Arena arena;
+    Lxcode code = m_client.SignIn(si, arena);
 
     if (code == Lxcode::OK()) {
         qDebug() << "Sign in successful";
         qDebug() << code.response.c_str();
         emit authenticationFinished();
         AuthResponse ar;
-        ar = *std::get<AuthResponse *>(code.payload);
+        ar = *std::get<AuthResponse*>(code.payload);
         emit authenticationSucceeded(ar);
         return;
     }
@@ -44,7 +46,6 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
 
     emit authenticationStarted();
 
-
     SignUpRequest su;
     su.set_user_name(user_name.toStdString());
     su.set_user_email(user_email.toStdString());
@@ -52,13 +53,14 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
 
     qDebug() << "Signing up with user name: " << user_name;
 
-    Lxcode code = m_client.SignUp(su);
+    Arena arena;
+    Lxcode code = m_client.SignUp(su, arena);
 
     if (code == Lxcode::OK()) {
         qDebug() << "Sign up successful";
         emit authenticationFinished();
         AuthResponse ar;
-        ar = *std::get<AuthResponse *>(code.payload);
+        ar = *std::get<AuthResponse*>(code.payload);
         emit authenticationSucceeded(ar);
         return;
     }
@@ -68,18 +70,17 @@ void QuicWorker::authenticateSignUp(const QString &user_name,
     emit authenticationFailed();
 }
 
-
-void QuicWorker::addDm(const QString &user_name, const QString &m_user_name){
+void QuicWorker::addDm(const QString &user_name, const QString &m_user_name) {
 
     qDebug() << "X user: " << user_name << "\nX email: " << m_user_name;
     Contact c;
     *c.mutable_a_user_name() = user_name.toStdString();
     *c.mutable_b_user_name() = m_user_name.toStdString();
 
+    Arena arena;
+    Lxcode code = m_client.AddContact(c, arena);
 
-    Lxcode code = m_client.AddContact(c);
-
-    if(code == Lxcode::OK()){
+    if (code == Lxcode::OK()) {
         qDebug() << "Contact Added successfully";
         return;
     }
@@ -88,24 +89,15 @@ void QuicWorker::addDm(const QString &user_name, const QString &m_user_name){
     // Lxcode code =
 }
 
+void QuicWorker::fetchContacts(const QString &user_id) {
 
-void QuicWorker::fetchContacts(const QString &user_id){
-    Request rpc_request;
-    Body rpc_body;
-    FetchContacts f_contacts;
+    Arena arena;
+    Lxcode code = m_client.getContacts(user_id.toStdString().c_str(), arena);
 
-    *f_contacts.mutable_user_id() = user_id.toStdString();
-    *rpc_body.mutable_f_contacts() = f_contacts;
-    *rpc_request.mutable_body() = rpc_body;
-
-    Lxcode code = m_client.getContacts(rpc_request);
-
-    if(code == Lxcode::OK()){
+    if (code == Lxcode::OK()) {
         qDebug() << "Fetched successfully";
         return;
     }
 }
 
-void QuicWorker::fetchDmMessages(const QString &id, const QString &user_name){
-
-}
+void QuicWorker::fetchDmMessages(const QString &id, const QString &user_name) {}
