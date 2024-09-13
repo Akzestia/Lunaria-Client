@@ -2,6 +2,7 @@
 #define QUICCLIENTWRAPPER_H
 
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
+#include "ContactListModel.h"
 #include "QuicWorker.h"
 #include "qcoreapplication.h"
 #include "qhashfunctions.h"
@@ -70,6 +71,8 @@ class QuicClientWrapper : public QObject {
     void fetchDmMessagesSignal(const QString &, const QString &);
 
   private:
+    ContactListModel m_contacts;
+
     std::string m_user_name;
     std::string m_user_email;
     std::string m_user_id;
