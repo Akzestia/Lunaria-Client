@@ -23,6 +23,7 @@ qt_add_resources(content "LoaderContent"
     FILES LoaderContent/Dms.qml
     FILES LoaderContent/Server.qml
     FILES LoaderContent/Settings.qml
+    FILES LoaderContent/Dms/Contact.qml
 )
 
 link_common_libraries(content)
