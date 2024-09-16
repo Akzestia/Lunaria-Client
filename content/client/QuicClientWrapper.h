@@ -3,7 +3,7 @@
 
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
 #include "ContactListModel.h"
-#include "QuicWorker.h"
+#include "QuicWorkerX.h"
 #include "qcoreapplication.h"
 #include "qhashfunctions.h"
 #include "qobjectdefs.h"
@@ -67,7 +67,7 @@ class QuicClientWrapper : public QObject {
     void messageReceived();
     void messageSent();
 
-    void fetchContactsSignal(const QString &);
+    void fetchContactsSignal(const std::string &);
     void fetchDmMessagesSignal(const QString &, const QString &);
 
   private:
@@ -79,7 +79,7 @@ class QuicClientWrapper : public QObject {
     std::string m_user_avatar;
 
     std::unique_ptr<QuicClient> m_client;
-    std::unique_ptr<QuicWorker> m_worker;
+    std::unique_ptr<QuicWorkerX> m_worker;
     bool m_isAuthenticated;
     bool m_isAuthenticating;
 

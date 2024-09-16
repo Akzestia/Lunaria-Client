@@ -3,8 +3,8 @@
 #include "qglobal.h"
 #include "qhashfunctions.h"
 #include "qobject.h"
+#include "qobjectdefs.h"
 #include "qthread.h"
-#include "QuicWorker.h"
 #include <memory>
 #include <QDebug>
 
@@ -19,22 +19,22 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
                             "/home/azure/LunariaClient/certs/server.cert",
                             "/home/azure/LunariaClient/certs/server.key");
 
-    m_worker = std::make_unique<QuicWorker>(m_client->getRef());
+    m_worker = std::make_unique<QuicWorkerX>(m_client->getRef());
     m_worker->moveToThread(&workerThread);
 
     //executing heavy compute tasks in worker tthread
     QObject::connect(&workerThread, &QThread::finished, m_worker.get(), &QObject::deleteLater);
-    QObject::connect(this, &QuicClientWrapper::authenticateSignIn, m_worker.get(), &QuicWorker::authenticateSignIn);
-    QObject::connect(this, &QuicClientWrapper::authenticateSignUp, m_worker.get(), &QuicWorker::authenticateSignUp);
-    QObject::connect(this, &QuicClientWrapper::addDmSignal, m_worker.get(), &QuicWorker::addDm);
+    QObject::connect(this, &QuicClientWrapper::authenticateSignIn, m_worker.get(), &QuicWorkerX::authenticateSignIn);
+    QObject::connect(this, &QuicClientWrapper::authenticateSignUp, m_worker.get(), &QuicWorkerX::authenticateSignUp);
+    QObject::connect(this, &QuicClientWrapper::addDmSignal, m_worker.get(), &QuicWorkerX::addDm);
 
-    QObject::connect(m_worker.get(), &QuicWorker::authenticationStarted, this, &QuicClientWrapper::authenticationStarted);
-    QObject::connect(m_worker.get(), &QuicWorker::authenticationFinished, this, &QuicClientWrapper::authenticationFinished);
-    QObject::connect(m_worker.get(), &QuicWorker::authenticationSucceeded, this, &QuicClientWrapper::authenticationSucceeded);
-    QObject::connect(m_worker.get(), &QuicWorker::authenticationFailed, this, &QuicClientWrapper::authenticationFailed);
+    QObject::connect(m_worker.get(), &QuicWorkerX::authenticationStarted, this, &QuicClientWrapper::authenticationStarted);
+    QObject::connect(m_worker.get(), &QuicWorkerX::authenticationFinished, this, &QuicClientWrapper::authenticationFinished);
+    QObject::connect(m_worker.get(), &QuicWorkerX::authenticationSucceeded, this, &QuicClientWrapper::authenticationSucceeded);
+    QObject::connect(m_worker.get(), &QuicWorkerX::authenticationFailed, this, &QuicClientWrapper::authenticationFailed);
 
-    QObject::connect(this, &QuicClientWrapper::fetchContactsSignal, m_worker.get(), &QuicWorker::fetchContacts);
-    QObject::connect(this, &QuicClientWrapper::fetchDmMessagesSignal, m_worker.get(), &QuicWorker::fetchDmMessages);
+    QObject::connect(this, &QuicClientWrapper::fetchContactsSignal, m_worker.get(), &QuicWorkerX::fetchContacts);
+    QObject::connect(this, &QuicClientWrapper::fetchDmMessagesSignal, m_worker.get(), &QuicWorkerX::fetchDmMessages);
 
     workerThread.start();
     qDebug() << "QuicClientWrapper created";
@@ -55,22 +55,6 @@ void QuicClientWrapper::disconnect()
 {
     m_client->Disconnect();
 }
-
-// void QuicClientWrapper::send(){
-//     User u;
-//     u.set_user_name("Akzestia");
-//     u.set_user_email("akzestia@gmail.com");
-
-//     Sign_up su;
-//     su.set_user_email(u.user_email());
-//     su.set_user_name(u.user_name());
-
-//     Wrapper w;
-//     *w.mutable_auth()->mutable_sign_up() = su;
-//     w.set_route(0x01);
-
-//     m_client->send(w);
-// }
 
 void QuicClientWrapper::signIn(const QString &user_name, const QString &password){
     qDebug() << "Sign in";
@@ -95,6 +79,7 @@ void QuicClientWrapper::authenticationSucceeded(const AuthResponse& response){
     m_user_id = response.user().user_id();
     m_user_avatar = response.user().user_avatar();
 
+    emit fetchContactsSignal(response.user().user_id());
     emit authenticatedSuccess();
 }
 
@@ -125,7 +110,7 @@ QString QuicClientWrapper::user_avatar() const {
 }
 
 void QuicClientWrapper::fetchContacts() {
-    emit fetchContactsSignal(user_id());
+    emit fetchContactsSignal(m_user_id);
 }
 
 void QuicClientWrapper::fetchDmMessages(const QString &user_name){
