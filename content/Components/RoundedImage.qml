@@ -2,10 +2,10 @@ import QtQuick
 import QtQuick.Effects
 
 Item {
-
+    id: xux
     property alias source: sourceItem.source
 
-    property real parentWidth: undefined
+    property real parentWidth: 0.0
     property real radiusX: parentWidth / 2
 
     width: parentWidth
@@ -13,16 +13,16 @@ Item {
 
     z: 9
     Component.onCompleted: {
-        console.log("sourceItem.width: " + sourceItem.width)
-        console.log("radius: " + radius)
+        // console.log("sourceItem.width: " + sourceItem.width)
+        // console.log("radius: " + radius)
     }
 
     Image {
         id: sourceItem
         source: "qrc:/images/assets/nightTab_backdrop.jpg"
         anchors.fill: parent
-        width: parant.width
-        height: parent.height
+        width: xux.width
+        height: xux.height
         visible: false
     }
 
