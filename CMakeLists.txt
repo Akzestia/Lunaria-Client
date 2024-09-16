@@ -25,6 +25,7 @@ qt_add_executable(LunariaClientApp
     ../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/error-manager/ErrorManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ConnectionManager/ConnectionManager.cpp
+    ../Documents/GitHub/Linux-x64-HTTP3/Helpers/ArenaMemoryResource/ArenaMemoryResource.hpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/fileChecks.hpp
     ../Documents/GitHub/Linux-x64-HTTP3/Helpers/AuthManager/AuthManager.cpp
     ../Documents/GitHub/Linux-x64-HTTP3/tokio-cpp/ThreadPool.cpp
