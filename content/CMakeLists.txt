@@ -23,7 +23,10 @@ qt_add_resources(content "LoaderContent"
     FILES LoaderContent/Dms.qml
     FILES LoaderContent/Server.qml
     FILES LoaderContent/Settings.qml
-    FILES LoaderContent/Dms/Contact.qml
+    FILES Components/Models/Contact.qml
+    FILES Components/Models/Invite.qml
+    FILES Components/Models/Report.qml
+    FILES Components/Models/Server.qml
 )
 
 link_common_libraries(content)
@@ -47,9 +50,10 @@ qt6_add_qml_module(content
         TranslationManager.h TranslationManager.cpp
         splashscreenmanager.h splashscreenmanager.cpp
         luaconfigmanager.h luaconfigmanager.cpp
-        client/QuicClientWrapper.cpp client/QuicClientWrapper.h
-        client/QuicWorker.cpp client/QuicWorker.h
-        UserStateManager/UserStateManager.cpp UserStateManager/UserStateManager.h
+        client/QuicClientWrapper.cpp
+        client/QuicWorkerX.cpp
+        client/ContactListModel.cpp
+        UserStateManager/UserStateManager.cpp
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
         ../../Documents/GitHub/Linux-x64-HTTP3/client/clientListenerModule/ClientListener.cpp
@@ -58,3 +62,4 @@ qt6_add_qml_module(content
 
 add_subdirectory(Components)
 add_subdirectory(conf)
+
