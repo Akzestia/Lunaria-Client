@@ -20,9 +20,6 @@ ApplicationWindow {
     visibility: "FullScreen"
     z: 1
     Component.onCompleted: {
-        // qClientWrapper.connect();
-        console.log("width: ", width);
-        console.log("height: ", height);
     }
 
     Shortcut {
