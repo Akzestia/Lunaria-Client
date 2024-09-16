@@ -1,3 +1,5 @@
+#ifndef CONTACT_LIST_MODEL_H
+#define CONTACT_LIST_MODEL_H
 #include <QAbstractListModel>
 #include <QObject>
 #include <QVariant>
@@ -26,3 +28,4 @@ class ContactListModel : public QAbstractListModel {
         OnlineStatusRole
     };
 };
+#endif // CONTACT_LIST_MODEL_H
