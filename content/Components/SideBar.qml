@@ -17,7 +17,7 @@ Rectangle {
     }
 
     onHeightChanged: {
-        console.log("SideBar height:", height);
+        // console.log("SideBar height:", height);
         if(height < 950)
             serverCarousel.pathItemCount = 5;
         if(height < 850)
@@ -111,7 +111,7 @@ Rectangle {
 
                     ListElement {
                         name: "Server 6"
-                        imageSource: "../content/assets/xuxu.jpeg"
+                        imageSource: "qrc:/images/assets/xuxu.jpeg"
                     }
 
                     ListElement {
@@ -135,7 +135,7 @@ Rectangle {
                         radius: 15
 
                         RoundedImage {
-                            source: imageSource ? imageSource : "../content/assets/DmsIcon.svg"
+                            source: imageSource ? imageSource : "qrc:/images/assets/DmsIcon.svg"
                             radiusX: radius
                         }
 
