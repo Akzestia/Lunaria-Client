@@ -27,4 +27,7 @@ QtObject {
     property string activeContentFieldColor: "#5A94D6";
     property string sideBarColor: "#FF141416";
     property string mainTextColor: "white";
+
+    //Dms - 1, Server - 2, Settings - 3
+    property int activeLoader: 1;
 }
