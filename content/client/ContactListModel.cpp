@@ -22,17 +22,21 @@ QVariant ContactListModel::data(const QModelIndex &index, int role) const {
     const QVariantMap &contact = m_contacts[index.row()];
     switch (role) {
     case UserIdRole:
-        return contact["user_id"];
+        return contact.value("user_id");
     case DisplayNameRole:
-        return contact["display_name"];
+        return contact.value("display_name");
     case UserNameRole:
-        return contact["user_name"];
+        return contact.value("user_name");
     case EmailRole:
-        return contact["user_email"];
+        return contact.value("user_email");
     case AvatarRole:
-        return contact["user_avatar"];
+        return contact.value("user_avatar");
     case OnlineStatusRole:
-        return contact["online_status"];
+        return contact.value("online_status");
+    case LastActivityRole:
+        return contact.value("last_activity");
+    case LastMessageRole:
+        return contact.value("last_message");
     default:
         return QVariant();
     }
@@ -40,11 +44,13 @@ QVariant ContactListModel::data(const QModelIndex &index, int role) const {
 
 QHash<int, QByteArray> ContactListModel::roleNames() const {
     QHash<int, QByteArray> roles;
-    roles[UserIdRole] = "userId";
-    roles[DisplayNameRole] = "displayName";
-    roles[UserNameRole] = "userName";
-    roles[EmailRole] = "email";
-    roles[AvatarRole] = "avatar";
-    roles[OnlineStatusRole] = "onlineStatus";
+    roles[UserIdRole] = "user_id";
+    roles[DisplayNameRole] = "display_name";
+    roles[UserNameRole] = "user_name";
+    roles[EmailRole] = "user_email";
+    roles[AvatarRole] = "user_avatar";
+    roles[OnlineStatusRole] = "online_status";
+    roles[LastActivityRole] = "last_activity";
+    roles[LastMessageRole] = "last_message";
     return roles;
 }
