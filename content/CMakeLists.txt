@@ -13,17 +13,28 @@ qt_add_resources(content "images"
     FILES assets/DmsIcon.svg
     FILES assets/Kisara.png
     FILES assets/EngageKiss_1.png
+    FILES assets/EngageKiss_2.png
     FILES assets/plus.svg
     FILES assets/Bochi.png
     FILES assets/RemRam.png
+    FILES assets/Send.png
+    FILES assets/Attach.png
+    FILES assets/Noise.png
+    FILES assets/HeadPhones.svg
+    FILES assets/Muted.png
+    FILES assets/Mic.svg
+    FILES assets/Settings.png
+    FILES assets/SettingsActive.png
+    FILES assets/Send.svg
+    FILES assets/Attach.svg
+    FILES assets/oui_arrow-up.svg
 )
 
 qt_add_resources(content "LoaderContent"
-    PREFIX "/"
+    PREFIX "/LoaderContent"
     FILES LoaderContent/Dms.qml
     FILES LoaderContent/Server.qml
     FILES LoaderContent/Settings.qml
-    FILES Components/Models/Contact.qml
     FILES Components/Models/Invite.qml
     FILES Components/Models/Report.qml
     FILES Components/Models/Server.qml
@@ -39,6 +50,7 @@ qt6_add_qml_module(content
         App.qml
         SignIn.qml
         SignUp.qml
+        Components/Models/Contact.qml
     RESOURCES
         fonts/fonts.txt
         fonts/NotoColorEmoji-Regular.ttf
