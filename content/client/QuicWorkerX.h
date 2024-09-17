@@ -2,6 +2,7 @@
 #define QUICWORKERX_H
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/authResponse.pb.h"
+#include "ContactListModel.h"
 #include <QDebug>
 #include <QObject>
 
@@ -10,8 +11,9 @@ class QuicWorkerX : public QObject {
 
   private:
     QuicClient& m_client;
+    ContactListModel& m_contact_model;
   public:
-    QuicWorkerX(QuicClient& client);
+    QuicWorkerX(QuicClient& client, ContactListModel &c_model);
     ~QuicWorkerX();
   public slots:
     void authenticateSignIn(const QString &user_name, const QString &password);

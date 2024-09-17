@@ -1,17 +1,19 @@
 #include "QuicWorkerX.h"
+#include "../../../Documents/GitHub/Linux-x64-HTTP3/Helpers/ArenaMemoryResource/ArenaMemoryResource.hpp"
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_body.pb.h"
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/proto/build/rpc_request.pb.h"
-#include "../../../Documents/GitHub/Linux-x64-HTTP3/Helpers/ArenaMemoryResource/ArenaMemoryResource.hpp"
+#include "ContactListModel.h"
 #include "qglobal.h"
 #include "qhashfunctions.h"
 #include <cstdio>
 
 QuicWorkerX::~QuicWorkerX() {}
 
-QuicWorkerX::QuicWorkerX(QuicClient &client) : m_client(client) {}
+QuicWorkerX::QuicWorkerX(QuicClient &client, ContactListModel &c_model)
+    : m_client(client), m_contact_model(c_model) {}
 
 void QuicWorkerX::authenticateSignIn(const QString &user_name,
-                                    const QString &password) {
+                                     const QString &password) {
 
     emit authenticationStarted();
 
@@ -29,7 +31,7 @@ void QuicWorkerX::authenticateSignIn(const QString &user_name,
         qDebug() << code.response.c_str();
         emit authenticationFinished();
         AuthResponse ar;
-        ar = *std::get<AuthResponse*>(code.payload);
+        ar = *std::get<AuthResponse *>(code.payload);
         emit authenticationSucceeded(ar);
         return;
     }
@@ -41,8 +43,8 @@ void QuicWorkerX::authenticateSignIn(const QString &user_name,
 }
 
 void QuicWorkerX::authenticateSignUp(const QString &user_name,
-                                    const QString &user_email,
-                                    const QString &password) {
+                                     const QString &user_email,
+                                     const QString &password) {
 
     emit authenticationStarted();
 
@@ -60,7 +62,7 @@ void QuicWorkerX::authenticateSignUp(const QString &user_name,
         qDebug() << "Sign up successful";
         emit authenticationFinished();
         AuthResponse ar;
-        ar = *std::get<AuthResponse*>(code.payload);
+        ar = *std::get<AuthResponse *>(code.payload);
         emit authenticationSucceeded(ar);
         return;
     }
@@ -89,7 +91,7 @@ void QuicWorkerX::addDm(const QString &user_name, const QString &m_user_name) {
     // Lxcode code =
 }
 
-void QuicWorkerX::fetchContacts(const std::string& ar){
+void QuicWorkerX::fetchContacts(const std::string &ar) {
     std::cout << ar << "\n";
     Arena arena;
     Lxcode code = m_client.GetContacts(ar.c_str(), arena);
@@ -97,12 +99,38 @@ void QuicWorkerX::fetchContacts(const std::string& ar){
     if (code == Lxcode::OK()) {
         qDebug() << "Contacts fetched successfully";
 
-        ArenaVector<User>* v_users = std::get<ArenaVector<User>*>(code.payload);
+        ArenaVector<User> *v_users =
+            std::get<ArenaVector<User> *>(code.payload);
         qDebug() << "Total user count: " << v_users->size();
+
+        auto b = v_users->begin();
+        auto e = v_users->end();
+
+        for (; b != e; ++b) {
+            const User &user = *b;
+            QVariantMap contactData;
+
+            qDebug() << "UNAME: " << user.user_name().c_str();
+
+            contactData["user_id"] = QString::fromStdString(user.user_id());
+            contactData["display_name"] =
+                QString::fromStdString(user.display_name());
+            contactData["user_name"] = QString::fromStdString(user.user_name());
+            contactData["user_email"] =
+                QString::fromStdString(user.user_email());
+            contactData["user_avatar"] =
+                QString::fromStdString(user.user_avatar());
+            contactData["online_status"] = user.online_status();
+
+            m_contact_model.addUser(contactData);
+        }
+        qDebug() << "Contacts in model ::::: " << m_contact_model.rowCount() << "\n";
+
         return;
     }
 
     qDebug() << "Failed to fetch contacts";
 }
 
-void QuicWorkerX::fetchDmMessages(const QString &id, const QString &user_name) {}
+void QuicWorkerX::fetchDmMessages(const QString &id, const QString &user_name) {
+}
