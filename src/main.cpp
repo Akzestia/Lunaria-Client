@@ -6,6 +6,7 @@
 #include "../content/client/QuicClientWrapper.h"
 #include "../content/luaconfigmanager.h"
 #include "../content/window-manager/window-manager.h"
+#include "../content/client/ContactListModel.h"
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
@@ -30,6 +31,8 @@ int main(int argc, char *argv[]) {
 
     WindowManager windowManager(&engine);
 
+    ContactListModel contactListModel(&engine);
+
     TranslationManager translationManager(&engine);
     const char* lang = getenv("LUNARIA_CLIENT_LANGUAGE") ? getenv("LUNARIA_CLIENT_LANGUAGE") : "en";
     translationManager.changeLanguage(lang);
@@ -46,6 +49,7 @@ int main(int argc, char *argv[]) {
                                              &luaConfigManager);
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
     engine.rootContext()->setContextProperty("windowManager", &windowManager);
+    engine.rootContext()->setContextProperty("contactListModel", qClientWrapper.getModel().get());
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(
