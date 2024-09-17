@@ -27,7 +27,8 @@ ApplicationWindow {
         onActivated: {
             if (GlobalProperties.addDmVisible)
                 GlobalProperties.addDmVisible = false;
-
+            if(messageInput.focus)
+                messageInput.focus = false;
         }
     }
 
@@ -49,7 +50,7 @@ ApplicationWindow {
     Loader {
         id: contentLoader
 
-        source: "qrc:/LoaderContent/Dms.qml"
+        source: "qrc:/LoaderContent/LoaderContent/Dms.qml"
 
         anchors {
             top: parent.top
