@@ -24,6 +24,7 @@ Item {
         width: xux.width
         height: xux.height
         visible: false
+         fillMode: Image.PreserveAspectCrop
     }
 
     MultiEffect {
