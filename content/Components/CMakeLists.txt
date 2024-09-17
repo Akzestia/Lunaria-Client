@@ -19,6 +19,8 @@ qt6_add_qml_module(xComponents
         SideBar.qml
         GlobalProperties.qml
         Popups/AddDm.qml
+        Models/Contact.qml
     RESOURCES
         # Shaders/roundImage.qsb
 )
+
