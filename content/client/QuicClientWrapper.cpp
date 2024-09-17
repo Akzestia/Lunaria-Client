@@ -1,4 +1,5 @@
 #include "QuicClientWrapper.h"
+#include "ContactListModel.h"
 #include "qdebug.h"
 #include "qglobal.h"
 #include "qhashfunctions.h"
@@ -18,8 +19,9 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
                             "nexus",
                             "/home/azure/LunariaClient/certs/server.cert",
                             "/home/azure/LunariaClient/certs/server.key");
+    m_c_model = std::make_unique<ContactListModel>();
 
-    m_worker = std::make_unique<QuicWorkerX>(m_client->getRef());
+    m_worker = std::make_unique<QuicWorkerX>(m_client->getRef(), *m_c_model);
     m_worker->moveToThread(&workerThread);
 
     //executing heavy compute tasks in worker tthread
@@ -38,6 +40,10 @@ QuicClientWrapper::QuicClientWrapper(QObject *parent)
 
     workerThread.start();
     qDebug() << "QuicClientWrapper created";
+}
+
+std::unique_ptr<ContactListModel>& QuicClientWrapper::getModel(){
+    return m_c_model;
 }
 
 QuicClientWrapper::~QuicClientWrapper()

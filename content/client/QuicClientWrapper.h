@@ -25,6 +25,9 @@ class QuicClientWrapper : public QObject {
     explicit QuicClientWrapper(QObject *parent = nullptr);
     ~QuicClientWrapper();
 
+
+    std::unique_ptr<ContactListModel>& getModel();
+
     QString user_name() const;
     QString user_email() const;
     QString user_id() const;
@@ -80,6 +83,7 @@ class QuicClientWrapper : public QObject {
 
     std::unique_ptr<QuicClient> m_client;
     std::unique_ptr<QuicWorkerX> m_worker;
+    std::unique_ptr<ContactListModel> m_c_model;
     bool m_isAuthenticated;
     bool m_isAuthenticating;
 
