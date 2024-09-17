@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
+import LunariaGlobalProperties 1.0
+import QtQuick.Dialogs
 
 Rectangle {
     id: chatArea
@@ -29,10 +31,8 @@ Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: 60
             Layout.alignment: Qt.AlignTop
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "#2C2F33" }
-                GradientStop { position: 1.0; color: "#23272A" }
-            }
+            color: "transparent"
+
             radius: 10
 
             RowLayout {
@@ -44,23 +44,25 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     text: "Chat"
-                    font.pixelSize: 24
-                    font.bold: true
-                    color: "#FFFFFF"
+                    font.pixelSize: 18
+                    color: GlobalProperties.secondaryTextColor
                     verticalAlignment: Text.AlignVCenter
                 }
 
                 Button {
-                    text: "⋮"
+                    text: "..."
                     font.pixelSize: 24
                     flat: true
                     background: Rectangle {
                         color: "transparent"
                     }
+
+                    Layout.topMargin: -15
+
                     contentItem: Text {
                         text: parent.text
                         font: parent.font
-                        color: parent.down ? "#A0A0A0" : "#FFFFFF"
+                        color: parent.down ? GlobalProperties.mainTextColor : GlobalProperties.secondaryTextColor
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
@@ -90,62 +92,91 @@ Rectangle {
             ScrollBar.vertical: ScrollBar {}
         }
 
+        Shortcut {
+            sequence: StandardKey.Cancel // This corresponds to the Esc key
+            onActivated: {
+                if (messageInput.focus)
+                    messageInput.focus = false;
+            }
+        }
+
         Rectangle {
             id: textInputArea
             Layout.fillWidth: true
-            Layout.preferredHeight: Math.min(messageInput.implicitHeight + 20, 200) // Max height of 200
-            color: "#2C2F33"
+            Layout.preferredHeight: Math.min(messageInput.contentHeight + 46, 200) // Max height of 200
+            color: GlobalProperties.chatFieldColor
             radius: 10
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
+            Layout.bottomMargin: 20
 
             RowLayout {
                 anchors.fill: parent
-                anchors.margins: 10
-                spacing: 10
 
                 ScrollView {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: Math.min(messageInput.implicitHeight, 180) // Max height of 180
-                    clip: true
-
+                    id: sc_v
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                    Layout.preferredHeight: Math.min(messageInput.contentHeight + 38, 200)
+                    Layout.bottomMargin: 20
+                    anchors {
+                        left: parent.left
+                        right: add_file_btn.left
+                        leftMargin: 15
+                        bottomMargin: 10
+                    }
                     TextArea {
                         id: messageInput
-                        placeholderText: "Type a message..."
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                        placeholderText: "Type..."
                         wrapMode: TextEdit.Wrap
-                        selectByMouse: true
-                        topPadding: 15
-                        background: Rectangle {
-                            color: "#40000000"
-                            radius: 5
-                        }
-                        color: "#FFFFFF"
+                        width: sc_v.width - 20
                         font.pixelSize: 16
+                        anchors.bottomMargin: 10
 
-                        Keys.onReturnPressed: {
-                            if (event.modifiers & Qt.ShiftModifier) {
-                                insert(cursorPosition, "\n");
-                            } else {
-                                sendMessage();
-                                event.accepted = true;
-                            }
-                        }
+                        color: GlobalProperties.mainTextColor
+
+                        // background: Rectangle {
+                        //     color: "transparent"
+                        //     border.width: 0
+                        // }
+
+                    }
+                    clip: true
+                }
+
+
+                Rectangle {
+                    id: add_file_btn
+                    Layout.preferredHeight: 30
+                    Layout.preferredWidth: 24
+
+                    color: "transparent"
+
+                    Image {
+                        anchors.fill: parent
+                        source: "qrc:/images/assets/Attach.svg"
+                    }
+                    anchors {
+                        right: send_btn.left
                     }
                 }
 
-                Button {
-                    text: "Send"
-                    font.pixelSize: 16
-                    background: Rectangle {
-                        color: parent.down ? "#3498db" : "#2980b9"
-                        radius: 5
+                Rectangle {
+                    id: send_btn
+
+                    Layout.preferredHeight: 29
+                    Layout.preferredWidth: 31
+
+                    color: "transparent"
+
+                    Image {
+                        anchors.fill: parent
+                        source: "qrc:/images/assets/Send.svg"
                     }
-                    contentItem: Text {
-                        text: parent.text
-                        font: parent.font
-                        color: "#FFFFFF"
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
+
+                    anchors {
+                        right: parent.right
                     }
-                    onClicked: sendMessage()
                 }
             }
         }
