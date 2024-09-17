@@ -1,11 +1,12 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import LunariaGlobalProperties 1.0
 
 Rectangle {
     id: onlineIndicator
     width: 20
     height: 20
-    color: "lime"
+    color: GlobalProperties.onlineStatusColor_Online.toLowerCase()
     border.color: "black"
     border.width: 2
     radius: 30
@@ -26,12 +27,13 @@ Rectangle {
         onClicked: {
             console.log("Clicked")
             console.log(onlineIndicator.color)
-            if (onlineIndicator.color == "#00ff00") {
+            console.log(GlobalProperties.onlineStatusColor_Online.toLowerCase())
+            if (onlineIndicator.color == GlobalProperties.onlineStatusColor_Online.toLowerCase()) {
                 console.log("Changing to red")
-                onlineIndicator.color = "red"
+                onlineIndicator.color = GlobalProperties.onlineStatusColor_Offline
             } else {
                 console.log("Changing to lime")
-                onlineIndicator.color = "lime"
+                onlineIndicator.color = GlobalProperties.onlineStatusColor_Online
             }
         }
     }
