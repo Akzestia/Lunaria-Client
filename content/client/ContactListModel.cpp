@@ -54,3 +54,11 @@ QHash<int, QByteArray> ContactListModel::roleNames() const {
     roles[LastMessageRole] = "last_message";
     return roles;
 }
+
+QVariantMap ContactListModel::get(int index) const
+{
+    if (index < 0 || index >= m_contacts.size()) {
+        return QVariantMap(); // Return an empty map if the index is out of bounds
+    }
+    return m_contacts.at(index);
+}
