@@ -31,8 +31,6 @@ int main(int argc, char *argv[]) {
 
     WindowManager windowManager(&engine);
 
-    ContactListModel contactListModel(&engine);
-
     TranslationManager translationManager(&engine);
     const char* lang = getenv("LUNARIA_CLIENT_LANGUAGE") ? getenv("LUNARIA_CLIENT_LANGUAGE") : "en";
     translationManager.changeLanguage(lang);
@@ -50,6 +48,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("qClientWrapper", &qClientWrapper);
     engine.rootContext()->setContextProperty("windowManager", &windowManager);
     engine.rootContext()->setContextProperty("contactListModel", qClientWrapper.getModel().get());
+    engine.rootContext()->setContextProperty("messageListModel", qClientWrapper.getMessageModel().get());
 
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
     QObject::connect(
