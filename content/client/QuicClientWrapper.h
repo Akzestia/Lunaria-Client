@@ -3,6 +3,7 @@
 
 #include "../../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h"
 #include "ContactListModel.h"
+#include "MessageListModel.h"
 #include "QuicWorkerX.h"
 #include "qcoreapplication.h"
 #include "qhashfunctions.h"
@@ -27,6 +28,7 @@ class QuicClientWrapper : public QObject {
 
 
     std::unique_ptr<ContactListModel>& getModel();
+    std::unique_ptr<MessageListModel>& getMessageModel();
 
     QString user_name() const;
     QString user_email() const;
@@ -34,7 +36,7 @@ class QuicClientWrapper : public QObject {
     QString user_avatar() const;
 
     Q_INVOKABLE void connect();
-    // Q_INVOKABLE void send();
+    Q_INVOKABLE void send(const QString &messageText, const QString &receiver, const QList<QString> &filePaths = QList<QString>());
     Q_INVOKABLE void disconnect();
 
 
@@ -47,7 +49,7 @@ class QuicClientWrapper : public QObject {
     // Q_INVOKABLE void fetchServers();
     // Q_INVOKABLE void fetchChannels(const QString &server_id);
     // Q_INVOKABLE void fetchChannelMessages(const QString &channel_id);
-    Q_INVOKABLE void fetchDmMessages(const QString &user_name);
+    Q_INVOKABLE void fetchDmMessages(int c_model_index);
 
     bool isAuthenticated() const { return m_isAuthenticated; }
     bool isAuthenticating() const { return m_isAuthenticating; }
@@ -71,7 +73,9 @@ class QuicClientWrapper : public QObject {
     void messageSent();
 
     void fetchContactsSignal(const std::string &);
-    void fetchDmMessagesSignal(const QString &, const QString &);
+    void fetchDmMessagesSignal(const char *, int);
+
+    void sendMessage(const QString &messageText, std::string sender, std::string receiver, const QList<QString> &filePaths = QList<QString>());
 
   private:
     ContactListModel m_contacts;
@@ -84,6 +88,7 @@ class QuicClientWrapper : public QObject {
     std::unique_ptr<QuicClient> m_client;
     std::unique_ptr<QuicWorkerX> m_worker;
     std::unique_ptr<ContactListModel> m_c_model;
+    std::unique_ptr<MessageListModel> m_l_model;
     bool m_isAuthenticated;
     bool m_isAuthenticating;
 
