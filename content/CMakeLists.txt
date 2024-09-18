@@ -23,11 +23,13 @@ qt_add_resources(content "images"
     FILES assets/HeadPhones.svg
     FILES assets/Muted.png
     FILES assets/Mic.svg
-    FILES assets/Settings.png
-    FILES assets/SettingsActive.png
+    FILES assets/Settings.svg
+    FILES assets/SettingsActive.svg
     FILES assets/Send.svg
     FILES assets/Attach.svg
     FILES assets/oui_arrow-up.svg
+    FILES assets/Notification.svg
+    FILES assets/404.svg
 )
 
 qt_add_resources(content "LoaderContent"
@@ -38,6 +40,7 @@ qt_add_resources(content "LoaderContent"
     FILES Components/Models/Invite.qml
     FILES Components/Models/Report.qml
     FILES Components/Models/Server.qml
+    FILES LoaderContent/Settings/General.qml
 )
 
 link_common_libraries(content)
@@ -65,6 +68,7 @@ qt6_add_qml_module(content
         client/QuicClientWrapper.cpp
         client/QuicWorkerX.cpp
         client/ContactListModel.cpp
+        client/MessageListModel.cpp
         UserStateManager/UserStateManager.cpp
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.h
         ../../Documents/GitHub/Linux-x64-HTTP3/client/QuicClient.cpp
