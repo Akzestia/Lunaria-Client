@@ -50,7 +50,7 @@ ApplicationWindow {
     Loader {
         id: contentLoader
 
-        source: "qrc:/LoaderContent/LoaderContent/Dms.qml"
+        source: GlobalProperties.activeLoaderSource
 
         anchors {
             top: parent.top
