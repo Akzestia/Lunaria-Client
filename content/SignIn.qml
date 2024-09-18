@@ -163,6 +163,10 @@ ApplicationWindow {
                     placeholder_gap_upassword.opacity = 0;
             }
 
+            validator: RegularExpressionValidator {
+                regularExpression: /^[a-zA-Z0-9]{3,20}$/
+            }
+
             background: Rectangle {
                 anchors.fill: parent
                 radius: 8
