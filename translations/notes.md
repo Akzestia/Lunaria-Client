@@ -2,6 +2,7 @@
 ## Generating Translations Files
 ```
 lupdate content/*.cpp content/*.h content/*.qml -ts translations/translations_uk.ts translations/translations_ja.ts translations/translations_en.ts
+lupdate content/ -recursive -ts translations/translations_uk.ts translations/translations_ja.ts translations/translations_en.ts
 ```
 
 
