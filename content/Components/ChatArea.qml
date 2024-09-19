@@ -4,6 +4,7 @@ import QtQuick.Effects
 import QtQuick.Layouts
 import LunariaGlobalProperties 1.0
 import QtQuick.Dialogs
+import xComponents
 
 Rectangle {
     id: chatArea
@@ -83,21 +84,20 @@ Rectangle {
         }
 
         ListView {
-            id: chatListView
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            clip: true
-            model: chatRepeater
-            spacing: 10
-            ScrollBar.vertical: ScrollBar {}
-        }
+            id: list_s
 
-        Shortcut {
-            sequence: StandardKey.Cancel // This corresponds to the Esc key
-            onActivated: {
-                if (messageInput.focus)
-                    messageInput.focus = false;
+            anchors.fill: parent
+            anchors.leftMargin: 35
+            anchors.rightMargin: 35
+            anchors.topMargin: 55
+            spacing: 12
+
+            model: messageListModel
+
+            delegate: MessageDelegate {
+
             }
+
         }
 
         Rectangle {
@@ -108,7 +108,8 @@ Rectangle {
             radius: 10
             Layout.leftMargin: 20
             Layout.rightMargin: 20
-            Layout.bottomMargin: 20
+
+            anchors.bottom: parent.bottom
 
             RowLayout {
                 anchors.fill: parent
@@ -135,6 +136,7 @@ Rectangle {
 
                         color: GlobalProperties.mainTextColor
 
+
                         // background: Rectangle {
                         //     color: "transparent"
                         //     border.width: 0
@@ -159,6 +161,14 @@ Rectangle {
                     anchors {
                         right: send_btn.left
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            console.log("Count: " + messageListModel.rowCount)
+                            console.log("Count: " + contactListModel.rowCount)
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -176,6 +186,13 @@ Rectangle {
 
                     anchors {
                         right: parent.right
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            qClientWrapper.send(messageInput.text, GlobalProperties.currentReceiverDm.u_name)
+                        }
                     }
                 }
             }
