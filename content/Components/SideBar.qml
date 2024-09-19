@@ -45,7 +45,13 @@ Rectangle {
             Layout.preferredHeight: 60
             Layout.topMargin: 15
             radius: 10
-            color: GlobalProperties.activeContentFieldColor
+            color: GlobalProperties.activeLoaderSource === "qrc:/LoaderContent/LoaderContent/Dms.qml" ? GlobalProperties.activeContentFieldColor : "#B8B8B8"
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                }
+            }
 
             Image {
                 anchors.centerIn: parent
@@ -56,7 +62,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     console.log("DMS clicked");
-                    contentLoader.source = "qrc:/LoaderContent/LoaderContent/Dms.qml";
+                    GlobalProperties.activeLoaderSource = "qrc:/LoaderContent/LoaderContent/Dms.qml";
                 }
             }
 
