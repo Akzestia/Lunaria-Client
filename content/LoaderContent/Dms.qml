@@ -12,12 +12,23 @@ Rectangle {
     implicitWidth: grid.implicitWidth
     color: "transparent"
     onWidthChanged: {
-        if (width < 1200) {
+        if (width < 1200 || GlobalProperties.currentReceiverDm.index == -1) {
             userInfo.opacity = 0;
             userInfo.Layout.topMargin = 80;
         } else {
             userInfo.opacity = 1;
             userInfo.Layout.topMargin = 20;
+        }
+    }
+
+    Connections {
+        target: GlobalProperties
+        onReceiverChanged: {
+            console.log("Receiver changed to:", GlobalProperties.currentReceiverDm.u_name);
+            if(GlobalProperties.currentReceiverDm.inde != -1 && width > 1200){
+                userInfo.opacity = 1;
+                userInfo.Layout.topMargin = 20;
+            }
         }
     }
 

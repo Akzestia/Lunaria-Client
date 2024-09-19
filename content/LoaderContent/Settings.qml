@@ -2,6 +2,7 @@ import LunariaClient
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import xComponents
 
 Rectangle {
     id: contentWrapper
@@ -11,22 +12,27 @@ Rectangle {
 
     color: "transparent"
 
-    GridLayout {
-        anchors.fill: parent
-        id: grid
-        columns: 3
+    ToggleControlPanel {
+        id: toggleControlPanel
+    }
 
-        Rectangle {
-            id: xuxu
-            Layout.row: 0
-            Layout.column: 0
-            Layout.columnSpan: 3
-            color: "white"
-            radius: 10
-            implicitWidth: parent.width
-            implicitHeight: 60
-            Layout.topMargin: 48
-            Layout.alignment: Qt.AlignTop | Qt.AlignCenter
+    GridLayout {
+        id: grid
+        anchors.fill: parent
+
+        columns: 3
+        rows: 3
+
+        ControlPanel {
+            id: controlPanel
+        }
+
+        SettingsNavbar {
+
+        }
+
+        SettingsArea {
+
         }
     }
 }
