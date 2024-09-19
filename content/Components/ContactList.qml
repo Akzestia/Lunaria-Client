@@ -1,7 +1,7 @@
+import LunariaGlobalProperties 1.0
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import LunariaGlobalProperties 1.0
 
 Rectangle {
     id: contactList
@@ -33,14 +33,12 @@ Rectangle {
             Layout.preferredHeight: 50
             color: "#E0141416"
             radius: 10
-
             bottomLeftRadius: 0
             bottomRightRadius: 0
             border.color: "#E0141416"
             border.width: 1
 
-
-            RowLayout{
+            RowLayout {
                 anchors.fill: parent
                 anchors.leftMargin: 20
 
@@ -69,8 +67,8 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.leftMargin: 7
                 }
-            }
 
+            }
 
             Rectangle {
                 id: contactListHeaderButton
@@ -136,23 +134,54 @@ Rectangle {
         }
 
         ListView {
+            id: contactListView
 
             Layout.topMargin: 10
-
-            id: contactListView
             spacing: 8
             Layout.fillWidth: true
             Layout.fillHeight: true
-
             model: contactListModel
+            currentIndex: GlobalProperties.currentReceiverDm.index === -1 ? contactListView.currentIndex : GlobalProperties.currentReceiverDm.index
 
             delegate: Contact {
                 width: contactListView.width
                 height: 100
                 pWidth: contactListView.width
                 pHeight: 100
+                currentIndex: contactListView.currentIndex
+                index: model.index
             }
+
+            // highlight: Rectangle {
+            //     color: "blue"
+            // }
+
         }
+
+    }
+
+    Connections {
+        function onCurrentIndexChanged() {
+            // Add avatar fetching logic here if needed
+            // Add status fetching logic here if needed
+
+            let index = contactListView.currentIndex;
+            let userName = contactListModel.get(index).user_name;
+            // Reassign the entire object
+            GlobalProperties.currentReceiverDm = {
+                "index": index,
+                "u_name": userName,
+                "u_avatar": "",
+                "u_status": ""
+            };
+            GlobalProperties.receiverChanged();
+            console.log(GlobalProperties.currentReceiverDm.index);
+            console.log(GlobalProperties.currentReceiverDm.u_name);
+
+            qClientWrapper.fetchDmMessages(index);
+        }
+
+        target: contactListView
     }
 
 }
