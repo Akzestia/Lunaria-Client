@@ -2,6 +2,8 @@ import QtQuick
 pragma Singleton
 
 QtObject {
+    signal receiverChanged()
+
     property string timeFormat: "24h"; //12h
     property string dateFormat: "";
 
@@ -44,6 +46,16 @@ QtObject {
 
     property string chatFieldColor: "#34343B";
 
+    property var currentReceiverDm: {
+        "index": -1,
+        "u_id":  "",
+        "u_name": "",
+        "u_avatar": "",
+        "u_status": "",
+    }
+
     //Dms - 1, Server - 2, Settings - 3
-    property int activeLoader: 1;
+    property string activeLoaderSource: "qrc:/LoaderContent/LoaderContent/Dms.qml";
+    property string activeSettingsSource: "qrc:/LoaderContent/LoaderContent/Settings/General.qml";
+    property int language: 0;
 }
