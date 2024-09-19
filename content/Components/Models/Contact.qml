@@ -8,18 +8,30 @@ Item {
     property real pWidth: 0
     property real pHeight: 0
     property real rItem: 12
-    property bool isSelected: false
+    property int index
+    property int currentIndex: -1 // Received from the parent ListView
+    property ListView listView: ListView.view
+    property string contactColor: listView.currentIndex === index ? GlobalProperties.contactSelectedColor : GlobalProperties.contactDefaultColor
 
     width: pWidth
     height: pHeight
 
     Rectangle {
-        id: contactItem
+        id: contact_item
+
+        function getColor() {
+            if (listView.currentIndex === index)
+                return GlobalProperties.contactSelectedColor;
+            else if (contactMA.containsMouse)
+                return GlobalProperties.contactHoverColor;
+            else
+                return GlobalProperties.contactDefaultColor;
+        }
 
         width: pWidth - 25
         height: pHeight
         radius: rItem
-        color: GlobalProperties.contactDefaultColor
+        color: contactColor
         z: 10
 
         anchors {
@@ -29,8 +41,9 @@ Item {
         }
 
         RowLayout {
-            anchors.fill: parent
             id: rlx
+
+            anchors.fill: parent
 
             Rectangle {
                 id: roundImageWrapper
@@ -38,7 +51,6 @@ Item {
                 width: pHeight - 35
                 height: pHeight - 35
                 color: "transparent"
-
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 Layout.leftMargin: 10
 
@@ -52,29 +64,27 @@ Item {
                     }
 
                 }
+
             }
 
-
             ColumnLayout {
-
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 anchors.left: roundImageWrapper.right
 
                 Text {
-
                     Layout.leftMargin: 25.8
-
                     color: GlobalProperties.mainTextColor
                     font.pixelSize: 18
                     text: model.user_name
                 }
+
                 Text {
                     Layout.leftMargin: 25.8
-
                     color: GlobalProperties.secondaryTextColor
                     font.pixelSize: 12
                     text: model.last_message ? model.last_message : "Last message from " + model.user_name
                 }
+
             }
 
             Text {
@@ -87,12 +97,20 @@ Item {
                 Layout.rightMargin: 8
                 text: {
                     var date = new Date();
-                    var options = {};
+                    var options = {
+                    };
                     if (GlobalProperties.timeFormat === "24h")
-                        options = { hour: '2-digit', minute: '2-digit', hour12: false };
+                        options = {
+                        "hour": '2-digit',
+                        "minute": '2-digit',
+                        "hour12": false
+                    };
                     else
-                        options = { hour: '2-digit', minute: '2-digit', hour12: true };
-
+                        options = {
+                        "hour": '2-digit',
+                        "minute": '2-digit',
+                        "hour12": true
+                    };
                     return date.toLocaleTimeString([], options);
                 }
             }
@@ -102,18 +120,20 @@ Item {
         MouseArea {
             id: contactMA
 
-            width: pWidth
-            height: pHeight
+            anchors.fill: parent
             hoverEnabled: true
             onEntered: {
-                contactItem.color = isSelected ? GlobalProperties.contactSelectedColor : GlobalProperties.contactHoverColor;
+                if (listView.currentIndex !== index)
+                    parent.color = GlobalProperties.contactHoverColor;
+
             }
             onExited: {
-                contactItem.color = isSelected ? GlobalProperties.contactSelectedColor : GlobalProperties.contactDefaultColor;
+                if (listView.currentIndex !== index)
+                    parent.color = GlobalProperties.contactDefaultColor;
+
             }
             onClicked: {
-                contactItem.selected = !contactItem.selected;
-                contactListView.currentIndex = index;
+                listView.currentIndex = index;
             }
         }
 
@@ -124,6 +144,14 @@ Item {
 
         }
 
+    }
+
+    Connections {
+        function onCurrentIndexChanged() {
+            contact_item.color = contact_item.getColor();
+        }
+
+        target: listView
     }
 
 }
