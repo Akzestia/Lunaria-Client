@@ -17,6 +17,10 @@ Rectangle {
     Layout.alignment: Qt.AlignTop | Qt.AlignRight
     clip: true
 
+    Component.onCompleted: {
+
+    }
+
     ColumnLayout {
         id: c_lt
 
@@ -96,7 +100,8 @@ Rectangle {
         Text {
             id: receiver_info_name
 
-            text: "Kisara"
+            text: GlobalProperties.currentReceiverDm.u_name
+
             color: GlobalProperties.mainTextColor
             font.pixelSize: 27
             font.weight: 400
