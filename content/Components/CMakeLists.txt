@@ -18,8 +18,12 @@ qt6_add_qml_module(xComponents
         OnlineIndicator.qml
         SideBar.qml
         GlobalProperties.qml
+        SettingsArea.qml
+        SettingsNavbar.qml
         Popups/AddDm.qml
         Models/Contact.qml
+        Models/SettingDelegate.qml
+        Models/MessageDelegate.qml
     RESOURCES
         # Shaders/roundImage.qsb
 )
