@@ -1,8 +1,14 @@
-# Lunaria-Client
+# Lunaria-Client 
 
 [English](README.md) | [日本語](README_ja.md) | [Українська](README_ua.md)
 
 This is the desktop client for the Lunaria chat application. Please note that this project is still under active development and is not yet configured for building from source.
+
+## Important Update
+
+**Note: This project is no longer receiving updates in its current form.**
+
+The Lunaria-Client is being rewritten in Rust instead of C++ with Qt. This decision was made due to licensing considerations with Qt. The new Rust-based version will be developed in a separate repository.
 
 ## Status
 
